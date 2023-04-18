@@ -11,6 +11,8 @@ tags:
 
 Here is a write-up of a cool challenge I solved at **HackSecuReims** CTF event last month.
 
+![](./chall_secret-key.png)
+
 We have a somewhat heavy *secret.jpeg* image, the statement tells us that the flag will be located next to a 'passwd' mention.
 
 ## Zip Extraction 
@@ -41,12 +43,9 @@ We use `mount`, but other than pictures of cats, nothing interesting.
 
 ## File carving
 
-Fortunately `photorec` can recover deleted files:
+Fortunately `photorec` can recover deleted files, including this suspicious *.png*:
 
 ![](./photorec.png)
-
-## Flag
-
 ![](./recupdir.png)
 
 Here it is!
