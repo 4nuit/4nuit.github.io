@@ -10,7 +10,7 @@ Actually I and am learning HPC (network administration & scientific/parallel pro
 
 If you have any questions or want to get in touch, you can reach me on Discord `Night#2406`
 
-- Doing CTF’s for Securitiie/Hackcident.
+- Doing CTF’s for Securitiie/Hackcident. Former president (2022/2023) of [Securitiie](https://securitiie.iiens.net)
 - Engineering student at ENSIIE.
 
 ---
