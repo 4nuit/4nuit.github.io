@@ -13,7 +13,7 @@ If you have any questions or want to get in touch, you can reach me on Discord `
 - Doing CTF’s for Securitiie/Hackcident.
 - Engineering student at ENSIIE.
 
+---
 
-
-
+<script src="https://root-me-badge.cloud.duboc.xyz/storage_clients/90f9609f1f83aae09306b1d4bc1d27b8/badge.js"></script>
 

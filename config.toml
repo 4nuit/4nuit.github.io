@@ -38,10 +38,16 @@ enableEmoji = true
     url = '/posts/'
     weight = 20
   [[menu.main]]
+    pageRef="awards"
+    name = 'Awards'
+    url = '/awards/'
+    weight = 30
+  [[menu.main]]
     pageRef="about"
     name = 'About'
     url = '/about/'
-    weight = 30
+    weight = 40
+
 
 [params]
   sitename = "Awesome hugo blog"

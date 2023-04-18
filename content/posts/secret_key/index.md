@@ -1,15 +1,17 @@
 ---
-title: Secret key
+title: HackSecuReims - secret key
 date: 2023-04-17
 author: Nu1t
 description: Writeup
 tags:
-  - emoji
+  - misc
 ---
 
-# Secret key
+# Intro
 
-Here is a write-up of a cool challenge I solved at **HackSecuReims** CTF event last month.
+HSR is one of the very first team CTF dedicated to French students. This year, for the 6th edition, there were 150 for the CTF.
+
+Here is a write-up of a cool challenge I solved at [**HackSecuReims**](https://www.hacksecureims.eu/) CTF event last month.
 
 ![](./chall_secret-key.png)
 

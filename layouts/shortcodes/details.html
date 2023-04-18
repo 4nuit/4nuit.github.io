@@ -1,0 +1,6 @@
+{{ $title := .Get 0 }}
+<details>
+	<summary>{{ $title }}</summary>
+	<img src="{{ .Get "image" }}">
+	{{ .Inner }}
+</details>
