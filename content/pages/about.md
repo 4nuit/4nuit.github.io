@@ -1,19 +1,16 @@
 ---
-title: About
+title: À propos
 description: 'Hugo, the world''s fastest framework for building websites'
-date: '2023-04-17'
+date: '2023-05-05'
 author: Hugo Authors
 ---
 
-Hello, I'm **Nu1t**, a french student in computer science fond of cybersecurity.
-Actually I and am learning HPC (network administration & scientific/parallel programming).
 
-If you have any questions or want to get in touch, you can reach me on Discord `Night#2406`
+N'hésitez pas à me contacter sur discord: `Night#2406`
 
-- Doing CTF’s for Securitiie/Hackcident. Former president (2022/2023) of [Securitiie](https://securitiie.iiens.net)
-- Engineering student at ENSIIE.
+- Passionné d'infosec, membre actif de Securitiie et Hackademint. Ancien président (2022-2023) de [Securitiie](https://securitiie.iiens.net)
+- Étudiant en école d'ingénieur à l'ENSIIE.
 
 ---
 
-<script src="https://root-me-badge.cloud.duboc.xyz/storage_clients/90f9609f1f83aae09306b1d4bc1d27b8/badge.js"></script>
-
+<img src="https://root-me-badge.cloud.duboc.xyz/storage_clients/90f9609f1f83aae09306b1d4bc1d27b8/static_badge_dark.png" />

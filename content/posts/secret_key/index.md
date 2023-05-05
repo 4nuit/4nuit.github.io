@@ -9,48 +9,55 @@ tags:
 
 # Intro
 
-HSR is one of the very first team CTF dedicated to French students. This year, for the 6th edition, there were 150 for the CTF.
+HSR est l'un des toutes premiers évènemens dédiés aux étudiants français. Cette année, pour la 6ème édition, nous étions 150 pour le CTF.
 
-Here is a write-up of a cool challenge I solved at [**HackSecuReims**](https://www.hacksecureims.eu/) CTF event last month.
+Voici pour commencer un défi sympa que j'ai eu l'occasion de faire au [**HackSecuReims**](https://www.hacksecureims.eu/).
 
 ![](./chall_secret-key.png)
 
-We have a somewhat heavy *secret.jpeg* image, the statement tells us that the flag will be located next to a 'passwd' mention.
+Nous avons une image secret.png un peu lourde, l'énoncé nous dit que le flag se situera à côté d'une mention 'passwd'.
 
-## Zip Extraction 
+## Extraction zip
 
-So we extract its content:
+On extrait donc son contenu:
 
 `binwalk -e secret.png`
 
-We've got a zip, which we try to unzip with 7zip in view of the version, but protected by password:
+On obtient un zip, qu'on essaie de dézipper avec 7zip au vu de la version, mais protégé par mot de passe:
 
 ![](./zip.png)
 
-## 
+## Crack avec john
 
-The first step is to get a hash to work with. I used `zip2john` from John the Ripper to extract a password hash from the zip file:
-Here is the pass: **icecream**.
-The extracted secret folder reveals a file named *mysecrets.001*:
+On utilise `zip2john` pour donner à john le hash du mot de passe sous un format qu'il connaît.
+On le casse avec john, le mot de passe est **icecream**.
+Le dossier secret extrait nous révèle un fichier *mysecrets.001*:
 
 ![](./john.png)
 
-## Disk inspection
+## Inspection du disque
 
-The file is actually a logical DOS/MBR disk.
-To mount it in a tmp folder, we do a `fdisk -l` in order to know the beginning and the size of each sector.
-We use `mount`, but other than pictures of cats, nothing interesting.
+Le fichier est en fait un disque logique DOS/MBR.
+Pour le monter dans un dossier tmp, on effectue un `fdisk -l` afin de connaître le début et la taille de chaque secteur.
+On utilise `mount`, mais à part des photos de chats, rien d'intéressant.
 
 ![](./mount.png)
 
-## File carving
+## Récupération de fichiers effacés
 
-Fortunately `photorec` can recover deleted files, including this suspicious *.png*:
+En pratique j'avais sauté l'étape précédente.
+On peut utiliser `photorec` (paquet testdisk) pour faire du file carving:
 
 ![](./photorec.png)
+
+## Flag
+
+Un dossier recupdir apparaît avec une image:
+
 ![](./recupdir.png)
 
-Here it is!
+C'est le flag!
 
 ![](./passwd.png)
+
 
