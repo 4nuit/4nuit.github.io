@@ -54,6 +54,7 @@ enableEmoji = true
   defaultColor = "dark" # set default color mode: dark or light
   description = "Minimal Hugo blog theme with light and dark mode support"
   mainSections = ['posts']
+  math = true
 
 [params.author]
   avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
@@ -67,9 +68,9 @@ name = "github"
 url = "https://github.com/0x14mth3n1ght"
 
 [[params.socialIcons]]
-name = "root-me"
-url = "https://root-me.org/Nu1t"
-
-[[params.socialIcons]]
 name = "cryptohack"
 url = "https://cryptohack.org/user/0x14mth3n1ght"
+
+[[params.socialIcons]]
+name = "Rss"
+url = "index.xml"

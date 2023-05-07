@@ -34,21 +34,21 @@ https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf
 
 On chiffre donc un message au hasard et on retrouve q avec la seconde méthode.
 
-Cela tient au théorème de Bezout: `a*p + b*q = 1` : p et q sont premiers entre eux
+Cela tient au théorème de Bezout, p et q étant premiers entre eux: $$a.p + b.q = 1$$
 
-
-Explication:
+## Explication:
 
 On dispose de `s'` lorsque le serveur répond: la signature erronée. Notons `s` la vraie signature.
 
-On a `s = c**d%n = pow(c,d,n)`, d'où `m =pow(s,e,n)`.
+On a $$s = c^{d}[n]$$ $$m = s^{e}[n]$$
+
 D'où:
 
-`pow(s', e, n) - pow(s,e,n) = pow(s',e,n) - m`
+$${s'}^{e}[n] - {s}^{e}[n] = {s'}^{e}[n] - m $$
 
-Ce delta, a un diviseur commun avec n
+Notons $$\delta = {s'}^{e}[n] - m$$
 
-On fait ensuit `gcd(delta, n)` !=1 : diviseur de n
+Nous avons un diviseur commun avec n: $$\delta \wedge n != 1$$
 
 C'est l'attaque de `Bellcore`: https://eprint.iacr.org/2012/553.pdf
 

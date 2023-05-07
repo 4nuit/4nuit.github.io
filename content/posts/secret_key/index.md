@@ -9,7 +9,9 @@ tags:
 
 # Intro
 
-HSR est l'un des toutes premiers évènemens dédiés aux étudiants français. Cette année, pour la 6ème édition, nous étions 150 pour le CTF.
+![](./hack.png)
+
+HSR est l'un des toutes premiers évènements dédiés aux étudiants français. Cette année, pour la 6ème édition, nous étions 150 pour le CTF.
 
 Voici pour commencer un défi sympa que j'ai eu l'occasion de faire au [**HackSecuReims**](https://www.hacksecureims.eu/).
 
