@@ -6,6 +6,7 @@ author: Nu1t
 description: Writeup
 tags:
   - web
+  - writeup
 resources:
   - name: "featured-image"
     src: "featured-image.png"
@@ -15,9 +16,11 @@ resources:
 
 ![](./enonce.png)
 
-On atterrit ici:
+Le lien nous redirige directement ici:
  
 ![](./chall.png)
+
+On va devoir vérifier les 2 conditions afin de pouvoir afficher le flag.
 
 ## Conditions
 

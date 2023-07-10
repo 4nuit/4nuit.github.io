@@ -6,6 +6,7 @@ author: Nu1t
 description: Writeup
 tags:
   - crypto
+  - writeup
 resources:
   - name: "featured-image"
     src: "featured-image.png"

@@ -17,5 +17,6 @@ De Securitiie et Hackademint. Ancien président (2022-2023) de [Securitiie](http
 
 En école d'ingénieur à l'[ENSIIE](https://www.ensiie.fr/).
 
-![](badge.png)
+![](https://img.buzzfeed.com/buzzfeed-static/static/2021-12/18/6/asset/e882fdf53383/anigif_sub-buzz-3264-1639808624-12.gif)
+
 ---

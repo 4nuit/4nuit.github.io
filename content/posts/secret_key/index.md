@@ -6,6 +6,7 @@ author: Nu1t
 description: Writeup
 tags:
   - misc
+  - writeup
 resources:
   - name: "featured-image"
     src: "featured-image.png"

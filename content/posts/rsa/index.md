@@ -7,6 +7,7 @@ description: Writeup
 tags:
   - hardware
   - crypto
+  - writeup
 resources:
   - name: "featured-image"
     src: "featured-image.png"
