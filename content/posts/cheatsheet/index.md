@@ -15,6 +15,8 @@ resources:
 
 Ce post est un peu spécial. En effet je tenais à partager quelques ressources qui m'ont permis de mettre un pied dans l'infosec en partant de zéro.
 
+Voir: https://github.com/0x14mth3n1ght/Hacking
+
 Est-ce légitime en 2023 de proposer cela? 
 
 Effectivement, il y a pléthore d'articles, de blogs, de livres ainsi que de communautés. 
@@ -273,7 +275,17 @@ https://hide01.ir/
 [Xct](https://www.youtube.com/c/xct_de/channels)
 
 
+# Extensions:
+
+https://addons.mozilla.org/fr/firefox/addon/wappalyzer/
+
+https://addons.mozilla.org/en-US/firefox/addon/csp-generator/
+
+https://addons.mozilla.org/fr/firefox/addon/hacktools/
+
 # Des notes utiles en CTF voire +
+
+https://cheatsheet.haax.fr/
 
 https://exploit-notes.hdks.org/
 
