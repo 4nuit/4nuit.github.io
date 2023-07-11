@@ -147,8 +147,6 @@ https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_sh
 
 ## Pwn
 
-https://gtfobins.github.io/
-
 ### Doc :
 
 - Vidéos/Plateformes/Docs: https://mksec.fr/tricks/pwn_ressources/
@@ -179,6 +177,15 @@ https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-im
 
 https://github.com/shellphish/how2heap
 
+#### Format Strings
+
+https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html
+
+#### Kernel
+
+- Kernelmap interactive: https://makelinux.github.io/kernel/map/
+
+- Kernel: https://0xax.gitbooks.io/linux-insides/content/
 
 ### Débuggers (pour binaires ELF (Linux), plus courants en pwn)
 
@@ -290,6 +297,19 @@ Débuggers:
 [SQLi: énumération via UNION](https://github.com/0x14mth3n1ght/Writeup/blob/master/2022/Star2022/Web/SQL/sql.txt)
 [PHP: extract() & loose comparison](https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/web/salty)
 [XSS](https://0xhorizon.eu/fr/cheat-sheet/xss/)
+
+## Web3
+
+
+### Doc
+
+- https://beta.hackndo.com/blockchain/ 
+
+- https://docs.soliditylang.org/en/v0.8.20/ 
+
+- https://ethereum.org/en/developers/docs/ 
+
+- https://cypherpunks-core.github.io/ethereumbook/
 
 ## Pour aller plus loin
 
