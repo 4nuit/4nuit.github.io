@@ -12,7 +12,7 @@ resources:
     src: "featured-image.png"
 ---
 
-# Intro
+## Intro
 
 ![](./fcsc.png)
 

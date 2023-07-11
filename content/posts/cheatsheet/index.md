@@ -11,7 +11,7 @@ resources:
     src: "featured-image.png"
 ---
 
-# Intro
+## Intro
 
 Ce post est un peu spécial. En effet je tenais à partager quelques ressources qui m'ont permis de mettre un pied dans l'infosec en partant de zéro.
 
@@ -149,13 +149,13 @@ https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_sh
 
 ### Doc :
 
-- Vidéos/Plateformes/Docs: https://mksec.fr/tricks/pwn_ressources/
+- Vidéos/Plateformes/Docs: https://mksec.fr/tricks/pwn_ressources/ 
 
 - Overview du pwn en fr: https://own2pwn.fr 
 
 - [The Shellcoder Handbook](https://doc.lagout.org/security/The%20Shellcoder%E2%80%99s%20Handbook.pdf)
 
-#### Pile/Stack
+### Pile/Stack
 
 {{< youtube WG7QtpRPArg>}}
 
@@ -163,7 +163,7 @@ https://thinkloveshare.com/hacking/pwn_1of4_buffer_overflow/
 
 https://ir0nstone.gitbook.io/notes/types/stack
 
-#### Tas/Heap
+### Tas/Heap
 
 https://samwho.dev/memory-allocation/
 
@@ -177,11 +177,11 @@ https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-im
 
 https://github.com/shellphish/how2heap
 
-#### Format Strings
+### Format Strings
 
 https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html
 
-#### Kernel
+### Kernel
 
 - Kernelmap interactive: https://makelinux.github.io/kernel/map/
 
@@ -313,9 +313,13 @@ Débuggers:
 
 ## Pour aller plus loin
 
+### Docs
+
 https://hide01.ir/
 
 https://github.com/akr3ch/BugBountyBooks
+
+### Chaines
 
 [13Cubed](https://www.youtube.com/c/13cubed)
 
@@ -328,7 +332,7 @@ https://github.com/akr3ch/BugBountyBooks
 [Xct](https://www.youtube.com/c/xct_de/channels)
 
 
-# Extensions:
+### Extensions:
 
 https://addons.mozilla.org/fr/firefox/addon/wappalyzer/
 
@@ -336,7 +340,7 @@ https://addons.mozilla.org/en-US/firefox/addon/csp-generator/
 
 https://addons.mozilla.org/fr/firefox/addon/hacktools/
 
-# Des notes utiles en CTF voire +
+### Des notes utiles en CTF voire +
 
 https://cheatsheet.haax.fr/
 

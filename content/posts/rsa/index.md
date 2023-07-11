@@ -13,7 +13,7 @@ resources:
     src: "featured-image.png"
 ---
 
-# Intro
+## Enonce
 
 Poursuivons notre lancée sur RSA. Ici nous allons nous intéresser aux mécanismes permettant de calculer une signature avec de bonnes *performances* et avec un *code sûr*.
 
