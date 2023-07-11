@@ -44,6 +44,12 @@ Ok, sauf pour le web (**OpenClassrooms** peut suffire dans tous les cas)
 - Réseau: {{< youtube 26jazyc7VNk>}}
 - Web: {{< youtube 4Jk_I-cw4WE>}}
 
+Quelques communautés:
+
+- https://lecrabeinfo.net/ 
+- https://openclassrooms.com/fr/courses
+- https://zestedesavoir.com/
+
 ## Teach yourself infosec
 
 A partir d'ici, la sécurité commence.
@@ -59,7 +65,7 @@ https://teachyourselfinfosec.com/
 
 Dans la même idée, en français:
 
-https://wiki.zenk-security.com/doku.php/
+https://wiki.zenk-security.com/doku.php/ ou https://www.bases-hacking.org/hacking.html
 
 De très bons livres (dont certains tirés d'OReilly), cours et articles (pas que sur la sécurité) existent aussi ici:
 
@@ -79,11 +85,16 @@ https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html
 ### Doc AD:
 
 https://ntlm.info/
+
 https://beta.hackndo.com/pass-the-hash/#protocole-ntlm
+
+https://nuts7.fr/zerologon/
 
 https://zer1t0.gitlab.io/posts/attacking_ad/
 
-### SMB enumeration /Kerberoasting
+### SMB enumeration / Attacking AD
+
+- `enum4linux`
 
 - `impacket` : GetUserSPNs.py pour Kerberoasting par ex
 
@@ -101,10 +112,12 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 
 ## Crypto
 
+https://www.youtube.com/@meichlseder
+
 ### Doc crypto
 
 - https://cryptobook.nakov.com/
-- [rsa](https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf), 
+- [20 years of rsa](https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf), 
 https://vozec.fr/crypto-rsa/ , [Side Channel RSA - RSA CRT cf FCSC](https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf)
 - https://vozec.fr/crypto-aes/
 
@@ -134,6 +147,8 @@ https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_sh
 
 ## Pwn
 
+https://gtfobins.github.io/
+
 ### Doc :
 
 - Vidéos/Plateformes/Docs: https://mksec.fr/tricks/pwn_ressources/
@@ -151,6 +166,12 @@ https://thinkloveshare.com/hacking/pwn_1of4_buffer_overflow/
 https://ir0nstone.gitbook.io/notes/types/stack
 
 #### Tas/Heap
+
+https://samwho.dev/memory-allocation/
+
+https://heap-exploitation.dhavalkapil.com/attacks/first_fit
+
+https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-implementation/
 
 {{< youtube o-nRssrHNMw>}}
 
@@ -185,6 +206,16 @@ https://ropemporium.com/
 ## Reverse
 
 {{< youtube TUtQcezMDUU >}}
+
+https://www.youtube.com/@StephenChapman
+
+https://m.youtube.com/c/oalabs
+
+### Assembleur x86
+
+https://beta.hackndo.com/assembly-basics/
+
+{{< youtube tmtXn2UXR3g>}}
 
 ### Doc reverse:
 
@@ -263,6 +294,8 @@ Débuggers:
 ## Pour aller plus loin
 
 https://hide01.ir/
+
+https://github.com/akr3ch/BugBountyBooks
 
 [13Cubed](https://www.youtube.com/c/13cubed)
 
