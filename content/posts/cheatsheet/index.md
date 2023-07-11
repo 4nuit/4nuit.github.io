@@ -20,7 +20,7 @@ Voir: https://github.com/0x14mth3n1ght/Hacking
 Est-ce légitime en 2023 de proposer cela? 
 
 Effectivement, il y a pléthore d'articles, de blogs, de livres ainsi que de communautés. 
-Mais il est facile de se confronter à un mur et de décourager pour diverses raisons, à tout moment. 
+Mais il est facile de se confronter à un mur et de se décourager pour diverses raisons. 
 
 Voici donc un agrégat de ressources:
 
@@ -116,6 +116,7 @@ https://www.youtube.com/@meichlseder
 
 ### Doc crypto
 
+- https://swenson.io/Modern%20Cryptanalysis%20v1.1%202022-01-23.pdf
 - https://cryptobook.nakov.com/
 - [20 years of rsa](https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf), 
 https://vozec.fr/crypto-rsa/ , [Side Channel RSA - RSA CRT cf FCSC](https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf)
@@ -140,6 +141,10 @@ https://github.com/0x14mth3n1ght/Hacking/tree/main/crypto/elliptic_curves
 - `binwalk` (`binwalk -e <file>` , `binwalk -dd="*" <file>`)
 - l'analyse d'une copie de la RAM avec `volatility`:
         - profils linux avec [Vol2 (HackSecuReims)](https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/HackSecuReims/forensic/memdump)
+
+- [dive](https://github.com/wagoodman/dive)
+- [jq](https://blog.lecacheur.com/2016/02/16/jq-manipuler-du-json-en-shell/)
+- [autopsy](https://www.sleuthkit.org/)
 
 ### Analyse de logs
 
@@ -182,6 +187,8 @@ https://github.com/shellphish/how2heap
 https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html
 
 ### Kernel
+
+https://lkmidas.github.io/posts/20210123-linux-kernel-pwn-part-1/
 
 - Kernelmap interactive: https://makelinux.github.io/kernel/map/
 
