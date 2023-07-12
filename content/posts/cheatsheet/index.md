@@ -3,7 +3,7 @@ title: "Cheatsheet"
 summary: "Quelques ressources pour débuter, from zero to hero"
 date: 2023-07-10T22:27:18+02:00
 lastmod: 2023-07-10T22:27:18+02:00
-description: Notes
+description: Une roadmap en infosec
 author: "Nu1t"
 tags: ["active directory", "article", "crypto", "forensic", "misc", "pwn", "reverse", "web"]
 resources:
@@ -169,6 +169,10 @@ https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_sh
 
 - [The Shellcoder Handbook](https://doc.lagout.org/security/The%20Shellcoder%E2%80%99s%20Handbook.pdf)
 
+### Arguments et payload
+
+https://reverseengineering.stackexchange.com/questions/13928/managing-inputs-for-payload-injection
+
 ### Pile/Stack
 
 {{< youtube WG7QtpRPArg>}}
@@ -185,9 +189,9 @@ https://heap-exploitation.dhavalkapil.com/attacks/first_fit
 
 https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-implementation/
 
-{{< youtube o-nRssrHNMw>}}
-
 {{< youtube PFqEKkj7wWs >}}
+
+{{< youtube o-nRssrHNMw>}}
 
 https://github.com/shellphish/how2heap
 
@@ -211,10 +215,6 @@ voir `../tutos` (cours/prog C)
 
 
 - `r2`: https://github.com/radareorg/radare2
-
-### Arguments et payload
-
-https://reverseengineering.stackexchange.com/questions/13928/managing-inputs-for-payload-injection
 
 ### Plateformes
 
@@ -312,7 +312,9 @@ Débuggers:
 
 [SQLi: énumération via UNION](https://github.com/0x14mth3n1ght/Writeup/blob/master/2022/Star2022/Web/SQL/sql.txt)
 [PHP: extract() & loose comparison](https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/web/salty)
-[XSS](https://0xhorizon.eu/fr/cheat-sheet/xss/)
+[XSS (Ruulian)](https://0xhorizon.eu/fr/cheat-sheet/xss/)
+
+https://mizu.re/tag/FCSC2023
 
 ## Web3
 
