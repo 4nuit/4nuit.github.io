@@ -36,7 +36,7 @@ Des vidéos permettant de découvrir le sujet et de se donner un plan d'attaque.
 
 ## Les bases
 
-Juste quelques cours d'informatique générale pour donner une idée.
+Juste quelques cours/playlists d'informatique générale pour donner une idée.
 Ok, sauf pour le web (**OpenClassrooms** peut suffire dans tous les cas)
 
 - Linux: {{< youtube OMaNgQi6Fvc>}}
@@ -61,15 +61,19 @@ https://d3fend.mitre.org/
 Quelques ressources très complètes ici, par thème.
 Pour chaque catégorie, des ressources et plateformes sont données pour s'entraîner.
 
-https://teachyourselfinfosec.com/
+- https://teachyourselfinfosec.com/
 
 Dans la même idée, en français:
 
-https://wiki.zenk-security.com/doku.php/ ou https://www.bases-hacking.org/hacking.html
+- https://secu.si/
+
+- https://wiki.zenk-security.com/doku.php/
+
+- https://www.bases-hacking.org/hacking.html
 
 De très bons livres (dont certains tirés d'OReilly), cours et articles (pas que sur la sécurité) existent aussi ici:
 
-https://doc.lagout.org/
+- https://doc.lagout.org/
 
 
 ## Mes ressources 
@@ -78,7 +82,9 @@ On entre dans le vif du sujet. Maintenant, choisissez la catégorie qui vous pla
 
 ## Active Directory
 
-### Bases LDAP
+{{< youtube nhW-0qZzjy4>}}
+
+### Annuaire LDAP
 
 https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html
 
@@ -135,10 +141,13 @@ https://github.com/0x14mth3n1ght/Hacking/tree/main/crypto/elliptic_curves
 
 ## Forensic
 
-### Tools:
+### Doc & outils:
 
-- `photorec` (récupérer les fichiers supprimés (unlinkés)
+- `wireshark` (reconstituer des fichiers à partir du traffic réseau)
+- `photorec` (récupérer les fichiers supprimés (unlinkés))
 - `binwalk` (`binwalk -e <file>` , `binwalk -dd="*" <file>`)
+- Astuces pdf: https://github.com/corkami/docs/blob/master/PDF/PDF.md , https://www.decalage.info/python/oletools
+
 - l'analyse d'une copie de la RAM avec `volatility`:
         - profils linux avec [Vol2 (HackSecuReims)](https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/HackSecuReims/forensic/memdump)
 
@@ -198,7 +207,7 @@ https://lkmidas.github.io/posts/20210123-linux-kernel-pwn-part-1/
 
 voir `../tutos` (cours/prog C)
 
-- [gdb pour pwn](https://tc.gts3.org/cs6265/2019/tut/tut01-warmup1.html) , pou r la **stack** [gdb-gef](https://github.com/hugsy/gef), pour la **heap** [pwndbg](https://github.com/pwndbg/pwndbg/blob/dev/FEATURES.md) 
+- [gdb pour pwn](https://tc.gts3.org/cs6265/2019/tut/tut01-warmup1.html) , pour la **stack** [gdb-gef](https://github.com/hugsy/gef), pour la **heap** [pwndbg](https://github.com/pwndbg/pwndbg/blob/dev/FEATURES.md) 
 
 
 - `r2`: https://github.com/radareorg/radare2
@@ -219,8 +228,6 @@ https://ropemporium.com/
 
 ## Reverse
 
-{{< youtube TUtQcezMDUU >}}
-
 https://www.youtube.com/@StephenChapman
 
 https://m.youtube.com/c/oalabs
@@ -237,6 +244,8 @@ https://beta.hackndo.com/assembly-basics/
 - https://tmpout.sh/
 - [Plateforme Crackme.one](https://crackmes.one)
 - `Awesome Reversing +`:  https://github.com/wtsxDev/reverse-engineering
+
+{{< youtube TUtQcezMDUU >}}
 
 ### Quelques outils:
 
@@ -322,6 +331,8 @@ Débuggers:
 
 ### Docs
 
+https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/
+
 https://hide01.ir/
 
 https://github.com/akr3ch/BugBountyBooks
@@ -338,6 +349,9 @@ https://github.com/akr3ch/BugBountyBooks
 
 [Xct](https://www.youtube.com/c/xct_de/channels)
 
+### CTF 24h/24, 7j/7
+
+https://fuzzy.land/challenges
 
 ### Extensions:
 
@@ -347,7 +361,7 @@ https://addons.mozilla.org/en-US/firefox/addon/csp-generator/
 
 https://addons.mozilla.org/fr/firefox/addon/hacktools/
 
-### Des notes utiles en CTF voire +
+### Notes utiles en CTF voire +
 
 https://cheatsheet.haax.fr/
 
