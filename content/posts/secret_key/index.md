@@ -5,6 +5,7 @@ summary: File Carving
 author: Nu1t
 description: Writeup
 tags:
+  - forensic
   - misc
   - writeup
 resources:
