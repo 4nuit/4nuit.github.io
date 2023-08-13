@@ -23,10 +23,10 @@ En effet comme mentionné dans le [**précédent post**](../smthg_wrong/) nous a
 
 Cette **série de 3 challenges** avait pour particularité de faire partie des 5 challenges utilisant la **machine virtuelle** du FCSC.
 
-- machine.py : le fichier Python évaluant les instructions de cette machine.
-- assembly.py : un assembleur décrit plus bas.
-- rsa_keygeneraton.py : un générateur de clés aléatoire
-- challenge.py : le fichier du challenge 
+- [machine.py](./machine.py) : le fichier Python évaluant les instructions de cette machine.
+- [assembly.py](./assembly.py) : un assembleur décrit plus bas.
+- [rsa_keygeneraton.py](./rsa_keygeneration.py) : un générateur de clés aléatoire
+- [challenge.py](./challenge.py) : le fichier du challenge 
 
 Ce dernier contenait notamment une vérification de notre *bytecode*
 
