@@ -288,7 +288,7 @@
     hiddenFromSearch = false
     # whether to enable twemoji
     # 是否使用 twemoji
-    twemoji = false
+    twemoji = true
     # whether to enable lightgallery
     # 是否使用 lightgallery
     lightgallery = false

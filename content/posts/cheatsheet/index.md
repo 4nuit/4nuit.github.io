@@ -11,9 +11,13 @@ resources:
     src: "featured-image.png"
 ---
 
-## Repo
+## Dépôt
 
-Voir: https://github.com/0x14mth3n1ght/Hacking
+{{< admonition type=tip title="Quelques catégories supplémentaires et notes actualisées" open=true >}}
+
+https://github.com/0x14mth3n1ght/Hacking
+
+{{</admonition>}}
 
 ## Intro
 
@@ -140,9 +144,7 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 
 ### Doc
 
-{{<youtube VQcYoahs4YE>}}
-
-https://cryptobook.nakov.com/
+- https://cryptobook.nakov.com/
 
 - [RSA](https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf), 
  https://vozec.fr/crypto-rsa/ , [Side Channel RSA - RSA CRT cf FCSC](https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf)
@@ -151,17 +153,22 @@ https://cryptobook.nakov.com/
 
 - [AES](https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/#encryption-algorithm-overview), https://vozec.fr/crypto-aes/ , https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/
 
- https://crypto.stackexchange.com/questions/66085/bit-flipping-attack-on-cbc-mode
+  - https://crypto.stackexchange.com/questions/66085/bit-flipping-attack-on-cbc-mode
 
- https://research.nccgroup.com/2021/02/17/cryptopals-exploiting-cbc-padding-oracles/
+  - https://research.nccgroup.com/2021/02/17/cryptopals-exploiting-cbc-padding-oracles/
 
 - https://vozec.fr/crypto-lattice/lattice-introduction/
 
 - [Elliptic Curves](https://people.cs.nctu.edu.tw/~rjchen/ECC2012S/Elliptic%20Curves%20Number%20Theory%20And%20Cryptography%202n.pdf)
 
+### Log Discret
+
+{{<youtube issM-hvLemE>}}
+
 ### Cheatsheet
 
-https://github.com/jvdsn/crypto-attacks
+- https://github.com/zademn/EverythingCrypto
+- https://github.com/jvdsn/crypto-attacks
 
 ### Outils
 
@@ -289,27 +296,37 @@ https://thinkloveshare.com/hacking/pwn_1of4_buffer_overflow/
 
 https://ir0nstone.gitbook.io/notes/types/stack
 
+### Protections
+
+- https://learn-cyber.net/article/What's-That-Preventing-Your-Exploit
+
+- `ASLR`: randomise base address -> Ret2libc
+- `PIE`: randomise offset -> Leak fonction (format string)
+- `CANARY ou SSP`: https://learn-cyber.net/article/Understanding-and-Defeating-the-Canary
+
+
+### Format Strings
+
+- https://learn-cyber.net/article/Format-String-Vulnerabilities
+- https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html
+
 ### Tas/Heap
 
-https://samwho.dev/memory-allocation/
+- https://samwho.dev/memory-allocation/
 
-https://heap-exploitation.dhavalkapil.com/attacks/first_fit
+- https://heap-exploitation.dhavalkapil.com/attacks/first_fit
 
-https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-implementation/
+- https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-implementation/
 
 {{< youtube PFqEKkj7wWs >}}
 
 {{< youtube o-nRssrHNMw>}}
 
-https://github.com/shellphish/how2heap
-
-### Format Strings
-
-https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html
+- https://github.com/shellphish/how2heap
 
 ### Kernel
 
-https://lkmidas.github.io/posts/20210123-linux-kernel-pwn-part-1/
+- https://lkmidas.github.io/posts/20210123-linux-kernel-pwn-part-1/
 
 - Kernelmap interactive: https://makelinux.github.io/kernel/map/
 
@@ -364,11 +381,14 @@ SMBS, SMTP, SMTPS, TELNET or TFTP. The command is designed to work without user 
 
 ### LDAP
 
-https://serverfault.com/questions/1083914/replace-anonymous-ldapsearch-command-with-curl-command
+- https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html
+- https://serverfault.com/questions/1083914/replace-anonymous-ldapsearch-command-with-curl-command
 
-### Shell
+### Reverse/Web shell
 
-Configurer son /etc/hosts:
+Configurer son /etc/hosts
+
+https://stackoverflow.com/questions/12260587/kerberos-fails-when-accessing-site-by-ip-address
 
 ```bash
 /etc/hosts
@@ -399,7 +419,40 @@ weevely generate password shell.php5
 weevely http://10.10.97.185/uploads/shell.php5 password
 ```
 
+### Reverse Proxy
+
+`Ip Spoofing`
+
+```bash
+sudo apt install nginx
+```
+
+```bash
+sudo vim etc/nginx/sites-available/default
+```
+
+```
+server {
+   ...
+         # remplacer location /
+	location / {
+                proxy_pass http://vulnerable-site.org ; 
+                proxy_set_header X-Forwarded-For $remote_addr ;
+	}
+   ...
+}
+```
+
+```bash
+sudo systemctl restart nginx
+firefox $(ip a s eth0 | awk -F'[/ ]+' '/inet[^6]/{print $3}')/page #http://vulnerable-site.org/page
+```
+
 ### Wifi
+
+`Arp Spoofing`
+
+https://security.stackexchange.com/questions/225985/is-there-any-point-of-arp-spoofing-on-a-wifi-network
 
 ```bash
 sudo ip l set wlanx down
@@ -554,11 +607,38 @@ https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools
 
 - [PayloadBox](https://github.com/payloadbox)
 
-[SQLi: énumération via UNION](https://github.com/0x14mth3n1ght/Writeup/blob/master/2022/Star2022/Web/SQL/sql.txt)
-[PHP: extract() & loose comparison](https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/web/salty)
-[XSS (Ruulian)](https://0xhorizon.eu/fr/cheat-sheet/xss/)
+`GraphQL`
 
-https://mizu.re/tag/FCSC2023
+ - https://www.next-decision.fr/wiki/differentes-categories-api-majeures-rest-soap-graphql
+ - https://blog.yeswehack.com/yeswerhackers/how-exploit-graphql-endpoint-bug-bounty/
+ - https://ivangoncharov.github.io/graphql-voyager/
+
+`SQLi`
+  - https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/
+
+`PHP`
+  - `Type Juggling` https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf
+  - `Eval` https://www.defenxor.com/blog/writing-simple-php-non-alphanumeric-backdoor-to-evade-waf/
+
+`SSRF`
+  - https://www.vaadata.com/blog/fr/comprendre-la-vulnerabilite-web-server-side-request-forgery-1/
+  - https://www.dailysecurity.fr/server-side-request-forgery/
+
+`XXE`
+  - https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity
+ 
+--------
+
+`XSS`
+ - https://beta.hackndo.com/attaque-xss/
+ - https://excess-xss.com/
+ - https://learn-cyber.net/article/Self-XSS-Attacks
+ - https://learn-cyber.net/article/Reflected-XSS-Attacks
+
+--------
+
+- https://www.nzeros.me/2023/08/07/securinetsminictf2k22/
+- https://mizu.re/tag/FCSC2023
 
 ### Extensions
 

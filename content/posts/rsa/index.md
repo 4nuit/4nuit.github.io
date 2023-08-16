@@ -95,6 +95,28 @@ En faisant une recherche, curieux de disposer dans les registres de `iq, dp et d
 On peut découper le travail en calculant l'exponentiation sur p et q de tailles bien plus petites.
 Tout ceci tient au `théorème des restes chinois`:
 
+{{< admonition type=tip title="Déchiffrement RSA avec le Théorème des Restes Chinois (CRT)" open=true >}}
+Le déchiffrement RSA avec le Théorème des Restes Chinois (CRT) est une méthode optimisée pour chiffrer et déchiffrer un message. Ce processus implique le calcul de $m$ à partir des valeurs intermédiaires $c_p$ et $c_q$, où $c_p = c^{d_p} \ (\mathrm{mod} \ p)$ et $c_q = c^{d_q} \ (\mathrm{mod} \ q)$.
+
+**Étapes :**
+
+1. Calcul des coefficients d'inversion :
+   - Calculer $q_{inv}$ tel que $q_{inv} \equiv q^{-1} \ (\mathrm{mod} \ p)$, c'est-à-dire que $q \cdot q_{inv} \equiv 1 \ (\mathrm{mod} \ p)$.
+
+2. Calcul des composantes CRT :
+   - Calculer $m_p = c_q \cdot q_{inv} \ (\mathrm{mod} \ p)$.
+   - Calculer $m_q = c_p \cdot p_{inv} \ (\mathrm{mod} \ q)$, où $p_{inv}$ est le coefficient d'inversion de $p$ modulo $q$.
+
+3. Calcul de la solution $m$ :
+   - Calculer $h = q_{inv} \cdot (m_p - m_q) \ (\mathrm{mod} \ p)$.
+   - Calculer $m = m_q + h \cdot q$.
+
+Le résultat $m$ correspond au message déchiffré.
+
+Ce processus profite de la propriété du Théorème des Restes Chinois (CRT) pour optimiser le calcul en divisant les opérations modulo $N$ en opérations modulo $p$ et modulo $q$, ce qui accélère le déchiffrement RSA.
+{{< /admonition >}}
+
+
 ![](./crt.png)
 
 Attention à certaines spécifités:

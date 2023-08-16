@@ -24,14 +24,58 @@ La catégorie **Side channel** était particulièrement intéressante car elle p
 
 ## Signature
 
+Voici ce que donne une première connexion au serveur utilisant l'implémentation décrite.
+
+$$s = m^{d}[n]$$ $$m = s^{e}[n]$$
+
+Nous avons à la fin `s` qui sera notée par la suite `s'`: la signature erronée calculée par le serveur.
+
 ![](./serv.png)
 
-Bien sûr nous ne pouvons pas faire m = 1 car ça nous donnerait `dp` et `dq` et on pourrait factoriser n directement.
-Nous avons à la fin `s` qui sera notée par la suite `s'` car c'est la signature erronée.
+Nous ne pouvons malheureusement pas **signer m = 1** car cela nous donnerait `dp` et `dq` et on pourrait factoriser n directement.
+
+Le but est de retrouver la **clé privée d** afin de déchiffrer le **ciphertext c**, sachant que la paire ((n,e),d) change à chaque éxécution.
+
+Ainsi, nous pourrons récupérer le flag $$ m = c^{d} [n]$$
 
 ## Résolution
 
 Énorme coup de chance, la doc que j'avais cherché pour `RSA - Secure dev` (avec google sur RSA-CRT : iq,dp,dq) donne la solution ...
+
+{{< admonition type=tip title="Théorème de Bezout" open=true >}}
+L'algorithme d'Euclide étendu (egcd) permet de trouver les coefficients de [Bezout](https://defeo.lu/in310/poly/euclide-bezout/), tels que
+
+ap + bq = 1
+{{< /admonition >}}
+
+D'après l'énoncé nous avons:
+
+{{< raw >}}
+\[ cp = m^p[dp] \\  cq = m^q[dq] \\ m = (a*p*cp + b*q*cq) [n]\]
+{{< /raw >}}
+
+La signature calculée avec le théorème des **Restes Chinois** (CRT) vaut, avec $$i_{q}= q^{-1} [p]$$
+
+{{< raw >}}
+\[ s' = cq +q*(i_{q}*(cp-cq)[p])\]
+{{< /raw >}}
+
+{{< admonition type=tip title="RSA et Théorème des Restes Chinois (CRT)" open=true >}}
+Le Théorème des Restes Chinois (CRT) est souvent utilisé pour optimiser le déchiffrement RSA en découpant les calculs en sous-problèmes.
+
+**Version Équations Modulaires :**
+
+Dans le contexte de RSA, supposons que nous ayons un message $m$ chiffré $c$ et les modules de chiffrement $N_1, N_2, \ldots, N_k$. Calculons les $M_i$ et les coefficients d'inversion $y_i$ pour chaque $i$ de $1$ à $k$. Ensuite, en utilisant le CRT, la valeur déchiffrée $x$ est donnée par :
+
+$$
+m = (c_1 \cdot M_1 \cdot y_1 + c_2 \cdot M_2 \cdot y_2 + \ldots + c_k \cdot M_k \cdot y_k) \ (\mathrm{mod} \ N),
+$$
+
+où $N = N_1 \cdot N_2 \cdot \ldots \cdot N_k$.
+{{< /admonition >}}
+
+
+Si vous ne me croyez pas ,c'est dans ce document !
 
 https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf
 
@@ -39,13 +83,9 @@ https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf
 
 On chiffre donc un message au hasard et on retrouve q avec la seconde méthode.
 
-Cela tient au théorème de Bezout, p et q étant premiers entre eux: $$a.p + b.q = 1$$
-
 ## Explication:
 
 On dispose de `s'` lorsque le serveur répond: la signature erronée. Notons `s` la vraie signature.
-
-On a $$s = c^{d}[n]$$ $$m = s^{e}[n]$$
 
 D'où:
 
