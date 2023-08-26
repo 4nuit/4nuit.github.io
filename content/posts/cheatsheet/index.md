@@ -5,7 +5,7 @@ date: 2023-07-10T22:27:18+02:00
 lastmod: 2023-07-10T22:27:18+02:00
 description: Une roadmap en infosec
 author: "Nu1t"
-tags: ["active directory", "article", "crypto", "forensic", "misc", "pwn", "reverse", "web"]
+tags: ["active directory", "article", "crypto", "forensic", "misc", "pwn", "reseau","reverse", "web", "web3"]
 resources:
   - name: "featured-image"
     src: "featured-image.png"
@@ -96,19 +96,31 @@ https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html
 
 ### Doc AD:
 
-https://ntlm.info/
-https://beta.hackndo.com/pass-the-hash/#protocole-ntlm
+- https://zer1t0.gitlab.io/posts/attacking_ad/
 
-https://zer1t0.gitlab.io/posts/attacking_ad/
+- https://ntlm.info/
+
+- https://tesserent.com/insights/blog/dumping-windows-credentials?utm_source=securusglobal.com&utm_medium=301
+
+- https://beta.hackndo.com/pass-the-hash/#protocole-ntlm
 
 `mindmap`https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg
 
-### SMB enumeration /Kerberoasting
+### Kerberoast
 
-- `impacket` : 
-	- check Kerberoasting: GetUserSPNs.py 
-	- check AsRepRoasting: GetUserNPUs.py ([UAC values](https://jackstromberg.com/2013/01/useraccountcontrol-attributeflag-values/))
+**SPN non vide**
 
+- https://beta.hackndo.com/kerberoasting/
+- [GetUserSPNs.py](https://github.com/fortra/impacket/blob/master/examples/GetUserSPNs.py)
+
+### AsRepRoast
+
+**User sans PreAuth**
+
+- https://beta.hackndo.com/kerberos-asrep-roasting/
+- https://www.login-securite.com/2022/11/03/analyse-et-poc-de-la-cve-2022-33679/
+- ([UAC values](https://jackstromberg.com/2013/01/useraccountcontrol-attributeflag-values/))
+- [GetNPUsers.py](https://github.com/fortra/impacket/blob/master/examples/GetNPUsers.py)
 
 [Box Active (HTB)](https://0xdf.gitlab.io/2018/12/08/htb-active.html)
 
@@ -123,7 +135,8 @@ Synchroniser l'horloge:
 
 ### Silver/Golden Ticket
 
-https://github.com/fortra/impacket/issues/1457
+- https://beta.hackndo.com/kerberos-silver-golden-tickets/#pac
+- https://github.com/fortra/impacket/issues/1457
 
 ### Shell
 
@@ -146,16 +159,28 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 
 - https://cryptobook.nakov.com/
 
+### Cle publique
+
 - [RSA](https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf), 
  https://vozec.fr/crypto-rsa/ , [Side Channel RSA - RSA CRT cf FCSC](https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf)
 
+- [DSA,ElGamal, RSA-CRT - Zenk](https://repo.zenk-security.com/Cryptographie%20.%20Algorithmes%20.%20Steganographie/Cle%20Publique.pdf)
+
 - [Shamir Secret Sharing](https://max.levch.in/post/724289457144070144/shamir-secret-sharing)
 
-- [AES](https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/#encryption-algorithm-overview), https://vozec.fr/crypto-aes/ , https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/
+### Blocs
+
+- [AES](https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/#encryption-algorithm-overview), https>
+  - https://stackoverflow.com/questions/1220751/how-to-choose-an-aes-encryption-mode-cbc-ecb-ctr-ocb-cfb
+
+- [Block cipher modes of operation](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
+	
+	- https://en.wikipedia.org/wiki/Padding_oracle_attack
 
   - https://crypto.stackexchange.com/questions/66085/bit-flipping-attack-on-cbc-mode
 
   - https://research.nccgroup.com/2021/02/17/cryptopals-exploiting-cbc-padding-oracles/
+
 
 - https://vozec.fr/crypto-lattice/lattice-introduction/
 
@@ -171,6 +196,23 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 - https://github.com/jvdsn/crypto-attacks
 
 ### Outils
+
+- [z3](https://theory.stanford.edu/~nikolaj/programmingz3.html)
+- [OpenSSL cheatsheet](https://www.freecodecamp.org/news/openssl-command-cheatsheet-b441be1e8c4a/)
+
+https://www.login-securite.com/2021/10/29/sthackwriteup-forensic-docker-layer/
+
+```bash
+# AES-CBC
+openssl aes-256-cbc -d -iter 10 -pass pass:$(cat /pass.txt) -in flag.enc -out flag.dec
+```
+
+```
+bash
+# Base64 & digest - JWT
+echo <b64(header).b64(payload)> | openssl dgst -sha256 -mac HMAC -macopt:hexkey:$(cat key.pem | xxd -p | tr -d "\\n")
+python -c 'import hmac, hashlib, base64; print(base64.urlsafe_b64encode(hmac.new(<key>, <token>, hashlib.sha256).digest()).replace("=", ""))'
+```
 
 - [Hashes.com](https://hashes.com)
 - [Dcode](https://www.dcode.fr/)
@@ -309,6 +351,7 @@ https://ir0nstone.gitbook.io/notes/types/stack
 
 - https://learn-cyber.net/article/Format-String-Vulnerabilities
 - https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html
+- https://axcheron.github.io/exploit-101-format-strings/
 
 ### Tas/Heap
 
@@ -353,8 +396,12 @@ https://ropemporium.com/
 
 ## Reseau
 
+{{< youtube Oc7Ts8tVjyE>}}
+{{< youtube B1vqKQIPxr0 >}}
+
 ### Doc
 
+- https://zestedesavoir.com/tutoriels/2789/les-reseaux-de-zero/
 - https://ctf-wiki.mahaloz.re/misc/traffic/introduction/
 - https://cheatsheet.haax.fr/shells-methods/reverse/
 - https://github.com/sergiomarotco/Network-segmentation-cheat-sheet
