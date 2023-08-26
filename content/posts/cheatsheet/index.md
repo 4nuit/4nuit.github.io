@@ -170,12 +170,14 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 
 ### Blocs
 
-- [AES](https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/#encryption-algorithm-overview), https>
+- [AES](https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/#encryption-algorithm-overview),
   - https://stackoverflow.com/questions/1220751/how-to-choose-an-aes-encryption-mode-cbc-ecb-ctr-ocb-cfb
 
 - [Block cipher modes of operation](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation)
 	
 	- https://en.wikipedia.org/wiki/Padding_oracle_attack
+
+  - https://crypto.stackexchange.com/questions/42891/chosen-plaintext-attack-on-aes-in-ecb-mode
 
   - https://crypto.stackexchange.com/questions/66085/bit-flipping-attack-on-cbc-mode
 

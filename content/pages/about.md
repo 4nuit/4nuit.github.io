@@ -11,7 +11,7 @@ Vous pouvez me retrouver sur [Root Me](https://www.root-me.org/Nu1t?inc=statisti
 
 ## Étudiant 
 
-En école d'ingénieur à l'[ENSIIE](https://www.ensiie.fr/).
+En école d'ingénieur.
 
 ![](https://img.buzzfeed.com/buzzfeed-static/static/2021-12/18/6/asset/e882fdf53383/anigif_sub-buzz-3264-1639808624-12.gif)
 
