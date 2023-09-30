@@ -60,9 +60,9 @@ Quelques communautés:
 
 A partir d'ici, la sécurité commence.
 
-https://owasp.org/www-community/attacks/
+- https://owasp.org/www-community/attacks/
 
-https://d3fend.mitre.org/
+- https://d3fend.mitre.org/
 
 Quelques ressources très complètes ici, par thème.
 Pour chaque catégorie, des ressources et plateformes sont données pour s'entraîner.
@@ -179,6 +179,8 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 
   - https://crypto.stackexchange.com/questions/42891/chosen-plaintext-attack-on-aes-in-ecb-mode
 
+  - https://security.stackexchange.com/questions/271007/aes-ecb-cookie-bypass
+
   - https://crypto.stackexchange.com/questions/66085/bit-flipping-attack-on-cbc-mode
 
   - https://research.nccgroup.com/2021/02/17/cryptopals-exploiting-cbc-padding-oracles/
@@ -186,11 +188,20 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 
 - https://vozec.fr/crypto-lattice/lattice-introduction/
 
-- [Elliptic Curves](https://people.cs.nctu.edu.tw/~rjchen/ECC2012S/Elliptic%20Curves%20Number%20Theory%20And%20Cryptography%202n.pdf)
+### Flux
+
+- https://thehackernews.com/2015/07/crack-rc4-encryption.html
+
+- https://crypto.stackexchange.com/questions/83629/forgery-attack-on-poly1305-when-the-key-and-nonce-reused
 
 ### Log Discret
 
 {{<youtube issM-hvLemE>}}
+
+### ECC
+
+- https://people.cs.nctu.edu.tw/~rjchen/ECC2012S/Elliptic%20Curves%20Number%20Theory%20And%20Cryptography%202n.pdf
+- https://blog.trailofbits.com/2020/06/11/ecdsa-handle-with-care/
 
 ### Cheatsheet
 
@@ -230,18 +241,20 @@ python -c 'import hmac, hashlib, base64; print(base64.urlsafe_b64encode(hmac.new
 
 ### Cours: Cryptohack Starters
 
-https://github.com/0x14mth3n1ght/Hacking/tree/main/crypto/elliptic_curves
+- https://github.com/0x14mth3n1ght/Hacking/tree/main/crypto/elliptic_curves
 
 ## Forensic
 
+{{<youtube 8J9Eq3hpMOw>}}
+
 ### Analyse de logs
 
-https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_shell
+- https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_shell
 
 ### Exfiltration
 
-https://tshark.dev/
-https://wiki.wireshark.org/SampleCaptures
+- https://tshark.dev/
+- https://wiki.wireshark.org/SampleCaptures
 
 ### Tools:
 
@@ -388,13 +401,13 @@ voir `../tutos` (cours/prog C)
 
 ### Plateformes
 
-https://deusx64.ai/
+- https://deusx64.ai/
 
-https://exploit.education/
+- https://exploit.education/
 
-https://pwn.college/
+- https://pwn.college/
 
-https://ropemporium.com/
+- https://ropemporium.com/
 
 ## Reseau
 
@@ -437,7 +450,7 @@ SMBS, SMTP, SMTPS, TELNET or TFTP. The command is designed to work without user 
 
 Configurer son /etc/hosts
 
-https://stackoverflow.com/questions/12260587/kerberos-fails-when-accessing-site-by-ip-address
+- https://stackoverflow.com/questions/12260587/kerberos-fails-when-accessing-site-by-ip-address
 
 ```bash
 /etc/hosts
@@ -501,7 +514,7 @@ firefox $(ip a s eth0 | awk -F'[/ ]+' '/inet[^6]/{print $3}')/page #http://vulne
 
 `Arp Spoofing`
 
-https://security.stackexchange.com/questions/225985/is-there-any-point-of-arp-spoofing-on-a-wifi-network
+- https://security.stackexchange.com/questions/225985/is-there-any-point-of-arp-spoofing-on-a-wifi-network
 
 ```bash
 sudo ip l set wlanx down
@@ -511,7 +524,7 @@ sudo iw wlanx info
 sudo wireshark&
 ```
 
-https://dl.aircrack-ng.org/breakingwepandwpa.pdf
+- https://dl.aircrack-ng.org/breakingwepandwpa.pdf
 
 `WPA2 - PSK`
 
@@ -522,7 +535,7 @@ sudo docker run -it --privileged --rm --net=host bettercap/bettercap -iface wlan
 wpapcap2john bettercap-wifi-handshakes.pcap
 ```
 
-https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/
+- https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/
 
 `WPA2 - EAP`
 
@@ -533,13 +546,15 @@ sudo python3 ./eaphammer -i wlan6 --creds -e "xxx" -b xx:xx:xx:xx:xx:xx #BSSID /
 
 ## Reverse
 
-https://www.youtube.com/@StephenChapman
+- https://bbinfosec.medium.com/reverse-engineering-resources-beginners-to-intermediate-guide-links-f64c207505ed
 
-https://m.youtube.com/c/oalabs
+- https://www.youtube.com/@StephenChapman
+
+- https://m.youtube.com/c/oalabs
 
 ### Assembleur x86
 
-https://beta.hackndo.com/assembly-basics/
+- https://beta.hackndo.com/assembly-basics/
 
 {{< youtube tmtXn2UXR3g>}}
 
@@ -723,11 +738,13 @@ https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools
 
 ### Docs
 
-https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/
+- https://www.youtube.com/@Computerphile
 
-https://hide01.ir/
+- https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/
 
-https://github.com/akr3ch/BugBountyBooks
+- https://hide01.ir/
+
+- https://github.com/akr3ch/BugBountyBooks
 
 ### Chaines
 
@@ -743,12 +760,12 @@ https://github.com/akr3ch/BugBountyBooks
 
 ### CTF 24h/24, 7j/7
 
-https://fuzzy.land/challenges
+- https://fuzzy.land/challenges
 
 ### Notes utiles en CTF voire +
 
-https://cheatsheet.haax.fr/
+- https://cheatsheet.haax.fr/
 
-https://exploit-notes.hdks.org/
+- https://exploit-notes.hdks.org/
 
-https://notes.vulndev.io/wiki
+- https://notes.vulndev.io/wiki
