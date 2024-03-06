@@ -1,12 +1,11 @@
 ---
-title: FCSC - Salty Auth
+title: FCSC 2023 - Salty Auth
 date: 2023-05-06
 summary: Type Juggling et éxécution de code avec Extract
 author: Nu1t
 description: Writeup
-tags:
-  - web
-  - writeup
+tags: ["web"]
+categories: ["writeup"]
 resources:
   - name: "featured-image"
     src: "featured-image.png"

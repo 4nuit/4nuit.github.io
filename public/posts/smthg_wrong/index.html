@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>FCSC 2023 - Quelque chose cloche - </title><meta name="Description" content="Writeup"><meta property="og:title" content="FCSC 2023 - Quelque chose cloche" />
+<meta property="og:description" content="Writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/posts/smthg_wrong/" /><meta property="og:image" content="//localhost:1313/posts/smthg_wrong/featured-image.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-05T00:00:00+00:00" /><meta property="og:site_name" content="Nu1t" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="//localhost:1313/posts/smthg_wrong/featured-image.png" /><meta name="twitter:title" content="FCSC 2023 - Quelque chose cloche"/>
+<meta name="twitter:description" content="Writeup"/>
+<meta name="application-name" content="Nu1t">
+<meta name="apple-mobile-web-app-title" content="Nu1t"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost:1313/posts/smthg_wrong/" /><link rel="prev" href="//localhost:1313/posts/rsa/" /><link rel="next" href="//localhost:1313/posts/salty/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "FCSC 2023 - Quelque chose cloche",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/\/localhost:1313\/posts\/smthg_wrong\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/\/localhost:1313\/posts\/smthg_wrong\/featured-image.png",
+                            "width":  523 ,
+                            "height":  500 
+                        }],"genre": "posts","keywords": "crypto","wordcount":  480 ,
+        "url": "\/\/localhost:1313\/posts\/smthg_wrong\/","datePublished": "2023-05-05T00:00:00+00:00","dateModified": "2023-05-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nu1t"
+            },"description": "Writeup"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="">Nu1t</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item active" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="">Nu1t</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">FCSC 2023 - Quelque chose cloche</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nu1t</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeup/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeup</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-05">2023-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;480 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;3 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/smthg_wrong/featured-image.png"
+        data-srcset="/posts/smthg_wrong/featured-image.png, /posts/smthg_wrong/featured-image.png 1.5x, /posts/smthg_wrong/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/posts/smthg_wrong/featured-image.png"
+        title="Writeup" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#signature">Signature</a></li>
+    <li><a href="#résolution">Résolution</a></li>
+    <li><a href="#explication">Explication:</a></li>
+    <li><a href="#script">Script</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="intro">Intro</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./fcsc.png"
+        data-srcset="./fcsc.png, ./fcsc.png 1.5x, ./fcsc.png 2x"
+        data-sizes="auto"
+        alt="./fcsc.png"
+        title="./fcsc.png" /></p>
+<p>Le FCSC est un CTF de type &ldquo;jeopardy&rdquo;, avec cette année une soixantaine d&rsquo;épreuves de difficultés variées dans les catégories suivantes : crypto, reverse, pwn, web, forensics, hardware, attaque par canaux auxiliaires ou en faute et misc.</p>
+<p>La catégorie <strong>Side channel</strong> était particulièrement intéressante car elle proposait ce challenge d&rsquo;attaque par fautes, ainsi que 2 challenges de défense (voir <a href="../rsa" rel=""><strong>post suivant</strong></a>).</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./enonce.png"
+        data-srcset="./enonce.png, ./enonce.png 1.5x, ./enonce.png 2x"
+        data-sizes="auto"
+        alt="./enonce.png"
+        title="./enonce.png" /></p>
+<h2 id="signature">Signature</h2>
+<p>Voici ce que donne une première connexion au serveur utilisant l&rsquo;implémentation décrite.</p>
+<p>$$s = m^{d}[n]$$ $$m = s^{e}[n]$$</p>
+<p>Nous avons à la fin <code>s</code> qui sera notée par la suite <code>s'</code>: la signature erronée calculée par le serveur.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./serv.png"
+        data-srcset="./serv.png, ./serv.png 1.5x, ./serv.png 2x"
+        data-sizes="auto"
+        alt="./serv.png"
+        title="./serv.png" /></p>
+<p>Nous ne pouvons malheureusement pas <strong>signer m = 1</strong> car cela nous donnerait <code>dp</code> et <code>dq</code> et on pourrait factoriser n directement.</p>
+<p>Le but est de retrouver la <strong>clé privée d</strong> afin de déchiffrer le <strong>ciphertext c</strong>, sachant que la paire ((n,e),d) change à chaque éxécution.</p>
+<p>Ainsi, nous pourrons récupérer le flag $$ m = c^{d} [n]$$</p>
+<h2 id="résolution">Résolution</h2>
+<p>Énorme coup de chance, la doc que j&rsquo;avais cherché pour <code>RSA - Secure dev</code> (avec google sur RSA-CRT : iq,dp,dq) donne la solution &hellip;</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Théorème de Bezout<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>L&rsquo;algorithme d&rsquo;Euclide étendu (egcd) permet de trouver les coefficients de <a href="https://defeo.lu/in310/poly/euclide-bezout/" target="_blank" rel="noopener noreffer ">Bezout</a>, tels que</p>
+<p>ap + bq = 1</p>
+</div>
+        </div>
+    </div>
+<p>D&rsquo;après l&rsquo;énoncé nous avons:</p>
+<data id="id-1" data-raw></data>
+<p>La signature calculée avec le théorème des <strong>Restes Chinois</strong> (CRT) vaut, avec $$i_{q}= q^{-1} [p]$$</p>
+<data id="id-2" data-raw></data>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>RSA et Théorème des Restes Chinois (CRT)<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Le Théorème des Restes Chinois (CRT) est souvent utilisé pour optimiser le déchiffrement RSA en découpant les calculs en sous-problèmes.</p>
+<p><strong>Version Équations Modulaires :</strong></p>
+<p>Dans le contexte de RSA, supposons que nous ayons un message $m$ chiffré $c$ et les modules de chiffrement $N_1, N_2, \ldots, N_k$. Calculons les $M_i$ et les coefficients d&rsquo;inversion $y_i$ pour chaque $i$ de $1$ à $k$. Ensuite, en utilisant le CRT, la valeur déchiffrée $x$ est donnée par :</p>
+<p>$$
+m = (c_1 \cdot M_1 \cdot y_1 + c_2 \cdot M_2 \cdot y_2 + \ldots + c_k \cdot M_k \cdot y_k) \ (\mathrm{mod} \ N),
+$$</p>
+<p>où $N = N_1 \cdot N_2 \cdot \ldots \cdot N_k$.</p>
+</div>
+        </div>
+    </div>
+<p>Si vous ne me croyez pas ,c&rsquo;est dans ce document !</p>
+<p><a href="https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf" target="_blank" rel="noopener noreffer ">https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./solve.png"
+        data-srcset="./solve.png, ./solve.png 1.5x, ./solve.png 2x"
+        data-sizes="auto"
+        alt="./solve.png"
+        title="./solve.png" /></p>
+<p>On chiffre donc un message au hasard et on retrouve q avec la seconde méthode.</p>
+<h2 id="explication">Explication:</h2>
+<p>On dispose de <code>s'</code> lorsque le serveur répond: la signature erronée. Notons <code>s</code> la vraie signature.</p>
+<p>D&rsquo;où:</p>
+<p>$${s&rsquo;}^{e}[n] - {s}^{e}[n] = {s&rsquo;}^{e}[n] - m $$</p>
+<p>Notons $$\delta = {s&rsquo;}^{e}[n] - m$$</p>
+<p>Nous avons un diviseur commun avec n: $$\delta \wedge n != 1$$</p>
+<p>C&rsquo;est l&rsquo;attaque de <code>Bellcore</code>: <a href="https://eprint.iacr.org/2012/553.pdf" target="_blank" rel="noopener noreffer ">https://eprint.iacr.org/2012/553.pdf</a></p>
+<h2 id="script">Script</h2>
+<p>Voici le script qui déroule le tout (~1min)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="mi">8691197749172883783999869319789618890520358126730965200409107370406064006554707505526767161587301532065491886972275903119359532224155354711599130564106144366948103345871831367224426653157094635446381023887990673145477148254742543979935423430776801169055293926445308619472525852943150307661555159608768287631493213019746321573545268091668284963786935853060372774005089483981288875382272937192397700293917020390318315789877283735790900752923209438049279405774089645062273480481195015428987016044959021859352466587859781412088053020118565976357288819878740642165202640596496277942263686968322614760892708394999372377621</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span><span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">e</span> <span class="o">=</span> <span class="mi">65537</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mi">24092374789898986578319635371648583476600439980337391802703575171857047857157186973589469738598524717467164271258524540616489429272356655174441100779924597091596548506254118920820210014644431581384405741516669846658564893995651994762800981386922622678935264425704567649579129898359460699450083897199747662224532807410886207560447847040297950285025366888583965843432420598518599758119380366544661227909107904202708759769118310010571214615993018135335528945098609588994340874276412541272457264153891261421840299789040416900179377675966523068321023529010524806340701046933963675795872266981575283250285335962694350991853</span>
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="mi">20109988724347546331933605448539189098587356370928424422747391760423348033837002382899144867015623947899225239174121508108964869874084077980733407484134630342553200036338033461936360491648367626929205539308993531597452037787078623386137499111851588812516907869339483119834320843616385692595133368269569563861312004891486728823683445280930052977845947831259726828558951682588647370285446054725025235049702759513984865144840917884384544713971675994868300767458293324544539118039497009305075085631896683868510719263064259519980588228257267310609908804987070071356193781043867179142394219429108905455352626283232027985695</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="n">GCD</span><span class="p">(</span><span class="n">s</span><span class="o">**</span><span class="n">e</span><span class="o">-</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="n">n</span><span class="o">//</span><span class="n">q</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>FCSC{1ec0d4b4c2de4329e2431fb65d229fb7ba2fbf93206e8c273ca22172bdb64d99}</code></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-05-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="//localhost:1313/posts/smthg_wrong/" data-title="FCSC 2023 - Quelque chose cloche" data-hashtags="crypto"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="//localhost:1313/posts/smthg_wrong/" data-hashtag="crypto"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="//localhost:1313/posts/smthg_wrong/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/crypto/">Crypto</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/rsa/" class="prev" rel="prev" title="FCSC 2023 - RSA Secure Dev"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>FCSC 2023 - RSA Secure Dev</a>
+            <a href="/posts/salty/" class="next" rel="next" title="FCSC 2023 - Salty Auth">FCSC 2023 - Salty Auth<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.7">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"\n\\[ cp = m^p[dp] \\\\  cq = m^q[dq] \\\\ m = (a*p*cp + b*q*cq) [n]\\]\n","id-2":"\n\\[ s' = cq +q*(i_{q}*(cp-cq)[p])\\]\n"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

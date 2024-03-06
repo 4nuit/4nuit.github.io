@@ -1,13 +1,11 @@
 ---
-title: FCSC - RSA Secure Dev
+title: FCSC 2023 - RSA Secure Dev
 date: 2023-05-05
 summary: Bellcore et assembleur
 author: Nu1t
 description: Writeup
-tags:
-  - hardware
-  - crypto
-  - writeup
+tags: ["hardware","crypto"]
+categories: ["writeup"]
 resources:
   - name: "featured-image"
     src: "featured-image.png"

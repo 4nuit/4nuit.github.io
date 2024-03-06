@@ -1,0 +1,87 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Tags - Tag - </title>
+        <link>//localhost:1313/tags/</link>
+        <description>Tags - Tag - </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</lastBuildDate><atom:link href="//localhost:1313/tags/" rel="self" type="application/rss+xml" /><item>
+    <title>Android</title>
+    <link>//localhost:1313/tags/android/</link>
+    <pubDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/android/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Crypto</title>
+    <link>//localhost:1313/tags/crypto/</link>
+    <pubDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/crypto/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Machine Learning</title>
+    <link>//localhost:1313/tags/machine-learning/</link>
+    <pubDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/machine-learning/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Misc</title>
+    <link>//localhost:1313/tags/misc/</link>
+    <pubDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/misc/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Reverse</title>
+    <link>//localhost:1313/tags/reverse/</link>
+    <pubDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/reverse/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Web</title>
+    <link>//localhost:1313/tags/web/</link>
+    <pubDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/web/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Active Directory</title>
+    <link>//localhost:1313/tags/active-directory/</link>
+    <pubDate>Mon, 10 Jul 2023 22:27:18 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/active-directory/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Forensic</title>
+    <link>//localhost:1313/tags/forensic/</link>
+    <pubDate>Mon, 10 Jul 2023 22:27:18 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/forensic/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Pwn</title>
+    <link>//localhost:1313/tags/pwn/</link>
+    <pubDate>Mon, 10 Jul 2023 22:27:18 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/pwn/</guid>
+    <description><![CDATA[]]></description>
+</item>
+<item>
+    <title>Reseau</title>
+    <link>//localhost:1313/tags/reseau/</link>
+    <pubDate>Mon, 10 Jul 2023 22:27:18 &#43;0200</pubDate>
+    <author>Author</author>
+    <guid>//localhost:1313/tags/reseau/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

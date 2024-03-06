@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>FCSC 2023 - RSA Secure Dev - </title><meta name="Description" content="Writeup"><meta property="og:title" content="FCSC 2023 - RSA Secure Dev" />
+<meta property="og:description" content="Writeup" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/posts/rsa/" /><meta property="og:image" content="//localhost:1313/posts/rsa/featured-image.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-05-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-05-05T00:00:00+00:00" /><meta property="og:site_name" content="Nu1t" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="//localhost:1313/posts/rsa/featured-image.png" /><meta name="twitter:title" content="FCSC 2023 - RSA Secure Dev"/>
+<meta name="twitter:description" content="Writeup"/>
+<meta name="application-name" content="Nu1t">
+<meta name="apple-mobile-web-app-title" content="Nu1t"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost:1313/posts/rsa/" /><link rel="prev" href="//localhost:1313/posts/secret_key/" /><link rel="next" href="//localhost:1313/posts/smthg_wrong/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "FCSC 2023 - RSA Secure Dev",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/\/localhost:1313\/posts\/rsa\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/\/localhost:1313\/posts\/rsa\/featured-image.png",
+                            "width":  985 ,
+                            "height":  520 
+                        }],"genre": "posts","keywords": "hardware, crypto","wordcount":  1846 ,
+        "url": "\/\/localhost:1313\/posts\/rsa\/","datePublished": "2023-05-05T00:00:00+00:00","dateModified": "2023-05-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nu1t"
+            },"description": "Writeup"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="">Nu1t</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item active" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="">Nu1t</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">FCSC 2023 - RSA Secure Dev</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nu1t</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeup/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeup</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2023-05-05">2023-05-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1846 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/rsa/featured-image.png"
+        data-srcset="/posts/rsa/featured-image.png, /posts/rsa/featured-image.png 1.5x, /posts/rsa/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/posts/rsa/featured-image.png"
+        title="Writeup" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#enonce">Enonce</a></li>
+    <li><a href="#méthodes-naïves">Méthode(s) naïve(s)</a></li>
+    <li><a href="#optimisation-avec-iq">Optimisation avec iq</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#résolution">Résolution</a></li>
+    <li><a href="#principe-du-verrou">Principe du verrou</a></li>
+    <li><a href="#rsa-3">RSA 3</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="enonce">Enonce</h2>
+<p>Poursuivons notre lancée sur RSA. Ici nous allons nous intéresser aux mécanismes permettant de calculer une signature avec de bonnes <em>performances</em> et avec un <em>code sûr</em>.</p>
+<p>En effet comme mentionné dans le <a href="../smthg_wrong/" rel=""><strong>précédent post</strong></a> nous allons devoir non plus mettre en place mais résister à une attaque par fautes.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./enonce.png"
+        data-srcset="./enonce.png, ./enonce.png 1.5x, ./enonce.png 2x"
+        data-sizes="auto"
+        alt="./enonce.png"
+        title="./enonce.png" /></p>
+<p>Cette <strong>série de 3 challenges</strong> avait pour particularité de faire partie des 5 challenges utilisant la <strong>machine virtuelle</strong> du FCSC.</p>
+<ul>
+<li><a href="./machine.py" rel="">machine.py</a> : le fichier Python évaluant les instructions de cette machine.</li>
+<li><a href="./assembly.py" rel="">assembly.py</a> : un assembleur décrit plus bas.</li>
+<li><a href="./rsa_keygeneration.py" rel="">rsa_keygeneraton.py</a> : un générateur de clés aléatoire</li>
+<li><a href="./challenge.py" rel="">challenge.py</a> : le fichier du challenge</li>
+</ul>
+<p>Ce dernier contenait notamment une vérification de notre <em>bytecode</em></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">easy</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">correctness</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">performances</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">flag_easy</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;flag_easy.txt&#34;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] Congrats! Here is the easy flag: </span><span class="si">{</span><span class="n">flag_easy</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Nous devions implémenter un <strong>compilateur</strong> pour traduire les problèmes avec le langage assembleur fourni (proche d&rsquo;ARM) en bytecode:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">assembly</span> <span class="kn">import</span> <span class="n">assembly</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">source</span><span class="o">=</span><span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">compile</span><span class="p">(</span><span class="n">code</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">	<span class="k">global</span> <span class="n">source</span>
+</span></span><span class="line"><span class="cl">	<span class="n">source</span> <span class="o">=</span> <span class="n">code</span>
+</span></span><span class="line"><span class="cl">	<span class="n">z</span> <span class="o">=</span> <span class="n">assembly</span><span class="p">(</span><span class="n">code</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[&#34;</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="s2">&#34;]&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">z</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">stub</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">	<span class="n">code</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&#34;&#34;&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s2">; la machine est initialisée comme suit
+</span></span></span><span class="line"><span class="cl"><span class="s2">; R5 = m 
+</span></span></span><span class="line"><span class="cl"><span class="s2">; R6 = p
+</span></span></span><span class="line"><span class="cl"><span class="s2">; R7 = q
+</span></span></span><span class="line"><span class="cl"><span class="s2">; R8 = iq = q**(-1) % p
+</span></span></span><span class="line"><span class="cl"><span class="s2">; R9 = dp = e**(-1) % p-1
+</span></span></span><span class="line"><span class="cl"><span class="s2">; RA = dq = e**(-1) % q-1
+</span></span></span><span class="line"><span class="cl"><span class="s2">; RB = e
+</span></span></span><span class="line"><span class="cl"><span class="s2">; RC = d
+</span></span></span><span class="line"><span class="cl"><span class="s2">; RD = n
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">//CODE
+</span></span></span><span class="line"><span class="cl"><span class="s2">; R0 doit contenir le résultat
+</span></span></span><span class="line"><span class="cl"><span class="s2">
+</span></span></span><span class="line"><span class="cl"><span class="s2">STP
+</span></span></span><span class="line"><span class="cl"><span class="s2">	&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="nb">compile</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">stub</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="méthodes-naïves">Méthode(s) naïve(s)</h2>
+<p>On peut penser à exploiter l&rsquo;instruction <code>POW</code> déjà présente. Cependant la contrainte de performance n&rsquo;est pas vérifiée:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./naif.png"
+        data-srcset="./naif.png, ./naif.png 1.5x, ./naif.png 2x"
+        data-sizes="auto"
+        alt="./naif.png"
+        title="./naif.png" /></p>
+<p>Oubliez tout de suite l&rsquo; <code>exponentiation rapide &quot;maison&quot;</code>, les performances sont désastreuses:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./fail1.png"
+        data-srcset="./fail1.png, ./fail1.png 1.5x, ./fail1.png 2x"
+        data-sizes="auto"
+        alt="./fail1.png"
+        title="./fail1.png" /></p>
+<p><code>POW</code> était donc bien nécessaire mais comment faire mieux?</p>
+<h2 id="optimisation-avec-iq">Optimisation avec iq</h2>
+<p>En faisant une recherche, curieux de disposer dans les registres de <code>iq, dp et dq</code> on tombe sur ceci: <a href="https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf" target="_blank" rel="noopener noreffer ">https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf</a></p>
+<p>On peut découper le travail en calculant l&rsquo;exponentiation sur p et q de tailles bien plus petites.
+Tout ceci tient au <code>théorème des restes chinois</code>:</p>
+<div class="details admonition tip open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-lightbulb fa-fw" aria-hidden="true"></i>Déchiffrement RSA avec le Théorème des Restes Chinois (CRT)<i class="details-icon fas fa-angle-right fa-fw" aria-hidden="true"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>Le déchiffrement RSA avec le Théorème des Restes Chinois (CRT) est une méthode optimisée pour chiffrer et déchiffrer un message. Ce processus implique le calcul de $m$ à partir des valeurs intermédiaires $c_p$ et $c_q$, où $c_p = c^{d_p} \ (\mathrm{mod} \ p)$ et $c_q = c^{d_q} \ (\mathrm{mod} \ q)$.</p>
+<p><strong>Étapes :</strong></p>
+<ol>
+<li>
+<p>Calcul des coefficients d&rsquo;inversion :</p>
+<ul>
+<li>Calculer $q_{inv}$ tel que $q_{inv} \equiv q^{-1} \ (\mathrm{mod} \ p)$, c&rsquo;est-à-dire que $q \cdot q_{inv} \equiv 1 \ (\mathrm{mod} \ p)$.</li>
+</ul>
+</li>
+<li>
+<p>Calcul des composantes CRT :</p>
+<ul>
+<li>Calculer $m_p = c_q \cdot q_{inv} \ (\mathrm{mod} \ p)$.</li>
+<li>Calculer $m_q = c_p \cdot p_{inv} \ (\mathrm{mod} \ q)$, où $p_{inv}$ est le coefficient d&rsquo;inversion de $p$ modulo $q$.</li>
+</ul>
+</li>
+<li>
+<p>Calcul de la solution $m$ :</p>
+<ul>
+<li>Calculer $h = q_{inv} \cdot (m_p - m_q) \ (\mathrm{mod} \ p)$.</li>
+<li>Calculer $m = m_q + h \cdot q$.</li>
+</ul>
+</li>
+</ol>
+<p>Le résultat $m$ correspond au message déchiffré.</p>
+<p>Ce processus profite de la propriété du Théorème des Restes Chinois (CRT) pour optimiser le calcul en divisant les opérations modulo $N$ en opérations modulo $p$ et modulo $q$, ce qui accélère le déchiffrement RSA.</p>
+</div>
+        </div>
+    </div>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./crt.png"
+        data-srcset="./crt.png, ./crt.png 1.5x, ./crt.png 2x"
+        data-sizes="auto"
+        alt="./crt.png"
+        title="./crt.png" /></p>
+<p>Attention à certaines spécifités:</p>
+<ul>
+<li><code>RD</code> doit contenir le modulo de l&rsquo;opération (MOD ou POW) , <code>RC</code> : l&rsquo;exposant (d, p ou q)</li>
+<li><code>MUL</code> ne peut opérer que sur <code>R[0-7]</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">; R5 = m
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R6 = p
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R7 = q
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R8 = iq = q**(-1) % p
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R9 = dp = e**(-1) % p-1
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RA = dq = e**(-1) % q-1
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RB = e
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RC = d
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RD = n
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; dp en exp
+</span></span></span><span class="line"><span class="cl"><span class="c1">; p en mod
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">R9</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R6</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POW</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R5</span> <span class="c1">;s1 = m**dp %p
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; dq en exp
+</span></span></span><span class="line"><span class="cl"><span class="c1">; q en mod
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">RA</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R7</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POW</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R5</span> <span class="c1">;s2 = m**dp %q
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; p en mod
+</span></span></span><span class="line"><span class="cl"><span class="c1">; s1-s2 dans R3
+</span></span></span><span class="line"><span class="cl"><span class="c1">; iq*(s1-s2) dans R4 
+</span></span></span><span class="line"><span class="cl"><span class="c1">; h = iq*(s1-s2) %p dans R0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R6</span>
+</span></span><span class="line"><span class="cl"><span class="nf">SUB</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R8</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R3</span> <span class="c1">;ATTENTION : R[0-7] pour MUL
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOD</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">; s2 + hq dans R0
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MUL</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R7</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ADD</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">STP</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./flag1.png"
+        data-srcset="./flag1.png, ./flag1.png 1.5x, ./flag1.png 2x"
+        data-sizes="auto"
+        alt="./flag1.png"
+        title="./flag1.png" /></p>
+<p><code>Congrats! Here is the easy flag: FCSC{06de1084d295f2a016f79485f2a47744bfb9ed3e30e9312121665559df9447de}</code></p>
+<h1 id="rsa-23">RSA 2/3</h1>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./enonce2.png"
+        data-srcset="./enonce2.png, ./enonce2.png 1.5x, ./enonce2.png 2x"
+        data-sizes="auto"
+        alt="./enonce2.png"
+        title="./enonce2.png" /></p>
+<p>Ainsi nous avons implémenté dans un premier temps <strong>RSA - CRT</strong>: <a href="https://www.di-mgt.com.au/crt_rsa.html" target="_blank" rel="noopener noreffer ">https://www.di-mgt.com.au/crt_rsa.html</a> . Toutefois notre implémentation sera vulnérable aux attaques comme vu dans le <a href="../smthg_wrong/" rel=""><strong>précédent post</strong></a>.</p>
+<p>Ceci ne marche donc pas pour le 2nd test.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./fail2.png"
+        data-srcset="./fail2.png, ./fail2.png 1.5x, ./fail2.png 2x"
+        data-sizes="auto"
+        alt="./fail2.png"
+        title="./fail2.png" /></p>
+<h2 id="résolution">Résolution</h2>
+<p>On reprend cette doc : <a href="https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf" target="_blank" rel="noopener noreffer ">https://www.cosade.org/cosade19/cosade14/presentations/session2_b.pdf</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./random_sign.png"
+        data-srcset="./random_sign.png, ./random_sign.png 1.5x, ./random_sign.png 2x"
+        data-sizes="auto"
+        alt="./random_sign.png"
+        title="./random_sign.png" /></p>
+<p>L&rsquo;idée est d&rsquo;utiliser un facteur aléatoire dans la signature RSA. On teste en python voir si ça marche:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">r</span> <span class="o">=</span> <span class="mi">2371</span>   <span class="c1">#rand</span>
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">=</span> <span class="mi">17</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">p</span> <span class="o">=</span> <span class="mi">19</span>
+</span></span><span class="line"><span class="cl"><span class="n">e</span> <span class="o">=</span> <span class="mi">65537</span>
+</span></span><span class="line"><span class="cl"><span class="n">phi</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">phi</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="n">p</span><span class="o">*</span><span class="n">q</span>
+</span></span><span class="line"><span class="cl"><span class="n">dp</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dq</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">e</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#algo</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">q_prim</span> <span class="o">=</span> <span class="p">(</span><span class="n">q</span><span class="o">*</span><span class="n">r</span><span class="p">)</span><span class="o">%</span><span class="n">p</span>
+</span></span><span class="line"><span class="cl"><span class="n">q1</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">q_prim</span><span class="p">,</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">q2</span> <span class="o">=</span> <span class="n">q1</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">q_prim</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s1_p</span> <span class="o">=</span> <span class="p">(</span><span class="n">q1</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">q2</span><span class="p">,</span><span class="n">dp</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="p">))</span><span class="o">%</span><span class="n">p</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">p_prim</span> <span class="o">=</span>  <span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">r</span><span class="p">)</span><span class="o">%</span><span class="n">q</span>
+</span></span><span class="line"><span class="cl"><span class="n">p1</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">p_prim</span><span class="p">,</span><span class="n">e</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="n">q</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">p_prim</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">q</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">s1_q</span> <span class="o">=</span> <span class="p">(</span><span class="n">p1</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">p2</span><span class="p">,</span><span class="n">dq</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">q</span><span class="p">))</span><span class="o">%</span><span class="n">q</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">s1_q</span> <span class="o">+</span> <span class="n">q</span><span class="o">*</span><span class="n">s1_p</span><span class="p">)</span><span class="o">%</span><span class="n">n</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">s</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">n</span><span class="p">)</span><span class="o">%</span><span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># On veut r*s%n</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;signature oberthur:&#34;</span><span class="p">,</span> <span class="n">r</span><span class="o">*</span><span class="n">s</span><span class="o">%</span><span class="n">n</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s2">&#34;signature classique:&#34;</span><span class="p">,</span><span class="nb">pow</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./python_rsa2.png"
+        data-srcset="./python_rsa2.png, ./python_rsa2.png 1.5x, ./python_rsa2.png 2x"
+        data-sizes="auto"
+        alt="./python_rsa2.png"
+        title="./python_rsa2.png" /></p>
+<p>Vient l&rsquo;implémentation en asm &hellip;:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">; R5 = m
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R6 = p
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R7 = q
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R8 = iq = q**(-1) % p
+</span></span></span><span class="line"><span class="cl"><span class="c1">; R9 = dp = e**(-1) % p-1
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RA = dq = e**(-1) % q-1
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RB = e
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RC = d = exp
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RD = n = module
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R1</span><span class="p">,</span> <span class="c1">#200 ;r
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">;partie 1: s1_p
+</span></span></span><span class="line"><span class="cl"><span class="c1">;q_prim = (q*r)%p
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MUL</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R7</span><span class="p">,</span> <span class="no">R1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R6</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOD</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;q1 = m*pow(q_prim,e-2,p)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="no">RB</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R3</span><span class="p">,</span> <span class="c1">#2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R3</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">R0</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POW</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;q2 = q1*pow(q_prim,2,p)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="c1">#2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">POW</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;s1_p = q1*pow(q2,dp-1,p)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="c1">#1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R9</span>
+</span></span><span class="line"><span class="cl"><span class="nf">SUB</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R0</span> <span class="c1">; R0 = dp -1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">R0</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POW</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R4</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R3</span> <span class="c1">; R0 = s1_p !!!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">;partie 2: s1_q
+</span></span></span><span class="line"><span class="cl"><span class="c1">; NE PAS ECRASER: R0,R1,R5,R6,R7
+</span></span></span><span class="line"><span class="cl"><span class="c1">;p_prim = (p*r)%q
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MUL</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R6</span><span class="p">,</span> <span class="no">R1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R7</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOD</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;p1 = m*pow(p_prim,e-2,q)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">R4</span><span class="p">,</span> <span class="no">RB</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R3</span><span class="p">,</span> <span class="c1">#2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R3</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">R3</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POW</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;p2 = p1*pow(p_prim,2,q)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="c1">#2
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">POW</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R3</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">;s1_q = p1*pow(p2,dq-1,q)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">R5</span><span class="p">,</span> <span class="c1">#1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">R2</span><span class="p">,</span> <span class="no">RA</span>
+</span></span><span class="line"><span class="cl"><span class="nf">SUB</span> <span class="no">R5</span><span class="p">,</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R5</span> <span class="c1">; R5 = dq -1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">R5</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POW</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R4</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R3</span> <span class="c1">; R2 = s1_q !!!
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">;s = (p*s1_q + q*s1_p)%n
+</span></span></span><span class="line"><span class="cl"><span class="c1">; NE PAS ECRASER: R0,R1,R2,R6;R7
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MUL</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R6</span><span class="p">,</span> <span class="no">R2</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R7</span><span class="p">,</span> <span class="no">R0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ADD</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R4</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R6</span><span class="p">,</span> <span class="no">R7</span> <span class="c1">;n dans RD
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R0</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOD</span> <span class="no">R3</span><span class="p">,</span> <span class="no">R3</span> <span class="c1">; s dans R3
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">;r*s%n
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="nf">MUL</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R3</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOD</span> <span class="no">R0</span><span class="p">,</span><span class="no">R0</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">STP</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./fail_bellcore.png"
+        data-srcset="./fail_bellcore.png, ./fail_bellcore.png 1.5x, ./fail_bellcore.png 2x"
+        data-sizes="auto"
+        alt="./fail_bellcore.png"
+        title="./fail_bellcore.png" /></p>
+<p>Ce code est correct, performant mais ne résiste pas à l&rsquo;attaque.</p>
+<h2 id="principe-du-verrou">Principe du verrou</h2>
+<p>Il existe en effet de nombreuses façons d&rsquo;injecter une telle faute:</p>
+<ul>
+<li>corrompre en mémoire,</li>
+<li>sauter une instruction dans l&rsquo;exponentiation,</li>
+<li>corrompre le résultat de l&rsquo;exponentiation,</li>
+<li>corrompre le message à signer</li>
+</ul>
+<p>Comme vu précédemment, une <strong>signature erronée + une signature valide</strong> permettent de retrouver la clé <strong>privée</strong> &hellip;</p>
+<p>En notant <code>s</code> et <code>s'</code> respectivement la signature attendue et erronnée (à cause de l&rsquo;attaque), nous devions vérifier que <code>s = pow(m,e,n)</code> (sans utiliser R0 jusque là) et écraser les registres sinon.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">Inputs: res, s, s<span class="s1">&#39;
+</span></span></span><span class="line"><span class="cl"><span class="s1">Output: res if s == s&#39;</span>, erase everything otherwise
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">IF s !<span class="o">=</span> s<span class="s1">&#39; THEN ERASE
+</span></span></span><span class="line"><span class="cl"><span class="s1">out = res
+</span></span></span><span class="line"><span class="cl"><span class="s1">IF s != s&#39;</span> THEN ERASE
+</span></span><span class="line"><span class="cl">RETURN out
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ce qui peut s&rsquo;implémentee comme ceci :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">;RSA reencryption in R0
+</span></span></span><span class="line"><span class="cl"><span class="c1">; RC = e
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">RB</span>
+</span></span><span class="line"><span class="cl"><span class="nf">POW</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">; check against original message to avoid fault attacks
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R5</span>
+</span></span><span class="line"><span class="cl"><span class="nf">JNZA</span> <span class="no">ko</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R1</span>
+</span></span><span class="line"><span class="cl"><span class="nf">STP</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">ko:</span>
+</span></span><span class="line"><span class="cl"><span class="nf">XOR</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R0</span>
+</span></span><span class="line"><span class="cl"><span class="nf">STP</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Ce code permettait de résoudre le problème:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-asm" data-lang="asm"><span class="line"><span class="cl"><span class="c1">; R2 = Sq
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R7</span> <span class="c1">; RD = q
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">RA</span> <span class="c1">; RC = dq
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">POW</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R5</span> <span class="c1">; m^dq % q
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; R1 = Sp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R6</span> <span class="c1">; RD = p
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">R9</span> <span class="c1">; RC = dp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">POW</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R5</span> <span class="c1">; m^dp % p
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; R1 = (Sp - Sq)Iq mod p
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R8</span>     <span class="c1">; R4 = Iq
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">SUB</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R2</span> <span class="c1">; Sp - Sq
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MUL</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R4</span> <span class="c1">; * Iq
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOD</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R1</span>     <span class="c1">; % p
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; R1 = R1*q + Sq mod N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MUL</span> <span class="no">R4</span><span class="p">,</span> <span class="no">R6</span><span class="p">,</span> <span class="no">R7</span> <span class="c1">; R4 = N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">R4</span>     <span class="c1">; RD = N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MUL</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R7</span> <span class="c1">; * q
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">ADD</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R2</span> <span class="c1">; + Sq
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOD</span> <span class="no">R1</span><span class="p">,</span> <span class="no">R1</span>     <span class="c1">; % N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; Check signature correctness
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">RB</span> <span class="c1">; RC = e
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">POW</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R1</span> <span class="c1">; R2 = s^e % N
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="c1">; Lock principle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R5</span> <span class="c1">; R2 ? m
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JNZA</span> <span class="no">erase</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="no">R1</span> <span class="c1">; R0 = s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">CMP</span> <span class="no">R2</span><span class="p">,</span> <span class="no">R5</span> <span class="c1">; R2 ? m
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="nf">JZA</span> <span class="no">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">erase:</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R0</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R1</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R2</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R3</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R4</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R5</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R6</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R7</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R8</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">R9</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RA</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RB</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RC</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl"><span class="nf">MOV</span> <span class="no">RD</span><span class="p">,</span> <span class="no">RF</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">end:</span>
+</span></span><span class="line"><span class="cl"><span class="nf">STP</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./flag2.png"
+        data-srcset="./flag2.png, ./flag2.png 1.5x, ./flag2.png 2x"
+        data-sizes="auto"
+        alt="./flag2.png"
+        title="./flag2.png" /></p>
+<p><code>Congrats! Here is the medium flag: FCSC{3704721831edcd9f4cd231eb45a4880ea7af6962c358af355130d6881c155479}</code></p>
+<h2 id="rsa-3">RSA 3</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./enonce3.png"
+        data-srcset="./enonce3.png, ./enonce3.png 1.5x, ./enonce3.png 2x"
+        data-sizes="auto"
+        alt="./enonce3.png"
+        title="./enonce3.png" /></p>
+<p>Apparemment, il fallait éviter d&rsquo;utiliser R0, une des fautes consistait à insérer un code STP après chaque instruction possible &hellip;</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Cette série était très intéressante et m&rsquo;a permis de me familiariser à l&rsquo;assembleur avec une petite nuit de débug, ainsi que de me sensibiliser aux attaques par fautes sur RSA - CRT, aussi bien du côté de l&rsquo;attaquant que du défenseur sur cette partie.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2023-05-05</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="//localhost:1313/posts/rsa/" data-title="FCSC 2023 - RSA Secure Dev" data-hashtags="hardware,crypto"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="//localhost:1313/posts/rsa/" data-hashtag="hardware"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="//localhost:1313/posts/rsa/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/hardware/">Hardware</a>,&nbsp;<a href="/tags/crypto/">Crypto</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/secret_key/" class="prev" rel="prev" title="HackSecuReims 2023 - secret key"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>HackSecuReims 2023 - secret key</a>
+            <a href="/posts/smthg_wrong/" class="next" rel="next" title="FCSC 2023 - Quelque chose cloche">FCSC 2023 - Quelque chose cloche<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.123.7">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

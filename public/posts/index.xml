@@ -1,0 +1,55 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - </title>
+        <link>//localhost:1313/posts/</link>
+        <description>All Posts | </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</lastBuildDate><atom:link href="//localhost:1313/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>GCC 2024- Quelques writeups</title>
+    <link>//localhost:1313/posts/gcc-ctf/</link>
+    <pubDate>Mon, 04 Mar 2024 14:03:32 &#43;0100</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/gcc-ctf/</guid>
+    <description><![CDATA[PRNG-RSA, Compilation, Machine Learning et Web]]></description>
+</item>
+<item>
+    <title>Cheatsheet</title>
+    <link>//localhost:1313/posts/cheatsheet/</link>
+    <pubDate>Mon, 10 Jul 2023 22:27:18 &#43;0200</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/cheatsheet/</guid>
+    <description><![CDATA[Quelques ressources pour débuter, from zero to hero]]></description>
+</item>
+<item>
+    <title>FCSC 2023 - Salty Auth</title>
+    <link>//localhost:1313/posts/salty/</link>
+    <pubDate>Sat, 06 May 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/salty/</guid>
+    <description><![CDATA[Type Juggling et éxécution de code avec Extract]]></description>
+</item>
+<item>
+    <title>FCSC 2023 - Quelque chose cloche</title>
+    <link>//localhost:1313/posts/smthg_wrong/</link>
+    <pubDate>Fri, 05 May 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/smthg_wrong/</guid>
+    <description><![CDATA[Signature erronnée avec RSA - CRT]]></description>
+</item>
+<item>
+    <title>FCSC 2023 - RSA Secure Dev</title>
+    <link>//localhost:1313/posts/rsa/</link>
+    <pubDate>Fri, 05 May 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/rsa/</guid>
+    <description><![CDATA[Bellcore et assembleur]]></description>
+</item>
+<item>
+    <title>HackSecuReims 2023 - secret key</title>
+    <link>//localhost:1313/posts/secret_key/</link>
+    <pubDate>Mon, 17 Apr 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/secret_key/</guid>
+    <description><![CDATA[File Carving]]></description>
+</item>
+</channel>
+</rss>

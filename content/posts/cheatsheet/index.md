@@ -5,7 +5,8 @@ date: 2023-07-10T22:27:18+02:00
 lastmod: 2023-07-10T22:27:18+02:00
 description: Une roadmap en infosec
 author: "Nu1t"
-tags: ["active directory", "article", "crypto", "forensic", "misc", "pwn", "reseau","reverse", "web", "web3"]
+tags: ["active directory", "crypto", "forensic", "pwn", "reseau","reverse", "web", "web3"]
+categories: ["apprentissage"]
 resources:
   - name: "featured-image"
     src: "featured-image.png"
@@ -15,20 +16,20 @@ resources:
 
 {{< admonition type=tip title="Quelques catégories supplémentaires et notes actualisées" open=true >}}
 
-https://github.com/0x14mth3n1ght/Hacking
+https://github.com/4nuit/Hacking
 
 {{</admonition>}}
 
 ## Intro
 
-Ce post est un peu spécial. En effet je tenais à partager quelques ressources qui m'ont permis de mettre un pied dans l'infosec en partant de zéro.
+Ce post est un peu spécial. En effet je tenais à partager quelques ressources, qui m'ont permis de mettre un pied dans l'infosec en partant de zéro.
 
 Est-ce légitime en 2023 de proposer cela? 
 
 Effectivement, il y a pléthore d'articles, de blogs, de livres ainsi que de communautés. 
 Mais il est facile de se confronter à un mur et de se décourager pour diverses raisons. 
 
-Voici donc un agrégat de ressources:
+Voici donc un agrégat de ressources, en français de préférence:
 
 ## Vulgarisation
 
@@ -94,7 +95,7 @@ On entre dans le vif du sujet. Maintenant, choisissez la catégorie qui vous pla
 
 https://www-sop.inria.fr/members/Laurent.Mirtain/ldap-livre.html
 
-### Doc AD:
+### Documentation
 
 - https://zer1t0.gitlab.io/posts/attacking_ad/
 
@@ -155,8 +156,9 @@ xfreerdp /v:10.10.222.63 /u:THM\Mark /p:M4rk3t1ng.21
 
 ## Crypto
 
-### Doc
+### Documentation
 
+- https://joyofcryptography.com/
 - https://cryptobook.nakov.com/
 
 ### Cle publique
@@ -329,7 +331,11 @@ https://github.com/504ensicsLabs/LiME
 
 ## Pwn
 
-### Doc :
+Voir `reverse` pour les bases.
+
+### Documentation
+
+- https://guyinatuxedo.github.io/
 
 - Vidéos/Plateformes/Docs: https://mksec.fr/tricks/pwn_ressources/ 
 
@@ -338,8 +344,6 @@ https://github.com/504ensicsLabs/LiME
 - [The Shellcoder Handbook](https://doc.lagout.org/security/The%20Shellcoder%E2%80%99s%20Handbook.pdf)
 
 ### ARM,MIPS,RISCV
-
-Voir `reverse`
 
 ### Arguments et payload
 
@@ -414,7 +418,7 @@ voir `../tutos` (cours/prog C)
 {{< youtube Oc7Ts8tVjyE>}}
 {{< youtube B1vqKQIPxr0 >}}
 
-### Doc
+### Documentation
 
 - https://zestedesavoir.com/tutoriels/2789/les-reseaux-de-zero/
 - https://ctf-wiki.mahaloz.re/misc/traffic/introduction/
@@ -546,24 +550,24 @@ sudo python3 ./eaphammer -i wlan6 --creds -e "xxx" -b xx:xx:xx:xx:xx:xx #BSSID /
 
 ## Reverse
 
-- https://bbinfosec.medium.com/reverse-engineering-resources-beginners-to-intermediate-guide-links-f64c207505ed
-
-- https://www.youtube.com/@StephenChapman
-
-- https://m.youtube.com/c/oalabs
-
-### Assembleur x86
+### Introduction:  Assembleur x86
 
 - https://beta.hackndo.com/assembly-basics/
 
 {{< youtube tmtXn2UXR3g>}}
 
-### Doc reverse:
+### Documentation
 
 - https://www.begin.re
+- https://reverse.zip
+
 - https://tmpout.sh/
 - [Plateforme Crackme.one](https://crackmes.one)
 - `Awesome Reversing +`:  https://github.com/wtsxDev/reverse-engineering
+
+- https://bbinfosec.medium.com/reverse-engineering-resources-beginners-to-intermediate-guide-li>
+- https://www.youtube.com/@StephenChapman
+- https://m.youtube.com/c/oalabs
 
 {{< youtube TUtQcezMDUU >}}
 
@@ -661,7 +665,7 @@ https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools
 
 {{<youtube 4Jk_I-cw4WE>}}
 
-### Doc
+### Documentation
 
 - https://owasp.org/www-community/Source_Code_Analysis_Tools
 
@@ -678,23 +682,33 @@ https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools
  - https://ivangoncharov.github.io/graphql-voyager/
 
 `SQLi`
+
   - https://www.invicti.com/blog/web-security/sql-injection-cheat-sheet/
 
 `PHP`
+
   - `Type Juggling` https://owasp.org/www-pdf-archive/PHPMagicTricks-TypeJuggling.pdf
   - `Eval` https://www.defenxor.com/blog/writing-simple-php-non-alphanumeric-backdoor-to-evade-waf/
 
 `SSRF`
+
   - https://www.vaadata.com/blog/fr/comprendre-la-vulnerabilite-web-server-side-request-forgery-1/
   - https://www.dailysecurity.fr/server-side-request-forgery/
 
 `XXE`
+
   - https://book.hacktricks.xyz/pentesting-web/xxe-xee-xml-external-entity
  
 --------
 
+`CSRF`
+
+ - https://n-pn.fr/t/1277-tout-sur-les-attack-csrf---cross-site-request-forgery
+ - https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/CSRF%20Injection
+
 `XSS`
- - https://beta.hackndo.com/attaque-xss/
+ 
+- https://beta.hackndo.com/attaque-xss/
  - https://excess-xss.com/
  - https://learn-cyber.net/article/Self-XSS-Attacks
  - https://learn-cyber.net/article/Reflected-XSS-Attacks
@@ -724,7 +738,9 @@ https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools
 
 ## Web3
 
-### Doc
+{{< youtube xtEQGtaT9MY>}}
+
+### Documentation
 
 - https://beta.hackndo.com/blockchain/ 
 
@@ -736,7 +752,7 @@ https://danielmangum.com/posts/risc-v-bytes-qemu-gdb/#installing-tools
 
 ## Pour aller plus loin
 
-### Docs
+### Ressources générales
 
 - https://www.youtube.com/@Computerphile
 

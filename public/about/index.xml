@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on </title>
+    <link>//localhost:1313/about/</link>
+    <description>Recent content in Abouts on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 05 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>À Propos</title>
+      <link>//localhost:1313/about/about/</link>
+      <pubDate>Fri, 05 May 2023 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/about/about/</guid>
+      <description>Passionné d&amp;rsquo;infosec Vous pouvez me retrouver sur Root Me, Cryptohack, TryHackMe et bientôt HackTheBox&#xA;Étudiant En école d&amp;rsquo;ingénieur.</description>
+    </item>
+  </channel>
+</rss>

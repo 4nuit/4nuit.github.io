@@ -1,12 +1,11 @@
 ---
-title: FCSC - Quelque chose cloche
+title: FCSC 2023 - Quelque chose cloche
 date: 2023-05-05
 summary: Signature erronnée avec RSA - CRT
 author: Nu1t
 description: Writeup
-tags:
-  - crypto
-  - writeup
+tags: ["crypto"]
+categories: ["writeup"]
 resources:
   - name: "featured-image"
     src: "featured-image.png"

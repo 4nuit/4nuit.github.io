@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Hardware - Tag - </title>
+        <link>//localhost:1313/tags/hardware/</link>
+        <description>Hardware - Tag - </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 05 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="//localhost:1313/tags/hardware/" rel="self" type="application/rss+xml" /><item>
+    <title>FCSC 2023 - RSA Secure Dev</title>
+    <link>//localhost:1313/posts/rsa/</link>
+    <pubDate>Fri, 05 May 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/rsa/</guid>
+    <description><![CDATA[Bellcore et assembleur]]></description>
+</item>
+</channel>
+</rss>

@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Writeup - Tag - </title>
+        <link>//localhost:1313/tags/writeup/</link>
+        <description>Writeup - Tag - </description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 05 May 2023 00:00:00 &#43;0000</lastBuildDate><atom:link href="//localhost:1313/tags/writeup/" rel="self" type="application/rss+xml" /><item>
+    <title>FCSC - Quelque chose cloche</title>
+    <link>//localhost:1313/posts/smthg_wrong/</link>
+    <pubDate>Fri, 05 May 2023 00:00:00 &#43;0000</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/smthg_wrong/</guid>
+    <description><![CDATA[Signature erronnée avec RSA - CRT]]></description>
+</item>
+</channel>
+</rss>
