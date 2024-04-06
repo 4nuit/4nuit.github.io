@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>HackSecuReims 2024 - </title><meta name="Description" content="Forensic sous linux"><meta property="og:title" content="HackSecuReims 2024" />
+<meta property="og:description" content="Forensic sous linux" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost:1313/posts/hsr2024/" /><meta property="og:image" content="//localhost:1313/posts/hsr2024/featured-image.png" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-02T02:29:34+02:00" />
+<meta property="article:modified_time" content="2024-04-02T02:29:34+02:00" /><meta property="og:site_name" content="Nu1t" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="//localhost:1313/posts/hsr2024/featured-image.png" /><meta name="twitter:title" content="HackSecuReims 2024"/>
+<meta name="twitter:description" content="Forensic sous linux"/>
+<meta name="application-name" content="Nu1t">
+<meta name="apple-mobile-web-app-title" content="Nu1t"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost:1313/posts/hsr2024/" /><link rel="prev" href="//localhost:1313/posts/gcc-ctf/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "HackSecuReims 2024",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/\/localhost:1313\/posts\/hsr2024\/"
+        },"image": [{
+                            "@type": "ImageObject",
+                            "url": "\/\/localhost:1313\/posts\/hsr2024\/featured-image.png",
+                            "width":  1024 ,
+                            "height":  1024 
+                        }],"genre": "posts","keywords": "android, reverse, forensic","wordcount":  1317 ,
+        "url": "\/\/localhost:1313\/posts\/hsr2024\/","datePublished": "2024-04-02T02:29:34+02:00","dateModified": "2024-04-02T02:29:34+02:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Nu1t"
+            },"description": "Forensic sous linux"
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('light' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'light' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="">Nu1t</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item active" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="">Nu1t</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">HackSecuReims 2024</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Nu1t</a></span>&nbsp;<span class="post-category">included in <a href="/categories/writeup/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Writeup</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2024-04-02">2024-04-02</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1317 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/posts/hsr2024/featured-image.png"
+        data-srcset="/posts/hsr2024/featured-image.png, /posts/hsr2024/featured-image.png 1.5x, /posts/hsr2024/featured-image.png 2x"
+        data-sizes="auto"
+        alt="/posts/hsr2024/featured-image.png"
+        title="Forensic sous linux" /></div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#partie-16">Partie 1/6</a>
+      <ul>
+        <li><a href="#connaître-le-kernel">Connaître le kernel</a></li>
+        <li><a href="#installer-les-headers-symboles-de-debug-et-utilitaires">Installer les headers, symboles de debug et utilitaires</a></li>
+        <li><a href="#construire-le-profil-avec-vol2">Construire le profil avec vol2</a></li>
+        <li><a href="#construire-les-symboles-vol3-pour-la-partie-3">Construire les symboles vol3 (pour la partie 3)</a></li>
+        <li><a href="#analyse-avec-vol2-retour-sur-lhôte">Analyse avec vol2 (retour sur l&rsquo;hôte)</a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-26">Partie 2/6</a></li>
+    <li><a href="#partie-36">Partie 3/6</a></li>
+    <li><a href="#partie-46">Partie 4/6</a></li>
+    <li><a href="#parties-56-avec-pcap">Parties 5/6 (Avec PCAP)</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="forensic---perte-de-mémoire">Forensic - Perte de mémoire</h1>
+<p>Voici le lien contenant le dump et les profils à créer pour ce challenge.</p>
+<ul>
+<li><a href="https://mega.nz/folder/MSNx2ATC#2t5MQ8pMD_Z7TN3-Ok4Fiw" target="_blank" rel="noopener noreffer ">https://mega.nz/folder/MSNx2ATC#2t5MQ8pMD_Z7TN3-Ok4Fiw</a></li>
+</ul>
+<p>Nous avons, une fois téléchargé, un dump de la RAM d&rsquo;une machine inconnue, ainsi qu&rsquo;un PCAP.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">unxz dump.xz
+</span></span><span class="line"><span class="cl">tar -xvf dump
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="partie-16">Partie 1/6</h2>
+<p>L&rsquo;outil phare pour l&rsquo;analyse de RAM est le Framework volatility, que l&rsquo;on installe:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~
+</span></span><span class="line"><span class="cl">git clone https://github.com/volatilityfoundation/volatility
+</span></span><span class="line"><span class="cl">git clone https://github.com/volatilityfoundation/volatility3
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><a href="https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet" target="_blank" rel="noopener noreffer ">https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/memory-dump-analysis/volatility-cheatsheet</a></li>
+</ul>
+<h3 id="connaître-le-kernel">Connaître le kernel</h3>
+<p>On identifie tout d&rsquo;abord l&rsquo;OS sur lequel le dump a été effectué avec le plugin <strong>banners.Banners</strong> de vol3:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"> python3 ~/volatility3/vol.py -f hsr2024.dmp banners.Banners
+</span></span><span class="line"><span class="cl">Volatility <span class="m">3</span> Framework 2.5.2
+</span></span><span class="line"><span class="cl">Progress:  100.00               PDB scanning finished
+</span></span><span class="line"><span class="cl">Offset  Banner
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">0x2256d578      Linux version 4.19.0-26-amd64 <span class="o">(</span>debian-kernel@lists.debian.org<span class="o">)</span> <span class="o">(</span>gcc version 8.3.0 <span class="o">(</span>Debian 8.3.0-6<span class="o">))</span> <span class="c1">#1 SMP Debian 4.19.304-1 (2024-01-09)</span>
+</span></span><span class="line"><span class="cl">0x23200180      Linux version 4.19.0-26-amd64 <span class="o">(</span>debian-kernel@lists.debian.org<span class="o">)</span> <span class="o">(</span>gcc version 8.3.0 <span class="o">(</span>Debian 8.3.0-6<span class="o">))</span> <span class="c1">#1 SMP Debian 4.19.304-1 (2024-01-09)</span>
+</span></span><span class="line"><span class="cl">0x23cc4314      Linux version 4.19.0-26-amd64 <span class="o">(</span>debian-kernel@lists.debian.org<span class="o">)</span> <span class="o">(</span>gcc version 8.3.0 <span class="o">(</span>Debian 8.3.0-6<span class="o">))</span> <span class="c1">#1 SMP Debian 4.19.304-1 (2024-01-09)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On peut également faire:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">strings openme.dmp <span class="p">|</span> grep <span class="s2">&#34;Linux version&#34;</span> <span class="p">|</span> sort <span class="p">|</span> uniq
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Linux</strong> oblige, nous allons devoir construire un profil correspondant à ce kernel pour analyser le dump avec volatility.
+Voici le résumé de ce que nous allons faire et qui constitue sans doute la partie la plus difficile:</p>
+<ul>
+<li><a href="https://andreafortuna.org/2019/08/22/how-to-generate-a-volatility-profile-for-a-linux-system/" target="_blank" rel="noopener noreffer ">https://andreafortuna.org/2019/08/22/how-to-generate-a-volatility-profile-for-a-linux-system/</a></li>
+</ul>
+<h3 id="installer-les-headers-symboles-de-debug-et-utilitaires">Installer les headers, symboles de debug et utilitaires</h3>
+<p>Pour ne pas se tromper d&rsquo;image, on recherche la version de Debian à partir du kernel:</p>
+<ul>
+<li><a href="https://packages.debian.org/buster/linux-image-4.19.0-26-amd64" target="_blank" rel="noopener noreffer ">https://packages.debian.org/buster/linux-image-4.19.0-26-amd64</a></li>
+</ul>
+<p>On crée alors une VM Virtualbox avec l&rsquo;iso de <strong>Debian10</strong>:</p>
+<ul>
+<li><code>debian-10.13.0-amd64-netinst.iso</code>: <a href="https://www.debian.org/releases/buster/debian-installer/" target="_blank" rel="noopener noreffer ">https://www.debian.org/releases/buster/debian-installer/</a></li>
+</ul>
+<p><strong>Notes d&rsquo;installation</strong>:</p>
+<ul>
+<li>prévoir au moins 20G dans une partition</li>
+<li>stockage = controlleur SATA comprenant 1 vdi + 1 iso</li>
+<li>système  = optique, disque dur + activer cache E/S + EFI (os spécial) + HyperV</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install linux-headers-4.10.0-26-amd64 linux-image-4.10.0-26-amd64-dbg git build-essential dwarfdump make zip
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="construire-le-profil-avec-vol2">Construire le profil avec vol2</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/volatilityfoundation/volatility
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> volatility/volatility/tools/linux
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span>
+</span></span><span class="line"><span class="cl">zip <span class="k">$(</span>lsb_release -i -s<span class="k">)</span>_<span class="k">$(</span>uname -r<span class="k">)</span>_profile.zip volatility/tools/linux/module.dwarf /usr/lib/debug/boot/System.map-4.19.0-26-amd64
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Si vol2 est installé dans la VM, sinon copier sur l&#39;hôte</span>
+</span></span><span class="line"><span class="cl">cp Debian_4.19.0-26-amd64_profile.zip volatility/volatility/plugins/overlays/linux
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Attention, le profil crée se nommera <strong>LinuxDebian_4_19_0-26-amd64_profilex64</strong>, la plupart des plugins seront en <strong>linux_bash, linux_pslist</strong> etc. Pour retrouver le nom du profil:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python2 ~/volatility/vol.py --info <span class="p">|</span> grep Debian
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="construire-les-symboles-vol3-pour-la-partie-3">Construire les symboles vol3 (pour la partie 3)</h3>
+<p><strong>Attention: avoir une RAM &gt; 5Go</strong> pour./dwarf2json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt install golang
+</span></span><span class="line"><span class="cl">git clone https://github.com/volatilityfoundation/dwarf2json
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> dwarf2json/
+</span></span><span class="line"><span class="cl">go mod download github.com/spf13/pflag
+</span></span><span class="line"><span class="cl">go build
+</span></span><span class="line"><span class="cl">./dwarf2json linux --elf /usr/lib/debug/vmlinux-4.19.0-26-amd64 &gt; ~/vmlinux-4.19.0-26-amd64.json
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">!<span class="o">[](</span>./virtualbox.png<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Si vol3 installé dans la VM, sinon copier sur l&#39;hôte</span>
+</span></span><span class="line"><span class="cl">cp vmlinux-4.19.0-26-amd64.json volatility3/volatility3/symbols
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="analyse-avec-vol2-retour-sur-lhôte">Analyse avec vol2 (retour sur l&rsquo;hôte)</h3>
+<p>Nous pouvons maintenant utiliser les profils Linux.
+Commençons par l&rsquo;historique de la machine.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python2 ~/volatility/vol.py -f hsr2024.dmp --profile<span class="o">=</span>LinuxDebian_4_19_0-26-amd64_profilex64 linux_bash
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./flag1.png"
+        data-srcset="./flag1.png, ./flag1.png 1.5x, ./flag1.png 2x"
+        data-sizes="auto"
+        alt="./flag1.png"
+        title="./flag1.png" /></p>
+<p>Celle-ci a été mise à jour, a pingé <code>10.13.13.105</code> puis a déposé un ransomware depuis une clé dans <code>/home/forensic/Documents</code>.
+Passée la mesure anti <code>strings</code>, on observe également flag:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">echo</span> -n <span class="s2">&#34;RmxhZyBpcyA6IEhTUntNM20wcnlfRjByM25zMWNzX0FnYWluX0FnYWluXyZfQWdhaW59&#34;</span> <span class="p">|</span> base64 -d
+</span></span><span class="line"><span class="cl">Flag is : HSR<span class="o">{</span>M3m0ry_F0r3ns1cs_Again_Again_<span class="p">&amp;</span>_Again<span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="partie-26">Partie 2/6</h2>
+<p>Nous allons reconstruire l&rsquo;arborescence du dump avec le plugin <strong>linux_recover_filesystem</strong> en root pour ne pas se soucier des permissions.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir fsystem
+</span></span><span class="line"><span class="cl">sudo python ~/volatility/vol.py -f hsr2024.dmp --profile<span class="o">=</span>LinuxDebian_4_19_0-26-amd64_profilex64  linux_recover_filesystem --dump-dir fsystem
+</span></span><span class="line"><span class="cl">multi internal
+</span></span><span class="line"><span class="cl">multi internal
+</span></span><span class="line"><span class="cl">Recovered <span class="m">20735</span> files
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo chown -R night:wheel fsystem
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> fsystem/home/forensic/Documents/hsr
+</span></span><span class="line"><span class="cl">ls
+</span></span><span class="line"><span class="cl">flag.enc.b64  flag_01.png  hsr_event  ransomware.o
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On observe une image partiellement en clair ainsi qu&rsquo;un texte:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cat hsr_event <span class="p">|</span> tr <span class="s1">&#39;A-Za-z&#39;</span> <span class="s1">&#39;N-ZA-Mn-za-m&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">HSR<span class="o">{</span>Easy_fl4g_w1th_GeanY...<span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="partie-36">Partie 3/6</h2>
+<p>Le challenge évoquait des <em>fichiers chiffrés</em>, on pense à l&rsquo;image et à l&rsquo;historique.
+On confirme au passage l&rsquo;éxécution de GPG avec un autre plugin <strong>linux_pslist</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python2 ~/volatility/vol.py -f hsr2024.dmp --profile<span class="o">=</span>LinuxDebian_4_19_0-26-amd64_profilex64  linux_pslist <span class="p">|</span> grep gpg
+</span></span><span class="line"><span class="cl">Volatility Foundation Volatility Framework 2.6.1
+</span></span><span class="line"><span class="cl">0xffff893e36008000 gpg-agent            <span class="m">762</span>             <span class="m">663</span>             <span class="m">1000</span>            <span class="m">1000</span>   0x000000003a210000 2024-03-25 08:53:55 UTC+0000
+</span></span><span class="line"><span class="cl">0xffff893e3761bc00 gpg-agent            <span class="m">1374</span>            <span class="m">1</span>               <span class="m">0</span>               <span class="m">0</span>      0x00000000364be000 2024-03-25 09:34:55 UTC+0000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>Attention: plugin vol3 (voir ./dwarf2json plus haut) nécessaire ici:</strong></p>
+<p>Il nous faut alors un outil permettant de récupérer la clé GPG dans le dump afin de déchiffrer <code>flag.enc</code>.
+Avec une recherche Google:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone <span class="s1">&#39;https://github.com/kudelskisecurity/volatility-gpg&#39;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python3 ~/volatility3/vol.py -f hsr2024.dmp -p ~/volatility-gpg/ linux.gpg_full
+</span></span><span class="line"><span class="cl">Volatility <span class="m">3</span> Framework 2.5.2
+</span></span><span class="line"><span class="cl">Progress:  100.00               Stacking attempts finished
+</span></span><span class="line"><span class="cl">Offset  Private key     Secret size     Plaintext
+</span></span><span class="line"><span class="cl">Searching from <span class="m">31</span> Mar <span class="m">2024</span> 09:01:18 UTC to <span class="m">04</span> Oct <span class="m">2024</span> 14:47:27 UTC
+</span></span><span class="line"><span class="cl">Searching from <span class="m">31</span> Mar <span class="m">2024</span> 09:01:44 UTC to <span class="m">04</span> Oct <span class="m">2024</span> 14:47:27 UTC
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">0x7fc0cc0025a8  3b88f1a573a0a405e2fd60509c01c7d7        <span class="m">64</span>      gs/5<span class="o">}</span>554.Jk0iipqI4_c2jvrF<span class="p">&amp;|</span>x?D
+</span></span><span class="line"><span class="cl">0x7fc0cc0025a8  3b88f1a573a0a405e2fd60509c01c7d7        <span class="m">64</span>      gs/5<span class="o">}</span>554.Jk0iipqI4_c2jvrF<span class="p">&amp;|</span>x?D
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>La clé obtenue permet de recouvrer le flag:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">┌─<span class="o">[</span>night@night-20b7s2ex01<span class="o">]</span>─<span class="o">[</span>~/hsr/forensics/fsystem/home/forensic/Documents/hsr<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└──╼ <span class="m">4</span> fichiers, 548Kb<span class="o">)</span>─$ base64 -d flag.enc.b64 &gt; flag.enc
+</span></span><span class="line"><span class="cl">┌─<span class="o">[</span>night@night-20b7s2ex01<span class="o">]</span>─<span class="o">[</span>~/hsr/forensics/fsystem/home/forensic/Documents/hsr<span class="o">]</span>
+</span></span><span class="line"><span class="cl">└──╼ <span class="m">5</span> fichiers, 552Kb<span class="o">)</span>─$ gpg -d flag.enc
+</span></span><span class="line"><span class="cl">gpg: AES256.CFB encrypted data
+</span></span><span class="line"><span class="cl">gpg: chiffré avec 1 phrase secrète
+</span></span><span class="line"><span class="cl">Un flag tout simple à trouver et à rentrer pour avoir les points du CTF <span class="p">;</span>-<span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Le flag est : HSR<span class="o">{</span>V0l@tility_w1th_GPG_1s_c00l_Again...in_2024<span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="partie-46">Partie 4/6</h2>
+<p>D&rsquo;après l&rsquo;historique <code>ransomware.o</code> a ensuite été lancé sur la machine.</p>
+<p>Analysons le dans Ghidra, on remarque une fonction <code>decrypt_master</code> qui fait un xor entre une section mémoire et un short:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="n">undefined8</span> <span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">undefined2</span> <span class="n">local_12</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="n">undefined8</span> <span class="n">local_10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;[&gt;] 3vil-kevin ransomware 0.0.1-dev&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;[&gt;] Enter 16-bit military grade cryptographic key :&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">__isoc99_scanf</span><span class="p">(</span><span class="o">&amp;</span><span class="n">DAT_00102064</span><span class="p">,</span><span class="o">&amp;</span><span class="n">local_12</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">puts</span><span class="p">(</span><span class="s">&#34;[+] Decrypting master key...&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="n">local_10</span> <span class="o">=</span> <span class="nf">decrypt_master</span><span class="p">(</span><span class="n">local_12</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">printf</span><span class="p">(</span><span class="s">&#34;!! TODO ENCRYPT FILE WITH %s</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span><span class="n">local_10</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./screen4.png"
+        data-srcset="./screen4.png, ./screen4.png 1.5x, ./screen4.png 2x"
+        data-sizes="auto"
+        alt="./screen4.png"
+        title="./screen4.png" /></p>
+<p>En supposant que la section mémoire déchiffrée soit le flag, nous avons cependant un clair connu(HSR{).
+En sortant le chiffré et en écrivant un court script python, on obtient le flag:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="./screen4-2.png"
+        data-srcset="./screen4-2.png, ./screen4-2.png 1.5x, ./screen4-2.png 2x"
+        data-sizes="auto"
+        alt="./screen4-2.png"
+        title="./screen4-2.png" /></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">cycle</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cipher</span><span class="o">=</span><span class="s2">&#34;989982b1a8faa295e1b98fade0fab49593b8a9baa4fa8fa5a2959efaa4b7&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">key</span><span class="o">=</span><span class="s2">&#34;HSR{&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">cipher</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="n">cipher</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cipher</span> <span class="o">=</span> <span class="p">[</span><span class="n">b</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">cipher</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">key</span> <span class="o">=</span> <span class="p">[</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">key</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plain_key</span> <span class="o">=</span> <span class="p">[</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">^</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cipher</span><span class="p">,</span><span class="n">key</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">key</span> <span class="o">=</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">plain_key</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">cipher</span><span class="p">)):</span>
+</span></span><span class="line"><span class="cl">        <span class="n">plain_key</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plain_key</span><span class="p">[</span><span class="n">i</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">key</span><span class="p">)])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">plain</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">^</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">cipher</span><span class="p">,</span><span class="n">plain_key</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl"><span class="n">plain</span> <span class="o">=</span> <span class="p">[</span><span class="nb">chr</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">plain</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">plain</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Flag:
+<code>HSR{x0r_1s_g00d_Crypt0_or_N0t}</code></p>
+<h2 id="parties-56-avec-pcap">Parties 5/6 (Avec PCAP)</h2>
+<p>Non terminé, on remarque:</p>
+<ul>
+<li>un échange entre <code>10.13.13.104</code> et <code>10.13.13.109</code> dans le PCAP</li>
+<li>une connection SSH  à <code>ssh hsr@10.13.13.104</code>  et <code>ssh hsr@10.13.13.105</code></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">python ~/volatility/vol.py -f hsr2024.dmp --profile<span class="o">=</span>LinuxDebian_4_19_0-26-amd64_profilex64 linux_netstat
+</span></span><span class="line"><span class="cl">...
+</span></span><span class="line"><span class="cl">TCP      10.13.13.109    :49114 10.13.13.104    :   <span class="m">22</span> ESTABLISHED                   ssh/1335
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Voici comment terminer les parties 5 et 6 avec <strong>1 autre plugin vol2</strong>, <a href="https://or1on-ctf.github.io/2021/07/27/HTB-Business-CTF-Compromise.html" target="_blank" rel="noopener noreffer ">https://or1on-ctf.github.io/2021/07/27/HTB-Business-CTF-Compromise.html</a></p>
+<p>Avec le port 1335  que l&rsquo;on vient de remarquer, on lance <strong>linux_sshkeys</strong>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/fox-it/OpenSSH-Session-Key-Recovery
+</span></span><span class="line"><span class="cl">cp ~/OpenSSH-Session-Key-Recovery/volatility2/openssh_sessionkeys.py ~/volatility/contrib/plugins/
+</span></span><span class="line"><span class="cl">python ~/volatility/vol.py -f hsr2024.dmp --profile<span class="o">=</span>LinuxDebian_4_19_0-26-amd64_profilex64 linux_sshkeys -p <span class="m">1335</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Scanning <span class="k">for</span> OpenSSH sshenc structures...
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Name                           Pid      PPid     Address            Name                           Key                                                                                                                              IV
+</span></span><span class="line"><span class="cl">------------------------------ -------- -------- ------------------ ------------------------------ -------------------------------------------------------------------------------------------------------------------------------- ----------------------------------------------------------------
+</span></span><span class="line"><span class="cl">ssh <span class="o">[</span>ssh hsr@10.13.13.104<span class="o">]</span>         <span class="m">1335</span>      <span class="m">999</span> 0x00005595fe1d1dc0 aes256-gcm@openssh.com         0cfcce93342a2c43bd05e8f296bb7b4a61a734c3b274eb765017523269443d2b                                                                 64b7a25d5def09e22494242a
+</span></span><span class="line"><span class="cl">ssh <span class="o">[</span>ssh hsr@10.13.13.104<span class="o">]</span>         <span class="m">1335</span>      <span class="m">999</span> 0x00005595fe1d1ea0 aes256-gcm@openssh.com         955f60ba9b171179f584b91e1acd20666859826c5977ec56490553ed29d0ee72
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>On crée le JSON comme indiqué pour le second outil (<a href="https://github.com/fox-it/OpenSSH-Network-Parser%29" target="_blank" rel="noopener noreffer ">https://github.com/fox-it/OpenSSH-Network-Parser)</a>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;task_name&#34;</span><span class="p">:</span> <span class="s2">&#34;sshd&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;sshenc_addr&#34;</span><span class="p">:</span> <span class="mi">94102701809088</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;cipher_name&#34;</span><span class="p">:</span> <span class="s2">&#34;aes256-gcm@openssh.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;0cfcce93342a2c43bd05e8f296bb7b4a61a734c3b274eb765017523269443d2b&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;iv&#34;</span><span class="p">:</span> <span class="s2">&#34;64b7a25d5def09e22494242a&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;task_name&#34;</span><span class="p">:</span> <span class="s2">&#34;sshd&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;sshenc_addr&#34;</span><span class="p">:</span> <span class="mi">94102701809312</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;cipher_name&#34;</span><span class="p">:</span> <span class="s2">&#34;aes256-gcm@openssh.com&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;955f60ba9b171179f584b91e1acd20666859826c5977ec56490553ed29d0ee72&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;iv&#34;</span><span class="p">:</span> <span class="s2">&#34;1f4146c82cabf3010ec680de&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Pour fix l&rsquo;outil (CTRL+F pynids) <a href="https://scribe.rip/@kevintk1/htb-business-ctf-2021-forensic-compromised-1aa265b843a6" target="_blank" rel="noopener noreffer ">https://scribe.rip/@kevintk1/htb-business-ctf-2021-forensic-compromised-1aa265b843a6</a>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">fox</span><span class="o">-</span><span class="n">it</span><span class="o">/</span><span class="n">OpenSSH</span><span class="o">-</span><span class="n">Network</span><span class="o">-</span><span class="n">Parser</span> <span class="o">&amp;&amp;</span> <span class="n">cd</span> <span class="n">OpenSSH</span><span class="o">-</span><span class="n">Network</span><span class="o">-</span><span class="n">Parser</span><span class="o">/</span><span class="n">openssh_network_parser</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Comme indiqué, creer un virtualenv python2:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">pyenv local 2.7
+</span></span><span class="line"><span class="cl">pyenv virtualenv venv
+</span></span><span class="line"><span class="cl">pyenv activate venv
+</span></span><span class="line"><span class="cl">pip install psutil tabulate gevent libnacl cryptography
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Puis install manuellement pynids:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">git clone https://github.com/MITRECND/pynids <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pynids
+</span></span><span class="line"><span class="cl">tar -xvf lib*gz <span class="o">&amp;&amp;</span> rm -f *gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> libnids*
+</span></span><span class="line"><span class="cl">mkdir build <span class="o">&amp;&amp;</span> <span class="nb">cd</span> build
+</span></span><span class="line"><span class="cl">../configure
+</span></span><span class="line"><span class="cl">make
+</span></span><span class="line"><span class="cl">cp src/libnids.a ../src
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ../../dist
+</span></span><span class="line"><span class="cl">tar -xvf *gz <span class="o">&amp;&amp;</span> rm -f *gz <span class="o">&amp;&amp;</span> <span class="nb">cd</span> pynids*
+</span></span><span class="line"><span class="cl">python setup.py install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>De retour pour l&rsquo;outil principal (network ssh):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ../../../..
+</span></span><span class="line"><span class="cl">python2 setup.py install
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Enfin , de retour dans le répertoire du dump</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> ~/hsr/forensics
+</span></span><span class="line"><span class="cl">pyenv <span class="nb">local</span> 2.7.18/envs/venv
+</span></span><span class="line"><span class="cl"><span class="c1">#CTRL+D, CTRL+ALT+T</span>
+</span></span><span class="line"><span class="cl">mkdir ssh-traffic
+</span></span><span class="line"><span class="cl">network-parser -p hsr2024.pcap --popt <span class="nv">keyfile</span><span class="o">=</span>keys.json --proto ssh -o ssh-traffic/
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2024-04-02</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="//localhost:1313/posts/hsr2024/" data-title="HackSecuReims 2024" data-hashtags="android,reverse,forensic"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="//localhost:1313/posts/hsr2024/" data-hashtag="android"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Reddit" data-sharer="reddit" data-url="//localhost:1313/posts/hsr2024/"><i class="fab fa-reddit fa-fw" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/android/">Android</a>,&nbsp;<a href="/tags/reverse/">Reverse</a>,&nbsp;<a href="/tags/forensic/">Forensic</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/posts/gcc-ctf/" class="prev" rel="prev" title="GCC 2024- Quelques writeups"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>GCC 2024- Quelques writeups</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.124.1">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022 - 2024</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank"></a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

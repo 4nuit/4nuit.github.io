@@ -3,7 +3,15 @@
         <title>Forensic - Tag - </title>
         <link>//localhost:1313/tags/forensic/</link>
         <description>Forensic - Tag - </description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 10 Jul 2023 22:27:18 &#43;0200</lastBuildDate><atom:link href="//localhost:1313/tags/forensic/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 02 Apr 2024 02:29:34 &#43;0200</lastBuildDate><atom:link href="//localhost:1313/tags/forensic/" rel="self" type="application/rss+xml" /><item>
+    <title>HackSecuReims 2024</title>
+    <link>//localhost:1313/posts/hsr2024/</link>
+    <pubDate>Tue, 02 Apr 2024 02:29:34 &#43;0200</pubDate>
+    <author>Nu1t</author>
+    <guid>//localhost:1313/posts/hsr2024/</guid>
+    <description><![CDATA[APK et Dump Memoire]]></description>
+</item>
+<item>
     <title>Cheatsheet</title>
     <link>//localhost:1313/posts/cheatsheet/</link>
     <pubDate>Mon, 10 Jul 2023 22:27:18 &#43;0200</pubDate>
