@@ -27,6 +27,8 @@ https://github.com/4nuit/Writeup/tree/master/2024/HackSecuReims
 
 ## Reverse - APK
 
+Nous disposions d'un challenge simple en 2 parties, le but étant de retrouver le mot de passe de l'application.
+
 ### APK 1/2
 
 On utilise **jadx-gui** et https://appetize.io
@@ -288,11 +290,11 @@ go mod download github.com/spf13/pflag
 go build
 ./dwarf2json linux --elf /usr/lib/debug/vmlinux-4.19.0-26-amd64 > ~/vmlinux-4.19.0-26-amd64.json
 
-![](./virtualbox.png)
-
 # Si vol3 installé dans la VM, sinon copier sur l'hôte
 cp vmlinux-4.19.0-26-amd64.json volatility3/volatility3/symbols
 ```
+
+![](./virtualbox.png)
 
 #### Analyse avec vol2 (retour sur l'hôte)
 
