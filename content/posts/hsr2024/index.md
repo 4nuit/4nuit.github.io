@@ -337,7 +337,7 @@ flag.enc.b64  flag_01.png  hsr_event  ransomware.o
 
 On observe une image partiellement en clair:
 
-![flag1](./flag_01.png)
+![](./flag_01.png)
 
 Ainsi qu'un texte:
 
