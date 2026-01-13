@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-On ouvre alors dans Ghidra une version de cette lib (shared object), code C chargée à partir de la **Java Native Interface**:
+On ouvre alors dans Ghidra une version de cette bibliothèque partagée (ici, en **C++**), chargée à partir de la **Java Native Interface**:
 
 ```bash
 ┌─[night@night-20b7s2ex01]─[~/hsr/reverse/ParanoidAndroid2/resources]
